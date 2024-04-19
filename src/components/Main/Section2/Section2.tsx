@@ -13,8 +13,11 @@ export default function Section2() {
             Salvando nosso Planeta
           </span>
         </div>
-        <div className='grid grid-cols-3 gap-12 mt-12'>
-          <div className='flex flex-col'>
+        <div className='flex flex-wrap justify-evenly items-center gap-12 mt-12'>
+          <div
+            className='bg-black flex flex-col rounded-lg'
+            style={{ width: "500px", height: "600px" }}
+          >
             <Image
               src='/teste1.png'
               alt='bags imagem'
@@ -22,16 +25,18 @@ export default function Section2() {
               height={500}
               className='rounded-t-lg'
             />
-            <div className='bg-black w-[500px] h-52 rounded-b-lg p-3'>
-              <div className=' text-white text-3xl font-semibold text-center mt-10'>
-                Produtos escolidos a mão
-                <div className='text-zinc-300 mt-2 text-xl'>
-                  Melhor qualidade em sua mao
-                </div>
+            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16'>
+              Produtos escolhidos a mão
+              <div className='text-zinc-300 mt-2 text-xl'>
+                Melhor qualidade a seu serviço
               </div>
             </div>
           </div>
-          <div className='flex flex-col'>
+
+          <div
+            className='bg-black flex flex-col rounded-lg'
+            style={{ width: "500px", height: "600px" }}
+          >
             <Image
               src='/teste2.png'
               alt='bags imagem'
@@ -39,16 +44,18 @@ export default function Section2() {
               height={500}
               className='rounded-t-lg'
             />
-            <div className='bg-black w-[500px] h-52 rounded-b-lg p-3'>
-              <div className=' text-white text-3xl font-semibold text-center mt-10'>
-                Produtos voltados a saúde e bem estar
-                <div className='text-zinc-300 mt-2 text-xl'>
-                  Maior conforto e preticidade
-                </div>
+            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16'>
+              Produtos voltados a saúde <br /> e bem estar
+              <div className='text-zinc-300 mt-2 text-xl'>
+                maior conforto e praticidade
               </div>
             </div>
           </div>
-          <div className='flex flex-col'>
+
+          <div
+            className='bg-black flex flex-col rounded-lg'
+            style={{ width: "500px", height: "600px" }}
+          >
             <Image
               src='/teste3.png'
               alt='bags imagem'
@@ -56,12 +63,11 @@ export default function Section2() {
               height={500}
               className='rounded-t-lg'
             />
-            <div className='bg-black w-[500px] h-52 rounded-b-lg p-3'>
-              <div className=' text-white text-3xl font-semibold text-center mt-10'>
-                Uma peça unica para o seu look
-                <div className='text-zinc-300 mt-2 text-xl'>
-                  estampas criativas escolidas especialmente pelo nosso time
-                </div>
+            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16'>
+              Uma peça única para seu <br />
+              Moda Style
+              <div className='text-zinc-300 mt-2 text-xl'>
+                estampas criativas escolhidas pelo <br /> nosso time
               </div>
             </div>
           </div>

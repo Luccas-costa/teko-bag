@@ -27,13 +27,23 @@ export default function Header() {
             Sobre
           </li>
           <li className='text-base font-semibold hover:border-b-2 border-black'>
-            Contato
+            <a
+              href='https://www.instagram.com/direct/t/17843579625178478'
+              target='_blank'
+            >
+              Contato
+            </a>
           </li>
           <li
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <InstagramLogo size={25} weight={isHovered ? "fill" : "regular"} />
+            <a href='https://www.instagram.com/tekobags/' target='_blank'>
+              <InstagramLogo
+                size={25}
+                weight={isHovered ? "fill" : "regular"}
+              />
+            </a>
           </li>
         </ul>
       </div>

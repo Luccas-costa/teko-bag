@@ -1,5 +1,53 @@
+"use client";
 import React from "react";
+import Image from "next/image";
+import { useState } from "react";
+
+import styles from "./index.module.css";
+
+import { InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 
 export default function Section3() {
-  return <div className='bg-pink1'>Section3</div>;
+  const [isHovered, setIsHovered] = useState(false);
+  return (
+    <div className={styles.degrade}>
+      <div className='flex items-center justify-center gap-x-4 pt-28 pb-28'>
+        <div className='bg-green3 w-[700px] h-[700px] rounded-l-lg  flex flex-col items-center pt-32  text-4xl font-extrabold'>
+          Sobre nós
+          <div className='text-2xl text-zinc-800 font-semibold w-3/4 h-3/4 pl-2 pt-2'>
+            Somos um Startup desvolvida sob um projeto escolar, com um time de
+            12 pessoas mais 1 mentor. Nosso objetivo é trazer soluções
+            relacionadas a Eco Bags, nós da T
+            <span className='text-xs font-semibold'>R</span>
+            eko Bag fazemos uma mediação e confexão de uma Bag totalemnte
+            personalizada e especial a sua necessidade, visando a Qualidade,
+            Estética e Resistência. <br /> Ao final 25% de nosso lucros seram
+            doados a uma instuição de caridade.
+          </div>
+        </div>
+        <div>
+          <Image
+            src='/teste4.jpg'
+            width={700}
+            height={700}
+            alt='bags de crocodilo'
+            className='rounded-r-lg'
+          />
+        </div>
+      </div>
+      <div className='flex flex-col gap-y-4 items-center justify-center'>
+        <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <a href='https://www.instagram.com/tekobags/' target='_blank'>
+            <InstagramLogo size={40} weight={isHovered ? "fill" : "regular"} />
+          </a>
+        </div>
+        <div className='text-black font-semibold text-sm mb-10'>
+          exemplofuturo@gmail.com
+        </div>
+      </div>
+    </div>
+  );
 }

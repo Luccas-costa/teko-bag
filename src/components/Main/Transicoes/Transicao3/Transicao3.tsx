@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 
-export default function Transicao2() {
+export default function Transicao3() {
   return (
     <div className='bg-yellow1'>
       <Image
-        src='/book.svg'
+        src='/transicao3.png'
         alt='ondas de transiçao'
         width={2000}
         height={100}
