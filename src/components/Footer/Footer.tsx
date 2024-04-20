@@ -105,9 +105,9 @@ export default function Footer() {
         </div>
       </div>
       <div className='text-zinc-600'>
-        developed by
+        developed by{" "}
         <button>
-          <strong>luccascosta.comercial@gmail.com</strong>
+          <strong>.luccascosta.comercial@gmail.com</strong>
         </button>
       </div>
     </div>
