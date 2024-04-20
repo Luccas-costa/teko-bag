@@ -12,7 +12,7 @@ export default function Section3() {
   return (
     <div className={styles.degrade}>
       <div className='flex items-center justify-center gap-x-4 pt-28 pb-28'>
-        <div className='bg-green3 w-[700px] h-[700px] rounded-l-lg  flex flex-col items-center pt-32  text-4xl font-extrabold'>
+        <div className='bg-green3 w-[700px] h-[700px] rounded-l-lg  flex flex-col items-center pt-32 text-yellow1 text-4xl font-extrabold'>
           Sobre nós
           <div className='text-2xl text-zinc-800 font-semibold w-3/4 h-3/4 pl-2 pt-2'>
             Somos um Startup desvolvida sob um projeto escolar, com um time de
@@ -45,7 +45,7 @@ export default function Section3() {
           </a>
         </div>
         <div className='text-black font-semibold text-sm mb-10'>
-          exemplofuturo@gmail.com
+          <a href=''>exemplofuturo@gmail.com</a>
         </div>
       </div>
     </div>

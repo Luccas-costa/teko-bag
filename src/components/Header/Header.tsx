@@ -27,10 +27,7 @@ export default function Header() {
             Sobre
           </li>
           <li className='text-base font-semibold hover:border-b-2 border-black'>
-            <a
-              href='https://www.instagram.com/direct/t/17843579625178478'
-              target='_blank'
-            >
+            <a href='https://www.instagram.com/tekobags/' target='_blank'>
               Contato
             </a>
           </li>

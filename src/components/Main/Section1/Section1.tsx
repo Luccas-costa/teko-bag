@@ -12,7 +12,7 @@ export default function Section1() {
           height={10}
           className='rounded-lg'
         />
-        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-pink1 text-7xl text-center font-bold flex flex-col'>
+        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-pink1 text-xl xl:text-7xl lg:text-5xl md:text-5xl sm:text-3xl text-center font-bold flex flex-col'>
           Venha conhecer sua TekoBag`s
           <div className='mt-4'>
             <button className='text-3xl border-2 border-pink1 px-4 py-2 hover:bg-pink1 hover:text-green2'>
