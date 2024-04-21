@@ -14,10 +14,7 @@ export default function Section2() {
           </span>
         </div>
         <div className='flex flex-wrap justify-evenly items-center gap-12 mt-12'>
-          <div
-            className='bg-black flex flex-col rounded-lg'
-            style={{ width: "500px", height: "600px" }}
-          >
+          <div className='bg-black flex flex-col rounded-lg w-[500px] sm:h-[600px] h-max-[550px]'>
             <Image
               src='/teste1.png'
               alt='bags imagem'
@@ -33,10 +30,7 @@ export default function Section2() {
             </div>
           </div>
 
-          <div
-            className='bg-black flex flex-col rounded-lg'
-            style={{ width: "500px", height: "600px" }}
-          >
+          <div className='bg-black flex flex-col rounded-lg w-[500px] sm:h-[600px] h-max-[550px]'>
             <Image
               src='/teste2.png'
               alt='bags imagem'
@@ -52,10 +46,7 @@ export default function Section2() {
             </div>
           </div>
 
-          <div
-            className='bg-black flex flex-col rounded-lg'
-            style={{ width: "500px", height: "600px" }}
-          >
+          <div className='bg-black flex flex-col rounded-lg w-[500px] sm:h-[600px] h-max-[550px]'>
             <Image
               src='/teste3.png'
               alt='bags imagem'
