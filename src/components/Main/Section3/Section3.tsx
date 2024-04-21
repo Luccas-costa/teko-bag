@@ -13,9 +13,9 @@ export default function Section3() {
   return (
     <div className={styles.degrade}>
       <div className='flex items-center justify-center gap-x-4 pt-28 pb-28'>
-        <div className='bg-green3 w-[700px] h-[700px] xl:h-[700px] lg:h-[600px] md:h-[500px] sm:h-[400px] rounded-l-lg  flex flex-col items-center pt-4 xl:pt-32 lg:pt-10 md:pt-4 sm:pt-6 text-yellow1 text-2xl xl:text-4xl lg:text-4xl md:text-3xl sm:text-2xl font-extrabold'>
+        <div className='bg-green3 w-[47vw] h-[73vh] xl:w-[36.5vw] rounded-l-lg  flex flex-col items-center 2xl:pt-28 pt-6 text-yellow1 text-2xl xl:text-4xl lg:text-4xl md:text-3xl sm:text-2xl font-extrabold'>
           Sobre nós
-          <div className='text-sm xl:text-2xl lg:text-2xl md:text-lg sm:text-base text-zinc-800 font-semibold w-3/4 h-3/4 pl-2 pt-2'>
+          <div className='text-base sm:text-lg md:text-xl lg:text-2xl text-zinc-800 font-semibold w-3/4 h-3/4 pl-2 pt-2'>
             Somos um Startup desvolvida sob um projeto escolar, com um time de
             12 pessoas mais 1 mentor. Nosso objetivo é trazer soluções
             relacionadas a Eco Bags, nós da Teko Bag fazemos uma mediação e
@@ -28,8 +28,9 @@ export default function Section3() {
           style={{
             backgroundImage: `url(${Imagem.src})`,
             backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
-          className='rounded-r-lg w-[700px] h-[700px] xl:h-[700px] lg:h-[600px] md:h-[500px] sm:h-[400px]'
+          className='rounded-r-lg w-[47vw] h-[73vh] xl:w-[36.5vw]'
         ></div>
       </div>
       <div className='flex flex-col gap-y-4 items-center justify-center'>
