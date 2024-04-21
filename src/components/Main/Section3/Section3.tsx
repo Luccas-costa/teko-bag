@@ -12,10 +12,10 @@ export default function Section3() {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div className={styles.degrade}>
-      <div className='flex flex-wrap items-center justify-center gap-4 pt-28 pb-28'>
+      <div className='flex flex-wrap-reverse items-center justify-center gap-4 pt-28 pb-28'>
         <div
           className='bg-green3 w-[90vw] h-[70vh] md:w-[700px] md:h-[700px] rounded-l-lg  flex flex-col items-center 2xl:pt-28 sm:pt-28
-         pt-14 text-yellow1 text-4xl font-extrabold'
+         pt-24 text-yellow1 text-4xl font-extrabold'
         >
           Sobre nós
           <div className='text-xl sm:text-2xl text-zinc-800 font-semibold w-3/4 h-3/4 pl-2 pt-2'>
