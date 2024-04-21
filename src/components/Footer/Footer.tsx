@@ -31,35 +31,35 @@ export default function Footer() {
             alt='logo'
           />
         </div>
-        <hr className='w-1 h-48 bg-zinc-600' />
+        <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600' />
         <div className='text-zinc-600 font-semibold flex flex-col flex-nowrap items-start'>
           <h1 className='text-lg'>~Time~</h1>
           <div>
             <ul>
-              <li>
+              <li className='lg:text-base md:text-sm text-xs'>
                 <strong>Mentor:</strong> Patrick
               </li>
-              <li>
+              <li className='lg:text-base md:text-sm text-xs'>
                 <strong>CEO:</strong> Ana Clara
               </li>
-              <li>
+              <li className='lg:text-base md:text-sm text-xs'>
                 <strong>Diretor financeiro:</strong> Ana Luiza
               </li>
-              <li>
+              <li className='lg:text-base md:text-sm text-xs'>
                 <strong>Diretores administrativo:</strong> Lauren e Sarah
               </li>
-              <li>
+              <li className='lg:text-base md:text-sm text-xs'>
                 <strong>Marketing - produto/serviço:</strong> Laís,João, kallan,
                 lucas ,kevin ,pedro,juan
               </li>
-              <li>
+              <li className='lg:text-base md:text-sm text-xs'>
                 <strong>Marketing - marca/comunicação:</strong> Ana Julia,
                 Lucena
               </li>
             </ul>
           </div>
         </div>
-        <hr className='w-1 h-48 bg-zinc-600' />
+        <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600' />
         <div className='flex flex-col justify-center space-y-4'>
           <a
             href='https://www.instagram.com/tekobags/'
@@ -75,7 +75,7 @@ export default function Footer() {
                   <InstagramLogo size={30} color='#fff' />
                 </a>
               </li>
-              <li className='p-2 bg-black/30 rounded-full hover:bg-zinc-500'>
+              <li className='pt-2 pb-1 pl-2 pr-2 bg-black/30 rounded-full hover:bg-zinc-500'>
                 <a
                   href='https://www.tiktok.com/@teko.bag?lang=pt-BR'
                   target='_blank'
@@ -104,10 +104,10 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className='text-zinc-600'>
-        developed by{" "}
+      <div className='text-zinc-700 text-sm'>
+        developed by |{" "}
         <button>
-          <strong>.luccascosta.comercial@gmail.com</strong>
+          <strong>luccascosta.comercial@gmail.com</strong>
         </button>
       </div>
     </div>

@@ -22,7 +22,7 @@ export default function Section2() {
               height={500}
               className='rounded-t-lg'
             />
-            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16'>
+            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16 pl-2 pr-2'>
               Produtos escolhidos a mão
               <div className='text-zinc-300 mt-2 text-xl'>
                 Melhor qualidade a seu serviço
@@ -38,7 +38,7 @@ export default function Section2() {
               height={500}
               className='rounded-t-lg'
             />
-            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16'>
+            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16 pl-2 pr-2'>
               Produtos voltados a saúde <br /> e bem estar
               <div className='text-zinc-300 mt-2 text-xl'>
                 maior conforto e praticidade
@@ -54,7 +54,7 @@ export default function Section2() {
               height={500}
               className='rounded-t-lg'
             />
-            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16'>
+            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16 pl-2 pr-2'>
               Uma peça única para seu <br />
               Moda Style
               <div className='text-zinc-300 mt-2 text-xl'>
