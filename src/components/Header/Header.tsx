@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <header className='bg-green2 sticky top-0 z-10'>
-      <div className='flex items-center justify-between mr-14 ml-14 p-3'>
+      <div className='flex items-center justify-between 2xl:mr-14 2xl:ml-14 xl:mr-10 xl:ml-10 md:mr-6 md:ml-6 sm:mr-2 sm:ml-2 mr-0 ml-0 p-3'>
         <div>
           <Image
             src='/logo-transparente.png'
