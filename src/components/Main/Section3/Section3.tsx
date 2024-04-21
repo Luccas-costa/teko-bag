@@ -11,7 +11,7 @@ import { InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 export default function Section3() {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <div className={styles.degrade}>
+    <div className={styles.degrade} id='sobre'>
       <div className='flex flex-wrap-reverse items-center justify-center gap-4 pt-28 pb-28'>
         <div
           className='bg-green3 w-[90vw] h-[70vh] md:w-[700px] md:h-[700px] rounded-l-lg  flex flex-col items-center 2xl:pt-28 sm:pt-28

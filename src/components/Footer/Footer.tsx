@@ -21,7 +21,7 @@ export default function Footer() {
   };
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col' id='footer'>
       <div className='flex flex-col items-center pt-12 pl-16 pr-16'>
         <div className='flex gap-x-6 pb-12'>
           <div className='flex items-center justify-center'>

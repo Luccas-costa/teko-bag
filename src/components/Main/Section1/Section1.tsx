@@ -3,7 +3,10 @@ import Imagem from "../../../../public/wppmato.jpg";
 
 export default function Section1() {
   return (
-    <div className='bg-green2 2xl:pl-16 xl:pl-12 md:pl-8 sm:pl-4 pl-2 2xl:pr-16 xl:pr-12 md:pr-8 sm:pr-4 pr-2 2xl:pb-16 xl:pb-12 md:pb-8 sm:pb-4 pb-2 pt-2 z-0'>
+    <div
+      className='bg-green2 2xl:pl-16 xl:pl-12 md:pl-8 sm:pl-4 pl-2 2xl:pr-16 xl:pr-12 md:pr-8 sm:pr-4 pr-2 2xl:pb-16 xl:pb-12 md:pb-8 sm:pb-4 pb-2 pt-2 z-0'
+      id='inicio'
+    >
       <div
         className='2xl:w-[93vw] 2xl:h-[80vh] xl:h-[90vh] lg:h-[90vh] md:h-[85vh] sm:h-[85vh] h-[85vh] relative'
         style={{

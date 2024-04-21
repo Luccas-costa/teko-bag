@@ -58,20 +58,15 @@ export default function Header() {
                   <div className='w-4 h-4 bg-black absolute right-[14px] top-[-7px] rotate-45'></div>
                   <div className='flex flex-col space-y-3'>
                     <div className='text-base hover:text-lg font-semibold text-center text-white pt-2'>
-                      Home
+                      <a href='#inicio'>Home</a>
                     </div>
                     <hr />
                     <div className='text-base hover:text-lg font-semibold text-center text-white'>
-                      Sobre
+                      <a href='#sobre'>Sobre</a>
                     </div>
                     <hr />
                     <div className='text-base hover:text-lg font-semibold text-center text-white'>
-                      <a
-                        href='https://www.instagram.com/tekobags/'
-                        target='_blank'
-                      >
-                        Contato
-                      </a>
+                      <a href='#footer'>Contato</a>
                     </div>
                   </div>
                 </div>
@@ -81,15 +76,13 @@ export default function Header() {
         ) : (
           <ul className='flex space-x-4'>
             <li className='text-base font-semibold hover:border-b-2 border-black '>
-              Home
+              <a href='#inicio'>Home</a>
             </li>
             <li className='text-base font-semibold hover:border-b-2 border-black'>
-              Sobre
+              <a href='#sobre'>Sobre</a>
             </li>
             <li className='text-base font-semibold hover:border-b-2 border-black'>
-              <a href='https://www.instagram.com/tekobags/' target='_blank'>
-                Contato
-              </a>
+              <a href='#footer'>Contato</a>
             </li>
             <li
               onMouseEnter={() => setIsHovered(true)}

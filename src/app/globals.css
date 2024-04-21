@@ -10,3 +10,7 @@
   ::-webkit-scrollbar-thumb {
     background-color: #3D291C;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
