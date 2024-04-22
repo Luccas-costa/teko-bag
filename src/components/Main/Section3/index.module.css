@@ -3,8 +3,8 @@
 }
 
 .sobre::-webkit-scrollbar {
-    width: 15px;
-    background: gray;
+    width: 10px;
+    background: transparent;
 }
 .sobre::-webkit-scrollbar-thumb {
     background-color: hsla(0, 0%, 100%, .3);;
