@@ -3,9 +3,10 @@
 }
 
 .sobre::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
     background: transparent;
 }
 .sobre::-webkit-scrollbar-thumb {
-    background-color: hsla(0, 0%, 100%, .3);;
+    background-color: hsla(0, 0%, 100%, .3);
+    border-radius: 5px;
 }
