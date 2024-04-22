@@ -61,7 +61,7 @@ export default function Footer() {
             </div>
           </div>
           <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600' />
-          <div className='flex flex-col justify-center space-y-4'>
+          <div className='flex flex-col justify-center space-y-4 mr-2'>
             <a
               href='https://www.instagram.com/tekobags/'
               target='_blank'
