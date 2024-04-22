@@ -23,7 +23,7 @@ export default function Footer() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 560);
     };
 
     handleResize(); // Chamar a função inicialmente para definir o estado
