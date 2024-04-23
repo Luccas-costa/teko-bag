@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Cards from "./Cards/Cards";
 
 export default function Section2() {
   return (
@@ -13,55 +14,26 @@ export default function Section2() {
             Salvando nosso Planeta
           </span>
         </div>
+
         <div className='flex flex-wrap justify-evenly items-center gap-12 mt-12'>
-          <div className='bg-black flex flex-col rounded-lg w-[500px] sm:h-[600px] h-max-[550px]'>
-            <Image
-              src='/teste1.png'
-              alt='bags imagem'
-              width={500}
-              height={500}
-              className='rounded-t-lg'
-            />
-            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16 pl-2 pr-2'>
-              Produtos escolhidos a mão
-              <div className='text-zinc-300 mt-2 text-xl'>
-                Melhor qualidade a seu serviço
-              </div>
-            </div>
-          </div>
-
-          <div className='bg-black flex flex-col rounded-lg w-[500px] sm:h-[600px] h-max-[550px]'>
-            <Image
-              src='/teste2.png'
-              alt='bags imagem'
-              width={500}
-              height={500}
-              className='rounded-t-lg'
-            />
-            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16 pl-2 pr-2'>
-              Produtos voltados a saúde <br /> e bem estar
-              <div className='text-zinc-300 mt-2 text-xl'>
-                maior conforto e praticidade
-              </div>
-            </div>
-          </div>
-
-          <div className='bg-black flex flex-col rounded-lg w-[500px] sm:h-[600px] h-max-[550px]'>
-            <Image
-              src='/teste3.png'
-              alt='bags imagem'
-              width={500}
-              height={500}
-              className='rounded-t-lg'
-            />
-            <div className='text-white text-3xl font-semibold text-center pt-16 pb-16 pl-2 pr-2'>
-              Uma peça única para seu <br />
-              Moda Style
-              <div className='text-zinc-300 mt-2 text-xl'>
-                estampas criativas escolhidas pelo <br /> nosso time
-              </div>
-            </div>
-          </div>
+          <Cards
+            image='/teste1.png'
+            title='Produtos escolhidos a mão'
+            description='Melhor qualidade a seu serviço'
+          />
+          <Cards
+            image='/teste2.png'
+            title='Produtos voltados a saúde '
+            titleaposbr='e bem estar'
+            description='maior conforto e praticidade'
+          />
+          <Cards
+            image='/teste3.png'
+            title='Uma peça única para seu '
+            titleaposbr='Moda Style'
+            description='estampas criativas escolhidas pelo '
+            descriptionaposbr='nosso time'
+          />
         </div>
       </div>
     </div>
