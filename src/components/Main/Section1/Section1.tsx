@@ -1,5 +1,6 @@
 import React from "react";
 import Imagem from "../../../../public/wppmato.jpg";
+import styles from "./index.module.css";
 
 export default function Section1() {
   return (
@@ -8,11 +9,10 @@ export default function Section1() {
       id='inicio'
     >
       <div
-        className='2xl:w-[93vw] 2xl:h-[80vh] xl:h-[90vh] lg:h-[90vh] md:h-[85vh] sm:h-[85vh] h-[85vh] relative'
+        className={` $(styles.img) 2xl:w-[93vw] 2xl:h-[80vh] xl:h-[90vh] lg:h-[90vh] md:h-[85vh] sm:h-[85vh] h-[85vh] relative`}
         style={{
           backgroundImage: `url(${Imagem.src})`,
           backgroundSize: "cover",
-          filter: "blur(8px)"
         }}
       >
         <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-6xl 2xl:text-7xl xl:text-7xl lg:text-8xl md:text-8xl sm:text-7xl text-center font-bold flex flex-col'>
