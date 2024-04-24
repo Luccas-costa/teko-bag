@@ -1,5 +1,5 @@
 import React from "react";
-import Imagem from "../../../../public/wppmato.jpg";
+import Imagem from "../../../../public/wppmato2.jpg";
 import styles from "./index.module.css";
 
 export default function Section1() {
