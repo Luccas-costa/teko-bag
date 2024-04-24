@@ -25,13 +25,13 @@ export default function Section2() {
             image='/teste2.png'
             title='Produtos voltados a saúde '
             titleaposbr='e bem estar'
-            description='maior conforto e praticidade'
+            description='Maior conforto e praticidade'
           />
           <Cards
             image='/teste3.png'
             title='Uma peça única para seu '
             titleaposbr='Moda Style'
-            description='estampas criativas escolhidas pelo '
+            description='Estampas criativas escolhidas pelo '
             descriptionaposbr='nosso time'
           />
         </div>
