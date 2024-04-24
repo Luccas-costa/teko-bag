@@ -21,12 +21,12 @@ export default function Section3() {
           <div
             className={`${styles.sobre} text-xl sm:text-2xl text-white font-semibold w-3/4 h-3/4 pl-2 pt-2 overflow-auto`}
           >
-            Somos um Startup desvolvida sob um projeto escolar, com um time de
+            Somos um Startup desenvolvida sob um projeto escolar, com um time de
             12 pessoas mais 1 mentor. Nosso objetivo é trazer soluções
-            relacionadas a Eco Bags, nós da Teko Bag fazemos uma mediação e
-            confexão de uma Bag totalemnte personalizada e especial a sua
+            relacionadas a Eco Bags, fazendo uma mediação e
+            conexão de uma Bag totalmente personalizada e especial a sua
             necessidade, visando a Qualidade, Estética e Resistência. <br /> Ao
-            final 25% de nosso lucros seram doados a uma instuição de caridade.
+            final 25% de nosso lucros seram doados a uma instituição de caridade.
           </div>
         </div>
         <div
