@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Cards from "./Cards/Cards";
 
 export default function Section2() {
