@@ -19,7 +19,7 @@ export default function Section3() {
         >
           Sobre nós
           <div
-            className={`${styles.sobre} text-xl sm:text-2xl text-zinc-800 font-semibold w-3/4 h-3/4 pl-2 pt-2 overflow-auto`}
+            className={`${styles.sobre} text-xl sm:text-2xl text-white font-semibold w-3/4 h-3/4 pl-2 pt-2 overflow-auto`}
           >
             Somos um Startup desvolvida sob um projeto escolar, com um time de
             12 pessoas mais 1 mentor. Nosso objetivo é trazer soluções
