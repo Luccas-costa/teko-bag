@@ -13,8 +13,8 @@
 
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
   }
-  html, body {
+  /*html, body {
     overflow-x: hidden !important;
-  }
+  }*/
