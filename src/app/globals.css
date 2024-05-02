@@ -10,11 +10,8 @@
   ::-webkit-scrollbar-thumb {
     background-color: #3D291C;
   }
-
-  html {
-    scroll-behavior: smooth;
-    /*overflow-x: hidden;*/
-  }
+  
   html, body {
     overflow-x: hidden !important;
+    scroll-behavior: smooth;
   }
