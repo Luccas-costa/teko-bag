@@ -1,10 +1,9 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import { useState } from "react";
 
 import styles from "./index.module.css";
-import Imagem from "../../../../public/teste4.jpg";
+import Imagem from "../../../../../public/teste4.jpg";
 
 import { InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 
@@ -23,10 +22,10 @@ export default function Section3() {
           >
             Somos um Startup desenvolvida sob um projeto escolar, com um time de
             12 pessoas mais 1 mentor. Nosso objetivo é trazer soluções
-            relacionadas a Eco Bags, fazendo uma mediação e
-            conexão de uma Bag totalmente personalizada e especial a sua
-            necessidade, visando a Qualidade, Estética e Resistência. <br /> Ao
-            final 25% de nosso lucros seram doados a uma instituição de caridade.
+            relacionadas a Eco Bags, fazendo uma mediação e conexão de uma Bag
+            totalmente personalizada e especial a sua necessidade, visando a
+            Qualidade, Estética e Resistência. <br /> Ao final 25% de nosso
+            lucros seram doados a uma instituição de caridade.
           </div>
         </div>
         <div
@@ -48,7 +47,7 @@ export default function Section3() {
           </a>
         </div>
         <div className='text-black font-semibold text-sm mb-10'>
-          <a href=''>exemplofuturo@gmail.com</a>
+          {/* <a href=''>exemplofuturo@gmail.com</a> */}
         </div>
       </div>
     </div>

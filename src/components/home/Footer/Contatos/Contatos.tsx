@@ -24,10 +24,10 @@ export default function Contatos() {
         target='_blank'
         className='rounded pt-2 pb-2 pl-4 pr-4 text-center bg-black/30 hover:bg-zinc-500'
       >
-        Contato
+        Monte sua tekoBag
       </a>
       <div>
-        <ul className='flex gap-x-4'>
+        <ul className='flex gap-x-5'>
           <li className='p-2 bg-black/30 rounded-full hover:bg-zinc-500'>
             <a href='https://www.instagram.com/tekobags/' target='_blank'>
               <InstagramLogo size={30} color='#fff' />

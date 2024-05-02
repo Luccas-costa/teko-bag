@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../index.module.css";
-import Imagem from "../../../../../public/waves.svg";
+import Imagem from "../../../../../../public/waves.svg";
 
 export default function Transicao1() {
   return (

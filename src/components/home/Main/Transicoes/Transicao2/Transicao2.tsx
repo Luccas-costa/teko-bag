@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "../index.module.css";
-import Imagem from "../../../../../public/book.svg";
+import Imagem from "../../../../../../public/book.svg";
 
 export default function Transicao2() {
   return (
