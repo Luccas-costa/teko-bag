@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import {
   EnvelopeSimple,
   InstagramLogo,
+  Link,
   TiktokLogo,
 } from "@phosphor-icons/react/dist/ssr";
 
@@ -19,13 +20,13 @@ export default function Contatos() {
   };
   return (
     <div className='flex flex-col justify-center space-y-4'>
-      <a
-        href='https://www.instagram.com/tekobags/'
+      <Link
+        href='/pages/montagem/'
         target='_blank'
         className='rounded pt-2 pb-2 pl-4 pr-4 text-center bg-black/30 hover:bg-zinc-500'
       >
         Monte sua tekoBag
-      </a>
+      </Link>
       <div>
         <ul className='flex gap-x-5'>
           <li className='p-2 bg-black/30 rounded-full hover:bg-zinc-500'>
