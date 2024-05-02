@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 
 import {
   EnvelopeSimple,
   InstagramLogo,
-  Link,
   TiktokLogo,
 } from "@phosphor-icons/react/dist/ssr";
 
@@ -22,7 +22,6 @@ export default function Contatos() {
     <div className='flex flex-col justify-center space-y-4'>
       <Link
         href='/pages/montagem/'
-        target='_blank'
         className='rounded pt-2 pb-2 pl-4 pr-4 text-center bg-black/30 hover:bg-zinc-500'
       >
         Monte sua tekoBag
