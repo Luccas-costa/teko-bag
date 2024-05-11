@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Aplicativo() {
-  return <div>Aplicativo</div>;
+  return <div className="text-xl">Em Produção</div>;
 }
