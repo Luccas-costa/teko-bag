@@ -2,7 +2,7 @@ import styles from "./loading.module.css";
 
 export default function Loading() {
   return (
-    <>
+    <div className='bg-zinc-900 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] '>
       <div
         aria-label='Orange and tan hamster running in a metal wheel'
         role='img'
@@ -33,6 +33,6 @@ export default function Loading() {
         </div>
         <div className={styles.spoke}></div>
       </div>
-    </>
+    </div>
   );
 }
