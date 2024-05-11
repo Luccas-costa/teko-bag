@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/localizations": "^2.3.1",
+    "@clerk/nextjs": "^5.0.8",
     "@phosphor-icons/react": "^2.1.4",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",

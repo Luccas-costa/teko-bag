@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
+
 import { X } from "@phosphor-icons/react/dist/ssr";
 import { AlignJustify } from "lucide-react";
+import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
 
 export default function MenuMobile() {
   const [Itmenuopen, setItmenuopen] = useState(false);
@@ -12,6 +14,18 @@ export default function MenuMobile() {
 
   return (
     <>
+      <div>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+        <SignedOut>
+          <SignInButton mode='modal'>
+            <button className='uppercase bg-green1/50 rounded px-3 py-2 items-center font-bold active:bg-green3'>
+              Login
+            </button>
+          </SignInButton>
+        </SignedOut>
+      </div>
       <div className='items-center justify-center'>
         <button
           onClick={handlemenu}
