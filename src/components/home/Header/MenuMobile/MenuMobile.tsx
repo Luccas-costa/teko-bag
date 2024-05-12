@@ -57,33 +57,39 @@ export default function MenuMobile() {
           <div className='relative'>
             <div className='z-20 w-4 h-4 bg-black absolute right-[14px] top-[-7px] rotate-45'></div>
             <div className='flex flex-col'>
-              <motion.div
-                className='z-10 w-[180px] h-[48px] bg-pink2 font-semibold text-lg text-white flex items-center justify-center rounded-t-lg border-b border-l border-white'
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                home
-              </motion.div>
-              <motion.div
-                className='z-5 w-[180px] h-[48px] bg-pink2 font-semibold text-lg text-white flex items-center justify-center border-b border-l border-white'
-                initial={{ opacity: 1, y: -48 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 1, y: -48 }}
-                transition={{ duration: 0.5 }}
-              >
-                Sobre
-              </motion.div>
-              <motion.div
-                className='w-[180px] h-[48px] bg-pink2 font-semibold text-lg text-white flex items-center justify-center rounded-b-lg border-b border-l border-white '
-                initial={{ opacity: 1, y: -96 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 1, y: -96 }}
-                transition={{ duration: 0.6 }}
-              >
-                Contato
-              </motion.div>
+              <a href='#inicio'>
+                <motion.div
+                  className='z-10 w-[180px] h-[48px] bg-pink2 font-semibold text-lg text-white flex items-center justify-center rounded-t-lg border-b border-l border-white'
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  home
+                </motion.div>
+              </a>
+              <a href='#sobre'>
+                <motion.div
+                  className='z-5 w-[180px] h-[48px] bg-pink2 font-semibold text-lg text-white flex items-center justify-center border-b border-l border-white'
+                  initial={{ opacity: 1, y: -48 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 1, y: -48 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  Sobre
+                </motion.div>
+              </a>
+              <a href='#footer'>
+                <motion.div
+                  className='w-[180px] h-[48px] bg-pink2 font-semibold text-lg text-white flex items-center justify-center rounded-b-lg border-b border-l border-white '
+                  initial={{ opacity: 1, y: -96 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 1, y: -96 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  Contato
+                </motion.div>
+              </a>
             </div>
           </div>
         </motion.div>
