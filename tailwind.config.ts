@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        sm2: "410px",
+        sm3: "100px",
+      },
       colors: {
         green1: "#B9D19D",
         green2: "#86B27A",
