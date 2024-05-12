@@ -1,21 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import Image from "next/image"; // Importe o componente Image do Next.js
 import Imagem from "../../../../../public/wppmato3.png";
 import Link from "next/link";
 
 export default function Section1() {
+  const [loaded, setLoaded] = useState(false);
+
+  // Manipulador de evento para a carga completa da imagem
+  const handleImageLoad = () => {
+    setLoaded(true);
+  };
+
   return (
     <div
       className='bg-green2 2xl:pl-16 xl:pl-12 md:pl-8 sm:pl-4 pl-2 2xl:pr-16 xl:pr-12 md:pr-8 sm:pr-4 pr-2 2xl:pb-16 xl:pb-12 md:pb-8 sm:pb-4 pb-2 pt-2 z-0'
       id='inicio'
     >
       <div
-        className={` $(styles.img) 2xl:w-[93vw] 2xl:h-[80vh] xl:h-[90vh] lg:h-[90vh] md:h-[85vh] sm:h-[85vh] h-[85vh] relative`}
-        style={{
-          backgroundImage: `url(${Imagem.src})`,
-          backgroundSize: "cover",
-        }}
+        className={`2xl:w-[93vw] 2xl:h-[80vh] xl:h-[90vh] lg:h-[90vh] md:h-[85vh] sm:h-[85vh] h-[85vh] relative overflow-hidden`}
       >
+        {/* Carregue a imagem como um componente Image do Next.js */}
+        <Image
+          src={Imagem}
+          alt='Imagem de fundo principal'
+          layout='fill' // Preencha todo o espaço disponível
+          objectFit='cover' // Mantenha a proporção e corte a imagem conforme necessário
+          onLoad={handleImageLoad} // Manipulador de evento para a carga completa
+          style={{ opacity: loaded ? 1 : 0, transition: "opacity 1s ease" }} // Controle de opacidade para transição suave
+        />
         <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-6xl 2xl:text-7xl xl:text-7xl lg:text-6xl md:text-8xl sm:text-7xl text-center font-bold flex flex-col'>
           Venha conhecer sua TekoBag{"'"}s
           <div className='mt-4'>

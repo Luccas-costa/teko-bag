@@ -46,15 +46,15 @@ export default function MenuMobile() {
           <div className='relative'>
             <div className='w-4 h-4 bg-black absolute right-[14px] top-[-7px] rotate-45'></div>
             <div className='flex flex-col space-y-3'>
-              <div className='text-base hover:text-lg font-semibold text-center text-white pt-2'>
+              <div className='text-base font-semibold text-center text-white pt-2'>
                 <a href='#inicio'>Home</a>
               </div>
               <hr />
-              <div className='text-base hover:text-lg font-semibold text-center text-white'>
+              <div className='text-base font-semibold text-center text-white'>
                 <a href='#sobre'>Sobre</a>
               </div>
               <hr />
-              <div className='text-base hover:text-lg font-semibold text-center text-white'>
+              <div className='text-base font-semibold text-center text-white'>
                 <a href='#footer'>Contato</a>
               </div>
             </div>
