@@ -5,6 +5,7 @@ import { useState } from "react";
 import styles from "./index.module.css";
 import Imagem from "../../../../../public/teste4.jpg";
 
+import { motion } from "framer-motion";
 import { InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 
 export default function Section3() {
@@ -12,9 +13,13 @@ export default function Section3() {
   return (
     <div className={styles.degrade} id='sobre'>
       <div className='flex flex-wrap-reverse items-center justify-center gap-4 pt-28 pb-28'>
-        <div
+        <motion.div
           className='bg-green3 w-[90vw] h-[70vh] md:w-[700px] md:h-[700px] rounded-l-lg  flex flex-col items-center 2xl:pt-28 sm:pt-28
          pt-32 text-yellow1 text-4xl font-extrabold'
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={{ duration: 0.5 }}
         >
           Sobre nós
           <div
@@ -27,15 +32,19 @@ export default function Section3() {
             Qualidade, Estética e Resistência. <br /> Ao final 25% de nosso
             lucros seram doados a uma instituição de caridade.
           </div>
-        </div>
-        <div
+        </motion.div>
+        <motion.div
           style={{
             backgroundImage: `url(${Imagem.src})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
           className='rounded-r-lg w-[90vw] h-[70vh] md:w-[700px] md:h-[700px]'
-        ></div>
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          transition={{ duration: 0.5 }}
+        ></motion.div>
       </div>
       <div className='flex flex-col gap-y-4 items-center justify-center'>
         <div

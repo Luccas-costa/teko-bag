@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Time from "./Time/Time";
 import Contatos from "./Contatos/Contatos";
 import Developed from "./Developed/Developed";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   const [isMobile, setIsMobile] = useState(false);
@@ -22,7 +23,13 @@ export default function Footer() {
 
   return (
     <div className='flex flex-col' id='footer'>
-      <div className='flex flex-col items-center pt-12 pl-16 pr-16'>
+      <motion.div
+        className='flex flex-col items-center pt-12 pl-16 pr-16'
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 100 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className='flex justify-evenly gap-x-6 pb-12'>
           <div className='flex items-center justify-center'>
             {isMobile && (
@@ -43,7 +50,7 @@ export default function Footer() {
 
           <Contatos />
         </div>
-      </div>
+      </motion.div>
       <Developed />
     </div>
   );

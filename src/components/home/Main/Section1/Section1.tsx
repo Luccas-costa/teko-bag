@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image"; // Importe o componente Image do Next.js
 import Imagem from "../../../../../public/wppmato3.png";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Section1() {
   const [loaded, setLoaded] = useState(false);
@@ -29,14 +30,20 @@ export default function Section1() {
           onLoad={handleImageLoad} // Manipulador de evento para a carga completa
           style={{ opacity: loaded ? 1 : 0, transition: "opacity 1s ease" }} // Controle de opacidade para transição suave
         />
-        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-6xl 2xl:text-7xl xl:text-7xl lg:text-6xl md:text-8xl sm:text-7xl text-center font-bold flex flex-col'>
+        <motion.div
+          className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-6xl 2xl:text-7xl xl:text-7xl lg:text-6xl md:text-8xl sm:text-7xl text-center font-bold flex flex-col'
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           Venha conhecer sua TekoBag{"'"}s
           <div className='mt-4'>
             <button className='text-3xl 2xl:text-4xl xl:text-4xl lg:text-6xl md:text-5xl sm:text5xl border-2 xl:border-3 border-white px-4 py-2 hover:bg-white hover:text-green2'>
               <Link href='/pages/montagem/'>Montagem</Link>
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
