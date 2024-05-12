@@ -19,7 +19,7 @@ export default function Section1() {
       id='inicio'
     >
       <div
-        className={`2xl:w-[93vw] 2xl:h-[80vh] xl:h-[90vh] lg:h-[90vh] md:h-[85vh] sm:h-[85vh] h-[85vh] relative overflow-hidden`}
+        className={`2xl:w-[93vw] 2xl:h-[80vh] xl:h-[90vh] lg:h-[90vh] md:h-[85vh] sm:h-[85vh] h-[85vh] relative overflow-hidden shadow-2xl`}
       >
         {/* Carregue a imagem como um componente Image do Next.js */}
         <Image

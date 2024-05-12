@@ -42,11 +42,11 @@ export default function Footer() {
             )}
           </div>
 
-          <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600' />
+          <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600 shadow-lg' />
 
           <Time />
 
-          <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600' />
+          <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600 shadow-lg' />
 
           <Contatos />
         </div>

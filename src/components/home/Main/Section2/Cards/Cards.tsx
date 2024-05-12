@@ -24,7 +24,7 @@ export default function Cards({
   return (
     <>
       <motion.div
-        className='bg-black flex flex-col rounded-lg w-[500px] sm:h-[600px] h-max-[550px]'
+        className='bg-black flex flex-col rounded-lg w-[500px] sm:h-[600px] h-max-[550px] shadow-2xl'
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         exit={{ opacity: 0 }}

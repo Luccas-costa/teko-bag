@@ -14,7 +14,7 @@ export default function MenuPc() {
   return (
     <>
       <ul className='flex space-x-4 items-center'>
-        <li className='text-base font-semibold hover:border-b-2 border-black '>
+        <li className='text-base font-semibold hover:border-b-2 border-black'>
           <a href='#inicio'>Home</a>
         </li>
         <li className='text-base font-semibold hover:border-b-2 border-black'>
@@ -29,7 +29,7 @@ export default function MenuPc() {
           </SignedIn>
           <SignedOut>
             <SignInButton mode='modal'>
-              <button className='uppercase bg-green1/50 rounded px-3 py-2 items-center font-bold active:bg-green3'>
+              <button className='uppercase bg-green1/50 rounded px-3 py-2 items-center font-bold active:bg-green3 shadow-xl'>
                 Login
               </button>
             </SignInButton>

@@ -22,13 +22,13 @@ export default function Contatos() {
     <div className='flex flex-col justify-center space-y-4'>
       <Link
         href='/pages/montagem/'
-        className='rounded sm3:hidden sm2:inline-block pt-2 pb-2 pl-4 pr-4 text-center bg-black/30 hover:bg-zinc-500'
+        className='rounded sm3:hidden sm2:inline-block pt-2 pb-2 pl-4 pr-4 text-center bg-black/30 hover:bg-zinc-500 shadow-lg'
       >
         Monte sua tekoBag
       </Link>
       <div>
         <ul className='flex sm3:flex-wrap sm2:flex-nowrap sm3:space-y-2 sm2:space-y-0 gap-x-5'>
-          <li className='p-2 bg-black/30 rounded-full hover:bg-zinc-500'>
+          <li className='p-2 bg-black/30 rounded-full hover:bg-zinc-500 shadow-xl'>
             <a href='https://www.instagram.com/tekobags/' target='_blank'>
               <InstagramLogo size={30} color='#fff' />
             </a>
