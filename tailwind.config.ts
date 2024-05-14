@@ -21,6 +21,14 @@ const config: Config = {
         pink2: "#e0b1d1",
         yellow1: "rgb(219,207,165)",
         brown1: "#3D291C",
+
+        // Cores banners transition pages
+
+        banner1: "#B39E7B",
+        banner2: "#B37BA8",
+        banner3: "#86B27A",
+        banner4: "#7B98B3",
+        banner5: "#4D5E49",
       },
     },
   },

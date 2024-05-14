@@ -1,13 +1,25 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { PageTransition } from "../utils/animation";
+import { useState, useEffect } from "react";
 
 export default function Template({ children }: { children: React.ReactNode }) {
+  const [showCursorNone, setShowCursorNone] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowCursorNone(false);
+    }, 2500); // 2.5 segundos
+
+    return () => clearTimeout(timeout);
+  }, []); // Executa apenas uma vez na montagem do componente
+
   return (
-    <div>
+    <div className={showCursorNone ? "cursor-none" : ""}>
       <motion.div
         id='banner-1'
-        className='min-h-screen bg-red-500 z-50 fixed top-0 left-0 w-1/4'
+        className='min-h-screen bg-banner1 z-50 fixed top-0 left-0 w-[20%]'
         initial='initial'
         animate='animate'
         variants={PageTransition}
@@ -15,7 +27,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       ></motion.div>
       <motion.div
         id='banner-1'
-        className='min-h-screen bg-green-500 z-50 fixed top-0 left-1/4 w-1/4'
+        className='min-h-screen bg-banner2 z-50 fixed top-0 left-[20%] w-[20%]'
         initial='initial'
         animate='animate'
         variants={PageTransition}
@@ -23,7 +35,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       ></motion.div>
       <motion.div
         id='banner-1'
-        className='min-h-screen bg-blue-500 z-50 fixed top-0 left-2/4 w-1/4'
+        className='min-h-screen bg-banner3 z-50 fixed top-0 left-[40%] w-[20%]'
         initial='initial'
         animate='animate'
         variants={PageTransition}
@@ -31,11 +43,19 @@ export default function Template({ children }: { children: React.ReactNode }) {
       ></motion.div>
       <motion.div
         id='banner-1'
-        className='min-h-screen bg-yellow-500 z-50 fixed top-0 left-3/4 w-1/4'
+        className='min-h-screen bg-banner4 z-50 fixed top-0 left-[60%] w-[20%]'
         initial='initial'
         animate='animate'
         variants={PageTransition}
         transition={{ duration: 2 }}
+      ></motion.div>
+      <motion.div
+        id='banner-1'
+        className='min-h-screen bg-banner5 z-50 fixed top-0 left-[80%] w-[20%]'
+        initial='initial'
+        animate='animate'
+        variants={PageTransition}
+        transition={{ duration: 2.2 }}
       ></motion.div>
       {children}
     </div>

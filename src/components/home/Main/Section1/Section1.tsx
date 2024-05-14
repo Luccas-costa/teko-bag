@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Imagem from "../../../../../public/wppmato3.png";
+import Imagem from "../../../../../public/wppmato.jpg";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
