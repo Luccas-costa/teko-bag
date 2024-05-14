@@ -1,19 +1,31 @@
-'use client'
-import React from "react";
-import { motion } from "framer-motion";
+"use client"
+
+import { animatePageIn } from "@/utils/animations"
+import { useEffect } from "react"
 
 export default function Template({ children }: { children: React.ReactNode }) {
-    return (
-        <div>
-        <motion.div
-            className="min-h-screen bg-black z-100 fixed top-0 left-0 w-1/5"
-            initial={{ opacity: 0, y: 0 }}
-            animate={{ opacity: 1, y: 16}}
-            transition={{ duration: 0.5}}
-        >
-
-        </motion.div>
-        {children}
-        </div>
-    )
+  useEffect(() => {
+    animatePageIn()
+  }, [])
+  return (
+    <div>
+      <div
+        id="banner-1"
+        className="min-h-screen bg-red-500  z-99 fixed top-0 left-0 w-1/4"
+      />
+      <div
+        id="banner-2"
+        className="min-h-screen bg-green-500 z-99 fixed top-0 bottom-5 left-1/4 w-1/4"
+      />
+      <div
+        id="banner-3"
+        className="min-h-screen bg-yellow-500  z-99 fixed top-0 left-2/4 w-1/4"
+      />
+      <div
+        id="banner-4"
+        className="min-h-screen bg-blue-500 z-99 fixed top-0 left-3/4 w-1/4"
+      />
+      {children}
+    </div>
+  )
 }

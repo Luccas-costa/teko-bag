@@ -1,12 +1,13 @@
 "use client";
-import React, { useState, useEffect } from "react";
 
+import React, { useState, useEffect } from "react";
 import Logo from "./Logo/Logo";
 import MenuPc from "./MenuPc/MenuPc";
 import MenuMobile from "./MenuMobile/MenuMobile";
 
 export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -16,11 +17,15 @@ export default function Header() {
     handleResize(); // Chamar a função inicialmente para definir o estado
     window.addEventListener("resize", handleResize);
 
+    setTimeout(() => {
+      setIsVisible(true);
+    }, 500);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <header className='bg-green2 fixed w-[100%] top-0 z-10'>
+    <header className={`bg-green2 fixed w-[100%] top-0 z-10 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <div className='flex items-center justify-between 2xl:mr-14 2xl:ml-14 xl:mr-10 xl:ml-10 md:mr-6 md:ml-6 sm:mr-2 sm:ml-2 mr-0 ml-0 p-3'>
         <Logo />
         {isMobile ? <MenuMobile /> : <MenuPc />}
