@@ -5,8 +5,6 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import Navigation from "./components/Navigation"
-
 import { ClerkProvider } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
 import { dark } from "@clerk/themes";
@@ -34,7 +32,6 @@ export default function RootLayout({
       <html lang='en'>
         <link rel='icon' href='/favicon.ico' sizes='any' />
         <body className={inter.className}>
-          <Navigation />
           {children}
           <SpeedInsights />
           <Analytics />
