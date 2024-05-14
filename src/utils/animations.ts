@@ -12,12 +12,23 @@ export const animatePageIn = () => {
 
     tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
       yPercent: 0,
-    }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
+    }).to(bannerOne, {
       yPercent: 100,
-      stagger: 0.2,
-    })
+      duration: 0.5, // Ajuste a duração da animação conforme necessário
+    }).to(bannerTwo, {
+      yPercent: 100,
+      duration: 0.75, // Ajuste a duração da animação conforme necessário
+    }, "<").to(bannerThree, {
+      yPercent: 100,
+      duration: 1, // Ajuste a duração da animação conforme necessário
+    }, "<").to(bannerFour, {
+      yPercent: 100,
+      duration: 1.25, // Ajuste a duração da animação conforme necessário
+    }, "<");
   }
 }
+
+
 
 export const animatePageOut = (href: string, router: AppRouterInstance) => {
   const bannerOne = document.getElementById("banner-1")

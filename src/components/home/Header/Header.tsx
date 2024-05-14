@@ -19,7 +19,7 @@ export default function Header() {
 
     setTimeout(() => {
       setIsVisible(true);
-    }, 500);
+    }, 450);
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
