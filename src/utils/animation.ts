@@ -6,6 +6,6 @@ export const PageTransition: Variants = {
   },
   animate: {
     opacity: [1, 1],
-    y: ["-100%", "0%", "100%"],
+    y: ["-100%", "100%"],
   },
 };
