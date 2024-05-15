@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image"
+import Imagem from "../../public/logo-transparente.png"
 import { motion } from "framer-motion";
-import { PageTransition } from "../utils/animation";
 import { useState, useEffect } from "react";
+import { PageTransition } from "../utils/animation";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const [showCursorNone, setShowCursorNone] = useState(true);
@@ -35,12 +37,12 @@ export default function Template({ children }: { children: React.ReactNode }) {
       ></motion.div>
       <motion.div
         id='banner-1'
-        className='min-h-screen bg-banner3 z-50 fixed top-0 left-[40%] w-[20%]'
+        className='min-h-screen bg-banner3 z-50 fixed top-0 left-[40%] w-[20%] flex items-center justify-center'
         initial='initial'
         animate='animate'
         variants={PageTransition}
         transition={{ duration: 1.8 }}
-      ></motion.div>
+      ><Image src={Imagem} alt="logo" width={100} height={100}/></motion.div>
       <motion.div
         id='banner-1'
         className='min-h-screen bg-banner4 z-50 fixed top-0 left-[60%] w-[20%]'
