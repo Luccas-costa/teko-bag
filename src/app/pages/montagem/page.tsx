@@ -24,8 +24,7 @@ export default function Apresentacao() {
         </div>
         <div className='text-center text-xl font-medium'>
           Para encontrar a <span className='font-bold'>teko bag</span> ideal a
-          sua necessidade, faremos 6 perguntas rapidas, para indentificar sua
-          bag ideial.
+          sua necessidade, faremos 6 perguntas rapidas.
         </div>
         <div className='mt-6 text-center font-semibold text-lg text-zinc-800'>
           Prosseguir para primeira pergunta

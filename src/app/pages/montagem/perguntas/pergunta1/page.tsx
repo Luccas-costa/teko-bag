@@ -17,17 +17,17 @@ export default function Pagina1() {
   };
   return (
     <div className='w-screen h-full bg-banner5 flex flex-col items-center justyfy-center p-2 lg:p-6 xl:p-14 relative'>
-      <div className='p-3 2xl:w-1/4 md:w-1/2 w-3/4 border border-zinc-950 rounded-lg flex flex-col items-center justyfy-center shadow-lg my-auto'>
+      <div className='p-3 2xl:w-1/4 md:w-1/2 w-4/5 border border-zinc-950 rounded-lg flex flex-col items-center justyfy-center shadow-lg my-auto'>
         <div className='pt-6 pb-4'>
           <Image
-            src='/logo-transparente.png'
+            src='/logo-transparente.png'  
             width={100}
             height={100}
             alt={""}
           />
         </div>
         <div className='text-center text-xl font-medium'>
-          La vai a primeira pergunta. Por onde você nos conheceu?
+          Lá vai a primeira pergunta: Por onde você nos conheceu?
         </div>
         <form className='flex flex-col items-center w-full space-y-2 mt-6'>
           <label className='w-[90%] border border-black rounded-tl-none rounded-lg py-3 pl-2 flex gap-2 items-center font-semibold'>
@@ -65,7 +65,7 @@ export default function Pagina1() {
               // checked={checked}
               // onChange=''
             />
-            Amigos ...
+            Amigos 
           </label>
           <label className='w-[90%] border border-black rounded-tl-none rounded-lg py-3 pl-2 flex gap-2 items-center font-semibold'>
             <input
@@ -77,7 +77,7 @@ export default function Pagina1() {
               // checked={checked}
               // onChange=''
             />
-            Na escola mesmo
+            Escola
           </label>
 
           <label className='w-[90%] border border-black rounded-tl-none rounded-lg py-3 pl-2 flex gap-2 items-center font-semibold'>
@@ -90,7 +90,7 @@ export default function Pagina1() {
               // checked={checked}
               // onChange=''
             />
-            Outro ...
+            Outro 
           </label>
         </form>
         <div className='mt-6 text-center font-semibold text-lg text-zinc-800'>
