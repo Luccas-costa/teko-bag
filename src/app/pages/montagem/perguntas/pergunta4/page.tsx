@@ -52,7 +52,7 @@ export default function Pagina1() {
           {options.map((option) => (
             <div
               key={option.id}
-              className={`w-40 h-20 ${option.bgColor} flex items-center justify-center rounded-lg border-l-[1px] border-b-[5px] cursor-pointer  ${selectedOption === option.id ? "border-banner5" : "border-black"}`}
+              className={`lg:w-40 sm:w-28 w-20 h-20 ${option.bgColor} flex items-center justify-center rounded-lg border-l-[1px] border-b-[5px] cursor-pointer  ${selectedOption === option.id ? "border-banner5" : "border-black"}`}
               onClick={() => handleOptionClick(option.id)}
             />
           ))}
