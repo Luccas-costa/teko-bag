@@ -22,7 +22,9 @@ export default function BotaoProximaPage({
     caminho = "/pages/montagem/pergunta5";
   } else if (pergunta == 6) {
     caminho = "/pages/montagem/pergunta6";
-  } else if (pergunta > 6) {
+  } else if (pergunta == 7) {
+    caminho = "/pages/vitrine";
+  } else if (pergunta > 7) {
     caminho = "/";
   }
 

@@ -94,7 +94,7 @@ export default function Pagina1() {
         <div className='mt-6 text-center font-semibold lg:text-lg sm:text-base text-xs text-zinc-800'>
           Prosseguir para quarta pergunta
         </div>
-        <BotaoProximaPage pergunta={4} disabled={!isRadioSelected} />
+        <BotaoProximaPage pergunta={5} disabled={!isRadioSelected} />
         <div className='mt-6 mb-2'>
           <Link
             href='/'
