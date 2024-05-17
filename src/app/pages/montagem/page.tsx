@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
-import BotaoHome from "@/components/montagem/Aplicativo/perguntas/BotaoHome";
-import BotaoProximaPage from "@/components/montagem/Aplicativo/perguntas/BotaoProximaPage";
+import BotaoHome from "@/components/montagem/perguntas/BotaoHome";
+import BotaoProximaPage from "@/components/montagem/perguntas/BotaoProximaPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

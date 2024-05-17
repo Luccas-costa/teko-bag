@@ -1,4 +1,3 @@
-
 import { ArrowRight } from "lucide-react";
 import React from "react";
 import Link from "next/link";
@@ -12,17 +11,17 @@ export default function BotaoProximaPage({
   pergunta,
   disabled,
 }: BotaoProximaPageProps) {
-  let caminho = "/pages/montagem/perguntas/pergunta1";
+  let caminho = "/pages/montagem/pergunta1";
   if (pergunta == 2) {
-    caminho = "/pages/montagem/perguntas/pergunta2";
+    caminho = "/pages/montagem/pergunta2";
   } else if (pergunta == 3) {
-    caminho = "/pages/montagem/perguntas/pergunta3";
+    caminho = "/pages/montagem/pergunta3";
   } else if (pergunta == 4) {
-    caminho = "/pages/montagem/perguntas/pergunta4";
+    caminho = "/pages/montagem/pergunta4";
   } else if (pergunta == 5) {
-    caminho = "/pages/montagem/perguntas/pergunta5";
+    caminho = "/pages/montagem/pergunta5";
   } else if (pergunta == 6) {
-    caminho = "/pages/montagem/perguntas/pergunta6";
+    caminho = "/pages/montagem/pergunta6";
   } else if (pergunta > 6) {
     caminho = "/";
   }
