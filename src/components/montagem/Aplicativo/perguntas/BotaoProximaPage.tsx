@@ -29,7 +29,7 @@ export default function BotaoProximaPage({
 
   return (
     <div
-      className={`flex w-[90%] rounded-md items-center justify-center border border-zinc-950 mb-6 shadow-lg ${
+      className={`flex w-[90%] rounded-md items-center justify-center border border-zinc-950 shadow-lg ${
         disabled ? "pointer-events-none opacity-50" : ""
       }`}
     >
