@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styles from "../perguntas.module.css"
 
-
-import BotaoHome from "@/components/montagem/Aplicativo/perguntas/BotaoHome";
 import BotaoProximaPage from "@/components/montagem/Aplicativo/perguntas/BotaoProximaPage";
 
 export default function Pagina1() {
@@ -25,8 +23,8 @@ export default function Pagina1() {
             alt={""}
           />
         </div>
-        <div className='text-center text-xl font-medium'>
-          Lá vai a primeira pergunta: Por onde você nos conheceu?
+        <div className='text-center text-xl font-medium'>       
+            Oque o levou, a nos escolher em vez da concorrência?
         </div>
         <form className='flex flex-col items-center w-full space-y-2 mt-6'>
           <label className='w-[90%] border border-black rounded-tl-none rounded-lg py-3 pl-2 flex gap-2 items-center font-semibold'>
@@ -39,7 +37,7 @@ export default function Pagina1() {
               // checked={checked}
               // onChange=''
             />
-            Instagram
+            Qualidade
           </label>
 
           <label className='w-[90%] border border-black rounded-tl-none rounded-lg py-3 pl-2 flex gap-2 items-center font-semibold'>
@@ -52,7 +50,7 @@ export default function Pagina1() {
               // checked={checked}
               // onChange=''
             />
-            Tik Tok
+            Sustentabilidade
           </label>
           <label className='w-[90%] border border-black rounded-tl-none rounded-lg py-3 pl-2 flex gap-2 items-center font-semibold'>
             <input
@@ -64,7 +62,7 @@ export default function Pagina1() {
               // checked={checked}
               // onChange=''
             />
-            Amigos 
+            Versatilidade 
           </label>
           <label className='w-[90%] border border-black rounded-tl-none rounded-lg py-3 pl-2 flex gap-2 items-center font-semibold'>
             <input
@@ -76,7 +74,7 @@ export default function Pagina1() {
               // checked={checked}
               // onChange=''
             />
-            Escola
+            Estética
           </label>
 
           <label className='w-[90%] border border-black rounded-tl-none rounded-lg py-3 pl-2 flex gap-2 items-center font-semibold'>
@@ -89,13 +87,13 @@ export default function Pagina1() {
               // checked={checked}
               // onChange=''
             />
-            Outro 
+            Outros 
           </label>
         </form>
         <div className='mt-6 text-center font-semibold lg:text-lg sm:text-base text-xs text-zinc-800'>
-          Prosseguir para segunda pergunta
+          Prosseguir para terceira pergunta
         </div>
-        <BotaoProximaPage pergunta={2} disabled={!isRadioSelected} />
+        <BotaoProximaPage pergunta={3} disabled={!isRadioSelected} />
         <div className="mt-6 mb-2">
             <Link href='/' className="font-semibold text-black active:text-zinc-500">voltar a home</Link>
         </div>

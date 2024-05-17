@@ -21,7 +21,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     <div className={showCursorNone ? "cursor-none" : ""}>
       <motion.div
         id='banner-1'
-        className='min-h-screen bg-black z-50 fixed top-0 left-0 w-[20%]'
+        className='min-h-screen bg-neutral-950 z-50 fixed top-0 left-0 w-[20%]'
         initial='initial'
         animate='animate'
         variants={PageTransition2}
@@ -29,7 +29,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       ></motion.div>
       <motion.div
         id='banner-1'
-        className='min-h-screen bg-black z-50 fixed top-0 left-[20%] w-[20%]'
+        className='min-h-screen bg-neutral-950 z-50 fixed top-0 left-[20%] w-[20%]'
         initial='initial'
         animate='animate'
         variants={PageTransition2}
@@ -37,7 +37,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       ></motion.div>
       <motion.div
         id='banner-1'
-        className='min-h-screen bg-black z-50 fixed top-0 left-[40%] w-[20%] flex items-center justify-center'
+        className='min-h-screen bg-neutral-950 z-50 fixed top-0 left-[40%] w-[20%] flex items-center justify-center'
         initial='initial'
         animate='animate'
         variants={PageTransition2}
@@ -47,7 +47,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       </motion.div>
       <motion.div
         id='banner-1'
-        className='min-h-screen bg-black z-50 fixed top-0 left-[60%] w-[20%]'
+        className='min-h-screen bg-neutral-950 z-50 fixed top-0 left-[60%] w-[20%]'
         initial='initial'
         animate='animate'
         variants={PageTransition2}
@@ -55,7 +55,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       ></motion.div>
       <motion.div
         id='banner-1'
-        className='min-h-screen bg-black z-50 fixed top-0 left-[80%] w-[20%]'
+        className='min-h-screen bg-neutral-950 z-50 fixed top-0 left-[80%] w-[20%]'
         initial='initial'
         animate='animate'
         variants={PageTransition2}

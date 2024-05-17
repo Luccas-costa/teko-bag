@@ -6,7 +6,7 @@ import BotaoProximaPage from "@/components/montagem/Aplicativo/perguntas/BotaoPr
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Treko Bag | montagem",
+  title: "Teko Bag | montagem",
   description: "montagem de bags",
 };
 
@@ -26,7 +26,7 @@ export default function Apresentacao() {
           Para encontrar a <span className='font-bold'>teko bag</span> ideal a
           sua necessidade, faremos 6 perguntas rapidas.
         </div>
-        <div className='mt-6 text-center font-semibold text-lg text-zinc-800'>
+        <div className='mt-6 text-center font-semibold lg:text-lg sm:text-base text-xs text-zinc-800'>
           Prosseguir para primeira pergunta
         </div>
         <BotaoProximaPage pergunta={1} disabled={false} />

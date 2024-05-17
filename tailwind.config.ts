@@ -21,6 +21,7 @@ const config: Config = {
         pink2: "#e0b1d1",
         yellow1: "rgb(219,207,165)",
         brown1: "#3D291C",
+        dourado: "#ccb596",
 
         // Cores banners transition pages
 

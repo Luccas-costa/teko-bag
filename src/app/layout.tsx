@@ -12,7 +12,7 @@ import { dark } from "@clerk/themes";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Treko Bag | home",
+  title: "Teko Bag |",
   description: "Ecomerce de eco bags",
 };
 
