@@ -93,7 +93,7 @@ export default function Pagina1() {
             Outro 
           </label>
         </form>
-        <div className='mt-6 text-center font-semibold text-lg text-zinc-800'>
+        <div className='mt-6 text-center font-semibold lg:text-lg sm:text-base text-xs text-zinc-800'>
           Prosseguir para segunda pergunta
         </div>
         <BotaoProximaPage pergunta={2} disabled={!isRadioSelected} />
