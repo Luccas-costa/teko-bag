@@ -16,7 +16,7 @@ export default function Pagina1() {
     setIsRadioSelected(true);
   };
   return (
-    <div className='w-screen h-full bg-banner5 flex flex-col items-center justyfy-center lg:p-6 xl:p-14 relative'>
+    <div className='w-screen h-full bg-banner5 flex flex-col items-center justyfy-center p-2 lg:p-6 xl:p-14 relative'>
       <div className='p-3 2xl:w-1/4 md:w-1/2 w-3/4 border border-zinc-950 rounded-lg flex flex-col items-center justyfy-center shadow-lg my-auto'>
         <div className='pt-6 pb-4'>
           <Image
