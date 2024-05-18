@@ -13,7 +13,7 @@ interface Option {
   posbgColor: string;
 }
 
-export default function Pagina1() {
+export default function Pagina4() {
   const [isRadioSelected, setIsRadioSelected] = useState(false);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
 

@@ -6,7 +6,7 @@ import styles from "../perguntas.module.css";
 
 import BotaoProximaPage from "@/components/montagem/perguntas/BotaoProximaPage";
 
-export default function Pagina1() {
+export default function Pagina5() {
   const [isRadioSelected, setIsRadioSelected] = useState(false);
 
   const handleRadioChange = () => {
