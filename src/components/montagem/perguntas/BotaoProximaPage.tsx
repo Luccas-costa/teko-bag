@@ -5,11 +5,13 @@ import Link from "next/link";
 interface BotaoProximaPageProps {
   pergunta: number;
   disabled: boolean;
+  onClick?: () => void;
 }
 
 export default function BotaoProximaPage({
   pergunta,
   disabled,
+  onClick,
 }: BotaoProximaPageProps) {
   let caminho = "/pages/montagem/pergunta1";
   if (pergunta == 2) {
@@ -37,6 +39,7 @@ export default function BotaoProximaPage({
       <Link
         href={disabled ? "#" : caminho}
         className='flex space-x-14 items-center justify-center w-full'
+        onClick={onClick}
       >
         <ArrowRight size={32} />
         <ArrowRight size={32} />

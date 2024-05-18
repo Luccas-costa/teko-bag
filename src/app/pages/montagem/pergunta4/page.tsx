@@ -1,8 +1,10 @@
 "use client";
+
 import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
 
+import { salvarResposta } from "@/utils/perguntas"; // Importe a função para salvar a resposta
 import BotaoProximaPage from "@/components/montagem/perguntas/BotaoProximaPage";
 
 // Definindo o tipo para as opções
@@ -20,6 +22,12 @@ export default function Pagina4() {
   const handleOptionClick = (option: Option["id"]) => {
     setSelectedOption(option);
     setIsRadioSelected(true);
+  };
+
+  const handleProximaPage = () => {
+    if (selectedOption !== null) {
+      salvarResposta(4, selectedOption); // Salvar a resposta para a pergunta 4
+    }
   };
 
   const options: Option[] = [
@@ -52,7 +60,7 @@ export default function Pagina4() {
     },
     {
       id: 8,
-      label: "laranja",
+      label: "orange",
       bgColor: "bg-orange-500",
       posbgColor: "bg-orange-800",
     },
@@ -94,7 +102,11 @@ export default function Pagina4() {
         <div className='mt-6 text-center font-semibold lg:text-lg sm:text-base text-xs text-zinc-800'>
           Prosseguir para quarta pergunta
         </div>
-        <BotaoProximaPage pergunta={5} disabled={!isRadioSelected} />
+        <BotaoProximaPage
+          pergunta={5}
+          disabled={!isRadioSelected}
+          onClick={handleProximaPage}
+        />
         <div className='mt-6 mb-2'>
           <Link
             href='/'

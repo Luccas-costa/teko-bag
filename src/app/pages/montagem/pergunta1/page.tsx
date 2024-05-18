@@ -3,19 +3,28 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
 import styles from "../perguntas.module.css";
-
 import BotaoHome from "@/components/montagem/perguntas/BotaoHome";
 import BotaoProximaPage from "@/components/montagem/perguntas/BotaoProximaPage";
+import { salvarResposta } from "@/utils/perguntas";
 
 export default function Pagina1() {
   const [isRadioSelected, setIsRadioSelected] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
 
-  const handleRadioChange = () => {
+  const handleRadioChange = (value: number) => {
     setIsRadioSelected(true);
+    setSelectedOption(value);
   };
+
+  const handleProximaPage = () => {
+    if (selectedOption !== null) {
+      salvarResposta(1, selectedOption);
+    }
+  };
+
   return (
-    <div className='w-screen h-full bg-banner5 flex flex-col items-center justyfy-center p-2 lg:p-6 xl:p-14 relative'>
-      <div className='p-3 2xl:w-1/4 md:w-1/2 w-4/5 border border-zinc-950 rounded-lg flex flex-col items-center justyfy-center shadow-lg my-auto'>
+    <div className='w-screen h-full bg-banner5 flex flex-col items-center justify-center p-2 lg:p-6 xl:p-14 relative'>
+      <div className='p-3 2xl:w-1/4 md:w-1/2 w-4/5 border border-zinc-950 rounded-lg flex flex-col items-center justify-center shadow-lg my-auto'>
         <div className='pt-6 pb-4'>
           <Image
             src='/logo-transparente.png'
@@ -33,23 +42,16 @@ export default function Pagina1() {
               className={`${styles.customradio}`}
               type='radio'
               name='perguntas'
-              onChange={handleRadioChange}
-              // value={value}
-              // checked={checked}
-              // onChange=''
+              onChange={() => handleRadioChange(1)}
             />
             Instagram
           </label>
-
           <label className='w-[90%] border border-black rounded-tl-none rounded-lg py-3 pl-2 flex gap-2 items-center font-semibold'>
             <input
               className={`${styles.customradio}`}
               type='radio'
               name='perguntas'
-              onChange={handleRadioChange}
-              // value={value}
-              // checked={checked}
-              // onChange=''
+              onChange={() => handleRadioChange(2)}
             />
             Tik Tok
           </label>
@@ -58,10 +60,7 @@ export default function Pagina1() {
               className={`${styles.customradio}`}
               type='radio'
               name='perguntas'
-              onChange={handleRadioChange}
-              // value={value}
-              // checked={checked}
-              // onChange=''
+              onChange={() => handleRadioChange(3)}
             />
             Amigos
           </label>
@@ -70,23 +69,16 @@ export default function Pagina1() {
               className={`${styles.customradio}`}
               type='radio'
               name='perguntas'
-              onChange={handleRadioChange}
-              // value={value}
-              // checked={checked}
-              // onChange=''
+              onChange={() => handleRadioChange(4)}
             />
             Escola
           </label>
-
           <label className='w-[90%] border border-black rounded-tl-none rounded-lg py-3 pl-2 flex gap-2 items-center font-semibold'>
             <input
               className={`${styles.customradio}`}
               type='radio'
               name='perguntas'
-              onChange={handleRadioChange}
-              // value={value}
-              // checked={checked}
-              // onChange=''
+              onChange={() => handleRadioChange(5)}
             />
             Outro
           </label>
@@ -94,7 +86,11 @@ export default function Pagina1() {
         <div className='mt-6 text-center font-semibold lg:text-lg sm:text-base text-xs text-zinc-800'>
           Prosseguir para segunda pergunta
         </div>
-        <BotaoProximaPage pergunta={2} disabled={!isRadioSelected} />
+        <BotaoProximaPage
+          pergunta={2}
+          disabled={!isRadioSelected}
+          onClick={handleProximaPage}
+        />
         <div className='mt-6 mb-2'>
           <Link
             href='/'

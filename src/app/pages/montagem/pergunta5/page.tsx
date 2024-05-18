@@ -5,13 +5,23 @@ import Link from "next/link";
 import styles from "../perguntas.module.css";
 
 import BotaoProximaPage from "@/components/montagem/perguntas/BotaoProximaPage";
+import { salvarResposta } from "@/utils/perguntas"; // Importe a função para salvar a resposta
 
 export default function Pagina5() {
   const [isRadioSelected, setIsRadioSelected] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
 
-  const handleRadioChange = () => {
+  const handleRadioChange = (value: number) => {
     setIsRadioSelected(true);
+    setSelectedOption(value);
   };
+
+  const handleProximaPage = () => {
+    if (selectedOption !== null) {
+      salvarResposta(5, selectedOption); // Salvar a resposta para a pergunta 5
+    }
+  };
+
   return (
     <div className='w-screen h-full bg-banner5 flex flex-col items-center justyfy-center p-2 lg:p-6 xl:p-14 relative'>
       <div className='p-3 2xl:w-1/4 md:w-1/2 w-4/5 border border-zinc-950 rounded-lg flex flex-col items-center justyfy-center shadow-lg my-auto'>
@@ -32,7 +42,7 @@ export default function Pagina5() {
               className={`${styles.customradio}`}
               type='radio'
               name='perguntas'
-              onChange={handleRadioChange}
+              onChange={() => handleRadioChange(1)}
               // value={value}
               // checked={checked}
               // onChange=''
@@ -45,7 +55,7 @@ export default function Pagina5() {
               className={`${styles.customradio}`}
               type='radio'
               name='perguntas'
-              onChange={handleRadioChange}
+              onChange={() => handleRadioChange(1)}
               // value={value}
               // checked={checked}
               // onChange=''
@@ -57,7 +67,7 @@ export default function Pagina5() {
               className={`${styles.customradio}`}
               type='radio'
               name='perguntas'
-              onChange={handleRadioChange}
+              onChange={() => handleRadioChange(1)}
               // value={value}
               // checked={checked}
               // onChange=''
@@ -69,7 +79,7 @@ export default function Pagina5() {
               className={`${styles.customradio}`}
               type='radio'
               name='perguntas'
-              onChange={handleRadioChange}
+              onChange={() => handleRadioChange(1)}
               // value={value}
               // checked={checked}
               // onChange=''
@@ -82,7 +92,7 @@ export default function Pagina5() {
               className={`${styles.customradio}`}
               type='radio'
               name='perguntas'
-              onChange={handleRadioChange}
+              onChange={() => handleRadioChange(1)}
               // value={value}
               // checked={checked}
               // onChange=''
@@ -93,7 +103,11 @@ export default function Pagina5() {
         <div className='mt-6 text-center font-semibold lg:text-lg sm:text-base text-xs text-zinc-800'>
           Prosseguir para sexta pergunta
         </div>
-        <BotaoProximaPage pergunta={6} disabled={!isRadioSelected} />
+        <BotaoProximaPage
+          pergunta={6}
+          disabled={!isRadioSelected}
+          onClick={handleProximaPage}
+        />
         <div className='mt-6 mb-2'>
           <Link
             href='/'
