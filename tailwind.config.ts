@@ -9,6 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
+        md2: "890px",
+        sm1: "740px",
+        xm1: "600px",
+        xm2: "512px",
+        xm3: "470px",
         sm2: "410px",
         sm3: "100px",
       },

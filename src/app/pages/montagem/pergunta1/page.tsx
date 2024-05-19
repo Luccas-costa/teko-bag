@@ -3,7 +3,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
 import styles from "../perguntas.module.css";
-import BotaoHome from "@/components/montagem/perguntas/BotaoHome";
 import BotaoProximaPage from "@/components/montagem/perguntas/BotaoProximaPage";
 import { salvarResposta } from "@/utils/perguntas";
 
