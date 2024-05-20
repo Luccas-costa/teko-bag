@@ -1,14 +1,15 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
 import { Tote } from "@phosphor-icons/react/dist/ssr";
 import { SignedIn, UserButton } from "@clerk/nextjs";
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { useFirstName } from "@/hooks/useFirstName";
+import VitrineCarrinho from "./VitrineCarrinho";
 
 export default function VitrineHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,9 @@ export default function VitrineHeader() {
     setIsOpen(!isOpen);
   };
 
-  // parte do nome do usuario
+  const handleClose = () => {
+    setIsOpen(false);
+  };
 
   const firstName = useFirstName();
 
@@ -50,6 +53,13 @@ export default function VitrineHeader() {
           </li>
         </ul>
       </div>
+      <AnimatePresence>
+        {isOpen && (
+          <div className='fixed inset-0 z-40' onClick={handleClose}>
+            <VitrineCarrinho isOpen={isOpen} handleClose={handleClose} />
+          </div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

@@ -12,6 +12,7 @@ const config: Config = {
         md2: "890px",
         sm1: "740px",
         xm1: "600px",
+        menuxm: "550px",
         xm2: "512px",
         xm3: "470px",
         xm4: "450px",
