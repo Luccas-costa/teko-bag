@@ -14,6 +14,7 @@ const config: Config = {
         xm1: "600px",
         menuxm: "550px",
         xm2: "512px",
+        menuxm2: "500px",
         xm3: "470px",
         xm4: "450px",
         xm5: "400px",

@@ -6,10 +6,10 @@ import { useState } from "react";
 
 import { Tote } from "@phosphor-icons/react/dist/ssr";
 import { SignedIn, UserButton } from "@clerk/nextjs";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 
-import { useFirstName } from "@/hooks/useFirstName";
 import VitrineCarrinho from "./VitrineCarrinho";
+import { useFirstName } from "@/hooks/useFirstName";
 
 export default function VitrineHeader() {
   const [isOpen, setIsOpen] = useState(false);
