@@ -34,7 +34,7 @@ export default function Pagina5() {
           />
         </div>
         <div className='text-center text-xl font-medium'>
-          Qual seu estilo favorito de estapas?
+          Qual seu estilo favorito de estampas?
         </div>
         <form className='flex flex-col items-center w-full space-y-2 mt-6'>
           <label className='w-[90%] border border-black rounded-tl-none rounded-lg py-3 pl-2 flex gap-2 items-center font-semibold'>

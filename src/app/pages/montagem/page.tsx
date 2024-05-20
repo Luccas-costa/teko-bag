@@ -1,7 +1,7 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 
-import BotaoHome from "@/components/montagem/perguntas/BotaoHome";
 import BotaoProximaPage from "@/components/montagem/perguntas/BotaoProximaPage";
 import { Metadata } from "next";
 
@@ -30,8 +30,16 @@ export default function Apresentacao() {
           Prosseguir para primeira pergunta
         </div>
         <BotaoProximaPage pergunta={1} disabled={false} />
+
+        <div className='mt-6 mb-2'>
+        <Link
+           href='/'
+           className='font-semibold text-black active:text-zinc-500'
+        >
+          voltar a home
+        </Link>
+        </div>
       </div>
-      <BotaoHome />
     </div>
   );
 }
