@@ -1,16 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-
 import { Plus } from "lucide-react";
 import { Trash } from "@phosphor-icons/react/dist/ssr";
 
 interface VitrineConteudoCarrinhoProps {
+  id: number,
   produtos: string,
   descricao?: string, 
   preco: string,
+  onRemove: (id: number) => void;
 }
 
-export default function VitrineItensCarrinhos({produtos , descricao, preco} : VitrineConteudoCarrinhoProps) {
+export default function VitrineItensCarrinhos({ id, produtos , descricao, preco, onRemove }: VitrineConteudoCarrinhoProps) {
+  const [contador, setcontador] = useState(1);
+
+  function handelplus() {
+    if (contador == 9 ) {
+      console.log("carrinho no maximo");
+    } else {
+      setcontador(contador + 1);
+    }
+  }
+
+  function handletrash() {
+    if (contador > 1 ) {
+      setcontador(contador - 1);
+    } else {
+      onRemove(id);
+    }
+  }
+
   return (
     <div className='w-90% border border-zinc-950 py-2 flex space-x-2 items-center relative'>
       <div className='w-[30%]'>
@@ -34,16 +53,16 @@ export default function VitrineItensCarrinhos({produtos , descricao, preco} : Vi
         </div>
       </div>
       <div className='absolute right-4 top-[-17px] md:top-[-17px] w-16 h-[1.7rem]  md:w-24 md:h-[1.8rem] bg-green-600 border border-zinc-950 flex items-center justify-evenly'>
-        <button>
+        <button onClick={handletrash}>
           <Trash size={20} weight='bold' />
         </button>
         <hr className='mx-1 h-[80%] w-[1px] rounded  border-black bg-black rotate-[90] ' />
-        <button>
+        <button onClick={handelplus}>
           <Plus size={23} />
         </button>
       </div>
       <div className='rounded-full absolute left-[-16px] top-[-10px] w-[1.2rem] h-[1.2rem] bg-green-600 border border-zinc-950 flex items-center justify-center font-semibold'>
-          1
+        {contador}
       </div>
     </div>
   );
