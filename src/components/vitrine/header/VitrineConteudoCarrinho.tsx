@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { ArrowLeft } from "lucide-react";
 
-import { Cartbags } from "../../lib/bags";
+import { Cartbags } from "../../../lib/bags";
 import VitrineItensCarrinhos from "./VitrineItensCarrinhos";
 
 interface VitrineConteudoCarrinhoProps {

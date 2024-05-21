@@ -1,8 +1,8 @@
 import React from "react";
 
-import VitrineHeader from "@/components/vitrine/VitrineHeader";
-import VitrineMain from "@/components/vitrine/VitrineMain";
-import VitrineFooter from "@/components/vitrine/VitrineFooter";
+import VitrineHeader from "@/components/vitrine/header/VitrineHeader";
+import VitrineMain from "@/components/vitrine/main/VitrineMain";
+import VitrineFooter from "@/components/vitrine/footer/VitrineFooter";
 import VitrineDivisoria from "@/components/vitrine/VitrineDivisoria";
 
 export default function Vitrine() {

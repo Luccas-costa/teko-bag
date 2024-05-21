@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ArrowLeft } from "lucide-react";
-import { Cartbags as initialCartbags } from "../../lib/bags";
+import { Cartbags as initialCartbags } from "../../../lib/bags";
 import VitrineDivisoriaFinalizar from "./VitrineDivisoriaFinalizar";
 import { Trash } from "@phosphor-icons/react/dist/ssr";
 

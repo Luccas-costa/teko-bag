@@ -1,7 +1,7 @@
 export const Allbags = [
   {
     id: 1,
-    produto: "bag com estampa verde",
+    produto: "bag  verde",
     descricao: "teste teste",
     preco: "89,99",
   },
@@ -13,7 +13,7 @@ export const Allbags = [
   },
   {
     id: 3,
-    produto: "bag com estampa preta",
+    produto: "bag  preta",
     descricao: "teste teste",
     preco: "89,99",
   },
@@ -25,7 +25,7 @@ export const Allbags = [
   },
   {
     id: 5,
-    produto: "bag com estampa roxo",
+    produto: "bag  roxo",
     descricao: "teste teste",
     preco: "89,99",
   },
@@ -37,7 +37,7 @@ export const Allbags = [
   },
   {
     id: 7,
-    produto: "bag com estampa lilas",
+    produto: "bag  lilas",
     descricao: "teste teste",
     preco: "89,99",
   },
@@ -52,7 +52,7 @@ export const Allbags = [
 export const Cartbags = [
   {
     id: 1,
-    produto: "bag com estampa verde",
+    produto: "bag verde",
     descricao: "teste teste",
     preco: "89,99",
     quantidade: 1,
@@ -66,7 +66,7 @@ export const Cartbags = [
   },
   {
     id: 3,
-    produto: "bag com estampa preta",
+    produto: "bag  preta",
     descricao: "teste teste",
     preco: "89,99",
     quantidade: 1,
@@ -80,7 +80,7 @@ export const Cartbags = [
   },
   {
     id: 5,
-    produto: "bag com estampa roxo",
+    produto: "bag  roxo",
     descricao: "teste teste",
     preco: "89,99",
     quantidade: 1,
@@ -94,7 +94,7 @@ export const Cartbags = [
   },
   {
     id: 7,
-    produto: "bag com estampa lilas",
+    produto: "bag  lilas",
     descricao: "teste teste",
     preco: "89,99",
     quantidade: 1,
