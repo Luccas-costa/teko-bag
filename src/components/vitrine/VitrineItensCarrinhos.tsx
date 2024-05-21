@@ -21,13 +21,13 @@ export default function VitrineItensCarrinhos() {
           produtos
         </div>
         <div className='text-sm menuxm2:text-md font-semibold truncate w-[90%] text-end'>
-          quantidade produtos aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          quantidade produtos 
         </div>
         <div className='text-md menuxm2:text-lg font-bold pr-2 truncate w-[90%] text-end'>
           R$ 89,99
         </div>
       </div>
-      <div className='absolute right-4 top-[-14px] md:top-[-17px] w-16 h-[1.4rem]  md:w-24 md:h-[1.8rem] bg-green-600 border border-zinc-950 flex items-center justify-evenly'>
+      <div className='absolute right-4 top-[-17px] md:top-[-17px] w-16 h-[1.7rem]  md:w-24 md:h-[1.8rem] bg-green-600 border border-zinc-950 flex items-center justify-evenly'>
         <button>
           <Trash size={20} weight='bold' />
         </button>
@@ -35,6 +35,9 @@ export default function VitrineItensCarrinhos() {
         <button>
           <Plus size={23} />
         </button>
+      </div>
+      <div className='rounded-full absolute left-[-16px] top-[-10px] w-[1.2rem] h-[1.2rem] bg-green-600 border border-zinc-950 flex items-center justify-center font-semibold'>
+          1
       </div>
     </div>
   );
