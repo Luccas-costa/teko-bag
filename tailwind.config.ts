@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       screens: {
         md2: "890px",
+        md3: "853px",
         sm1: "740px",
         xm1: "600px",
         menuxm: "550px",
@@ -17,6 +18,7 @@ const config: Config = {
         menuxm2: "500px",
         xm3: "470px",
         xm4: "450px",
+        menuxm3: "420px",
         xm5: "400px",
         xm6: "381px",
         xm7: "342px",

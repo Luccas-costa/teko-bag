@@ -13,7 +13,7 @@ export default function Developed() {
   };
 
   return (
-    <div className='text-zinc-700 text-sm bg-zinc-200/40 text-center'>
+    <div className={`text-zinc-700 text-sm bg-zinc-200/40 text-center`}>
       developed by |{" "}
       <button onClick={copyTextToClipboard}>
         <strong
