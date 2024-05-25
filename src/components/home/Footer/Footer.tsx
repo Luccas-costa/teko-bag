@@ -22,7 +22,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <div className='flex flex-col' id='footer'>
+    <div className='flex flex-col bg-[#9999CC]' id='footer'>
       <motion.div
         className='flex flex-col items-center pt-12 pl-16 pr-16'
         initial={{ opacity: 0, y: 100 }}

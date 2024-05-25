@@ -16,7 +16,6 @@ export default function Main() {
       <Section2 />
       <Transicao2 />
       <Section3 />
-      <Transicao3 />
     </main>
   );
 }

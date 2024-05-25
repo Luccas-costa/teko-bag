@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
-import { Cartbags as initialCartbags } from "../../../lib/bags";
+import { newCartbags, removeFromNewCartbags } from "../../../lib/bags";
 import VitrineDivisoriaFinalizar from "./VitrineDivisoriaFinalizar";
 import { Trash } from "@phosphor-icons/react/dist/ssr";
 
@@ -10,16 +10,21 @@ interface VitrineFinalizarProps {
 
 export default function VitrineFinalizar({ onclick }: VitrineFinalizarProps) {
   // Estado para armazenar os itens do carrinho
-  const [cartbags, setCartbags] = useState(initialCartbags);
+  const [cartbags, setCartbags] = useState([...newCartbags]);
+
+  useEffect(() => {
+    setCartbags([...newCartbags]);
+  }, []);
 
   // Handler para remover um item do carrinho
   const handlerTrash = (id: number) => {
-    setCartbags(cartbags.filter((bag) => bag.id !== id));
+    removeFromNewCartbags(id);
+    setCartbags([...newCartbags]);
   };
 
   // Calcular o total dos preços
   const total = cartbags.reduce((total, bag) => {
-    return total + parseFloat(bag.preco);
+    return total + parseFloat(bag.preco.replace(",", "."));
   }, 0);
 
   return (
@@ -52,10 +57,7 @@ export default function VitrineFinalizar({ onclick }: VitrineFinalizarProps) {
                     <Trash size={25} weight='regular' />
                   </button>
                 </div>
-                <div className='font-semibold truncate'>
-                  {"~"}
-                  {bag.produto}
-                </div>
+                <div className='font-semibold truncate'>{bag.produto}</div>
                 <div className='font-bold'>R$: {bag.preco}</div>
                 <VitrineDivisoriaFinalizar />
               </div>

@@ -32,7 +32,7 @@ const config: Config = {
         green4: "#3B3802",
         pink1: "#FFB9E9",
         pink2: "#e0b1d1",
-        yellow1: "rgb(219,207,165)",
+        yellow1: "#F6EDD9",
         brown1: "#3D291C",
         dourado: "#ccb596",
 
