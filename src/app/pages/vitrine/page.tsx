@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import styles from "./vitrine.module.css";
 import { setNotificationCartHandler } from "@/lib/bags";
+import imagem from "../../../../public/bgvitrine.svg";
 
 import VitrineHeader from "@/components/vitrine/header/VitrineHeader";
 import VitrineMain from "@/components/vitrine/main/VitrineMain";
@@ -11,13 +11,16 @@ import VitrineFooter from "@/components/vitrine/footer/VitrineFooter";
 export default function Vitrine() {
   // Definindo o estado para o número de itens no carrinho
   const [notificationCart, setNotificationCart] = useState(0);
-
-  // Passando a função para atualizar o estado notificationCart como uma propriedade para o componente @/lib/bags
-  setNotificationCartHandler(setNotificationCart);
+  // Estado para controlar se a página já foi recarregada
 
   return (
     <div className='w-full h-full bg-transparent flex flex-col relative'>
-      <div className={`absolute -z-10 h-full w-full ${styles.header}`}></div>
+      <div
+        className={`absolute -z-10 h-full w-full bg-cover `}
+        style={{
+          backgroundImage: `url(${imagem.src})`,
+        }}
+      ></div>
       <VitrineHeader notificationCart={notificationCart} />
       <VitrineMain />
       <VitrineFooter />

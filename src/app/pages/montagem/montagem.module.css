@@ -1,0 +1,12 @@
+  .todo {
+    overflow-x: hidden !important;
+    scroll-behavior: smooth;
+    height: 100%;
+    background: #4D5E49;
+  }
+
+  .cl-button {
+    border-radius: 5px;
+    padding-top: 6px;
+  }
+
