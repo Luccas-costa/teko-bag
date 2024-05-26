@@ -4,11 +4,11 @@
 
 ::-webkit-scrollbar {
     width: 0.2vw;
-    background: #86B27A;
+    background: #225485;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #3D291C;
+    background-color: #9b9b9b;
   }
   
   html, body {
