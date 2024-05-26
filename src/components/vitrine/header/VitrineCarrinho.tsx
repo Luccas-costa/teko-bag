@@ -37,13 +37,13 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
       onClick={(e) => e.stopPropagation()} // Previne o clique no próprio menu de fechá-lo
     >
       <div
-        className='w-full h-full bg-cover  '
+        className='w-[30vw] 2xl:w-[8vw] xl:w-[10vw] lg:w-[10vw] md:w-[15vw] sm:w-[20vw] menuxm:w-[20vw] h-full bg-cover  '
         style={{
           backgroundImage: `url(${Imagem.src})`,
         }}
       />
       <div className='bg-[#225485] w-[70vw] 2xl:w-[25vw] xl:w-[30vw] lg:w-[35vw] md:w-[40vw] sm:w-[45vw] menuxm:w-[60vw] h-full '>
-        <div className='p-1 h-full'>
+        <div className='p-1 h-full relative right-[2vw]'>
           {Finalizar ? (
             <VitrineFinalizar onclick={handlerCloseFinalizar} />
           ) : (
