@@ -80,7 +80,7 @@ export default function VitrineConteudoCarrinho({
             Não há itens no carrinho
             <button
               onClick={onclick}
-              className='mt-4 py-2 px-4 border border-black hover:bg-blue-600 font-semibold rounded'
+              className='mt-4 py-2 px-4 border border-black hover:bg-vsand active:bg-vsand font-semibold rounded'
             >
               Sair Carrinho
             </button>
@@ -90,7 +90,7 @@ export default function VitrineConteudoCarrinho({
       {itens.length > 0 && (
         <button
           onClick={handlerFinalizar}
-          className='shadow-lg py-2 my-2 w-[90%] border border-black hover:bg-blue-600 font-semibold rounded mt-4 mx-auto'
+          className='shadow-lg py-2 my-2 w-[90%] border border-black hover:bg-vsand active:bg-vsand font-semibold rounded mt-4 mx-auto'
         >
           Finalizar compra
         </button>

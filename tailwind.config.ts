@@ -43,6 +43,9 @@ const config: Config = {
         banner3: "#86B27A",
         banner4: "#7B98B3",
         banner5: "#4D5E49",
+
+        vblue: "#225485",
+        vsand: "#B39E7B",
       },
     },
   },

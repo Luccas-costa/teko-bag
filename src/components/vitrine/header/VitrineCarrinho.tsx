@@ -45,7 +45,7 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
         <div className='w-1/2 h-full'></div>
         <div className='w-1/2 h-full' onClick={handleClose}></div>
       </div>
-      <div className='bg-[#225485] w-[70vw] 2xl:w-[25vw] xl:w-[30vw] lg:w-[35vw] md:w-[40vw] sm:w-[45vw] menuxm:w-[60vw] h-full '>
+      <div className='bg-vblue w-[70vw] 2xl:w-[25vw] xl:w-[30vw] lg:w-[35vw] md:w-[40vw] sm:w-[45vw] menuxm:w-[60vw] h-full '>
         <div className='p-1 h-full relative right-[2vw]'>
           {Finalizar ? (
             <VitrineFinalizar onclick={handlerCloseFinalizar} />
