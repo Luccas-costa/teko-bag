@@ -90,7 +90,7 @@ export default function VitrineConteudoCarrinho({
       {itens.length > 0 && (
         <button
           onClick={handlerFinalizar}
-          className='shadow-lg w-full py-2 border border-black hover:bg-blue-600 font-semibold rounded mt-4'
+          className='shadow-lg py-2 my-2 w-[90%] border border-black hover:bg-blue-600 font-semibold rounded mt-4 mx-auto'
         >
           Finalizar compra
         </button>

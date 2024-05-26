@@ -72,14 +72,16 @@ export default function VitrineFinalizar({ onclick }: VitrineFinalizarProps) {
 
               return (
                 <div key={bag.id} className='text-end p-2 relative'>
-                  <div className='absolute top-[17%] left-1'>
-                    <button onClick={() => handlerTrash(bag.id)}>
-                      <Trash size={25} weight='regular' />
-                    </button>
-                  </div>
-                  <div className='font-semibold truncate'>{bag.produto}</div>
-                  <div className='font-bold'>
-                    {bag.quantidade}x | R$: {precoTotal}
+                  <div className='mb-2'>
+                    <div className='absolute top-[17%] left-1'>
+                      <button onClick={() => handlerTrash(bag.id)}>
+                        <Trash size={25} weight='regular' />
+                      </button>
+                    </div>
+                    <div className='font-semibold truncate'>{bag.produto}</div>
+                    <div className='font-bold'>
+                      {bag.quantidade}x | R$: {precoTotal}
+                    </div>
                   </div>
                   <VitrineDivisoriaFinalizar />
                 </div>
