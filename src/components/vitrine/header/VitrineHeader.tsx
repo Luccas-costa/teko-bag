@@ -31,7 +31,7 @@ export default function VitrineHeader({
 
   const firstName = useFirstName();
   return (
-    <header className='w-full py-3 flex justify-between items-center px-2 space-x-2 mb-2'>
+    <header className='w-full py-3 flex justify-between items-center px-2 space-x-2 mb-2 bg-transparent'>
       <div className='rounded-xl 2xl:w-[88%] lg:w-[82%] md2:w-[80%] sm1:w-[72%] xm1:w-[70%] xm2:w-[65%] sm2:w-[65%] xm6:w-[62%] w-[57%] bg-white/15 xm5:py-[0.6rem] xm6:py-[0.6rem] xm7:py-[0.75rem] py-[0.9rem] px-3 shadow-lg'>
         <ul className='font-semibold text-base xm6:text-lg sm2:text-lg xm3:text-lg xm1:text-xl text-white flex justify-between'>
           <li className='md:pl-4'>

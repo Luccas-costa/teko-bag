@@ -27,7 +27,7 @@ export default function VitrineMain() {
   };
 
   return (
-    <main className='h-[89.5vh] w-full bg-zinc-700 px-4 py-2 overflow-y-auto'>
+    <main className={` w-full h-full bg-transparent px-4 py-2`}>
       <VitrineDivisoria />
       <div className='grid xl:grid-cols-3 md3:grid-cols-2 grid-cols-1 gap-y-10 my-8 place-items-center'>
         {Cartbags.map((bag) => (
@@ -41,7 +41,6 @@ export default function VitrineMain() {
           />
         ))}
       </div>
-      <VitrineDivisoria />
     </main>
   );
 }

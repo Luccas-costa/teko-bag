@@ -1,0 +1,16 @@
+.header {
+    background-color: #4D5E49;
+    background-image: url('../../../../public/bgvitrine.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* @keyframes rotate {
+    100% {
+      background-position: 15% 50%;
+    }
+  }  
+  
+  .background {
+    animation: rotate 6s infinite alternate ;
+  } */

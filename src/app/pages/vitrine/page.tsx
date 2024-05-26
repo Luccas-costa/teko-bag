@@ -1,9 +1,12 @@
 "use client";
 import React, { useState } from "react";
+
+import styles from "./vitrine.module.css";
+import { setNotificationCartHandler } from "@/lib/bags";
+
 import VitrineHeader from "@/components/vitrine/header/VitrineHeader";
 import VitrineMain from "@/components/vitrine/main/VitrineMain";
 import VitrineFooter from "@/components/vitrine/footer/VitrineFooter";
-import { setNotificationCartHandler } from "@/lib/bags";
 
 export default function Vitrine() {
   // Definindo o estado para o número de itens no carrinho
@@ -13,9 +16,9 @@ export default function Vitrine() {
   setNotificationCartHandler(setNotificationCart);
 
   return (
-    <div className='w-full h-full bg-zinc-700 flex flex-col'>
-      <VitrineHeader notificationCart={notificationCart} />{" "}
-      {/* Passando notificationCart para VitrineHeader */}
+    <div className='w-full h-full bg-transparent flex flex-col relative'>
+      <div className={`absolute -z-10 h-full w-full ${styles.header}`}></div>
+      <VitrineHeader notificationCart={notificationCart} />
       <VitrineMain />
       <VitrineFooter />
     </div>

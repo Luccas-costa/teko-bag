@@ -24,15 +24,16 @@ export default function Footer() {
   }, []);
 
   return (
-    <div className='flex flex-col bg-[#9999CC]' id='footer'>
+    <motion.div
+      className='flex flex-col bg-[#9999CC]'
+      id='footer'
+      initial={{ opacity: 0, y: -100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -100 }}
+      transition={{ duration: 0.5 }}
+    >
       <Transicao3 />
-      <motion.div
-        className='flex flex-col items-center pt-12 pl-16 pr-16 '
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 100 }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className='flex flex-col items-center pt-12 pl-16 pr-16 '>
         <div className='flex justify-evenly gap-x-6 pb-12'>
           <div className='flex items-center justify-center'>
             {isMobile && (
@@ -50,8 +51,8 @@ export default function Footer() {
           <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600 shadow-lg border border-zinc-600 rounded' />
           <Contatos />
         </div>
-      </motion.div>
+      </div>
       <Developed />
-    </div>
+    </motion.div>
   );
 }
