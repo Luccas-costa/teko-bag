@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
-import { newCartbags, removeFromNewCartbags } from "../../../lib/bags";
+import {
+  newCartbags,
+  removeFromNewCartbags,
+  addToNewCartbags,
+  updateQuantityInCart,
+} from "../../../lib/bags";
 import VitrineItensCarrinhos from "./VitrineItensCarrinhos";
 
 interface VitrineConteudoCarrinhoProps {
   onclick: () => void;
   handlerFinalizar: () => void;
 }
+
+type Bag = {
+  id: number;
+  produto: string;
+  descricao: string;
+  preco: string;
+  image: string;
+  quantidade: number;
+};
 
 export default function VitrineConteudoCarrinho({
   onclick,
@@ -20,6 +34,21 @@ export default function VitrineConteudoCarrinho({
 
   const handleRemoveItem = (id: number) => {
     removeFromNewCartbags(id);
+    setItens([...newCartbags]);
+  };
+
+  const handlerPlus = (bag: Omit<Bag, "quantidade">) => {
+    addToNewCartbags(bag);
+    setItens([...newCartbags]);
+  };
+
+  const handlerMinus = (id: number) => {
+    const item = newCartbags.find((bag) => bag.id === id);
+    if (item && item.quantidade > 1) {
+      updateQuantityInCart(id, item.quantidade - 1);
+    } else {
+      removeFromNewCartbags(id);
+    }
     setItens([...newCartbags]);
   };
 
@@ -39,22 +68,33 @@ export default function VitrineConteudoCarrinho({
               id={item.id}
               produtos={item.produto}
               descricao={item.descricao}
+              quantidade={item.quantidade}
               preco={item.preco}
               onRemove={handleRemoveItem}
+              handlerPlus={handlerPlus}
+              handlerMinus={handlerMinus}
             />
           ))
         ) : (
-          <div className='text-center text-xl font-semibold mt-10'>
+          <div className='text-center text-xl font-semibold mt-10 flex flex-col'>
             Não há itens no carrinho
+            <button
+              onClick={onclick}
+              className='mt-4 py-2 px-4 border border-black hover:bg-blue-600 font-semibold rounded'
+            >
+              Sair Carrinho
+            </button>
           </div>
         )}
       </div>
-      <button
-        onClick={handlerFinalizar}
-        className='shadow-lg w-full py-2 border border-black hover:bg-blue-600 font-semibold rounded mt-4'
-      >
-        Finalizar compra
-      </button>
+      {itens.length > 0 && (
+        <button
+          onClick={handlerFinalizar}
+          className='shadow-lg w-full py-2 border border-black hover:bg-blue-600 font-semibold rounded mt-4'
+        >
+          Finalizar compra
+        </button>
+      )}
     </div>
   );
 }

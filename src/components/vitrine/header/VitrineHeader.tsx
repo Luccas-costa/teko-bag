@@ -1,17 +1,24 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
 
 import { Tote } from "@phosphor-icons/react/dist/ssr";
 import { SignedIn, UserButton } from "@clerk/nextjs";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
+import { newCartbags } from "@/lib/bags";
 import VitrineCarrinho from "./VitrineCarrinho";
 import { useFirstName } from "@/hooks/useFirstName";
 
-export default function VitrineHeader() {
+interface VitrineHeaderProps {
+  notificationCart: number; // Definindo o tipo da propriedade notificationCart como number
+}
+
+export default function VitrineHeader({
+  notificationCart,
+}: VitrineHeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -23,7 +30,6 @@ export default function VitrineHeader() {
   };
 
   const firstName = useFirstName();
-
   return (
     <header className='w-full py-3 flex justify-between items-center px-2 space-x-2 mb-2'>
       <div className='rounded-xl 2xl:w-[88%] lg:w-[82%] md2:w-[80%] sm1:w-[72%] xm1:w-[70%] xm2:w-[65%] sm2:w-[65%] xm6:w-[62%] w-[57%] bg-white/15 xm5:py-[0.6rem] xm6:py-[0.6rem] xm7:py-[0.75rem] py-[0.9rem] px-3 shadow-lg'>
@@ -40,8 +46,19 @@ export default function VitrineHeader() {
               <UserButton />
             </SignedIn>
           </li>
-          <li onClick={handleClick}>
+          <li onClick={handleClick} className='relative'>
             <Tote size={28} weight={isOpen ? "fill" : "regular"} />
+            {notificationCart > 0 && (
+              <div className='absolute top-[-3px] right-[-7px] w-4 h-4 rounded-full bg-red-500  font-extrabold text-sm flex justify-center items-center'>
+                {notificationCart > 0 && notificationCart < 9
+                  ? notificationCart
+                  : notificationCart == 9
+                  ? 9
+                  : notificationCart > 9
+                  ? 9
+                  : null}
+              </div>
+            )}
           </li>
           <li>
             <Image
@@ -55,7 +72,7 @@ export default function VitrineHeader() {
       </div>
       <AnimatePresence>
         {isOpen && (
-          <div className='fixed inset-0 z-40' onClick={handleClose}>
+          <div className='fixed inset-0 z-40 flex' onClick={handleClose}>
             <VitrineCarrinho isOpen={isOpen} handleClose={handleClose} />
           </div>
         )}

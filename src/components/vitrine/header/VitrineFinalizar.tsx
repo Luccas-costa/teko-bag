@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+
 import { ArrowLeft } from "lucide-react";
+import { Trash } from "@phosphor-icons/react/dist/ssr";
+
 import { newCartbags, removeFromNewCartbags } from "../../../lib/bags";
 import VitrineDivisoriaFinalizar from "./VitrineDivisoriaFinalizar";
-import { Trash } from "@phosphor-icons/react/dist/ssr";
 
 interface VitrineFinalizarProps {
   onclick: () => void;

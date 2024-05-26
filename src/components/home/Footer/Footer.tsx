@@ -2,10 +2,12 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
+import { motion } from "framer-motion";
+
 import Time from "./Time/Time";
 import Contatos from "./Contatos/Contatos";
 import Developed from "./Developed/Developed";
-import { motion } from "framer-motion";
+import Transicao3 from "../Main/Transicoes/Transicao3/Transicao3";
 
 export default function Footer() {
   const [isMobile, setIsMobile] = useState(false);
@@ -23,8 +25,9 @@ export default function Footer() {
 
   return (
     <div className='flex flex-col bg-[#9999CC]' id='footer'>
+      <Transicao3 />
       <motion.div
-        className='flex flex-col items-center pt-12 pl-16 pr-16'
+        className='flex flex-col items-center pt-12 pl-16 pr-16 '
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 100 }}
@@ -42,12 +45,9 @@ export default function Footer() {
             )}
           </div>
 
-          <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600 shadow-lg' />
-
+          <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600 shadow-lg border border-zinc-600 rounded' />
           <Time />
-
-          <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600 shadow-lg' />
-
+          <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600 shadow-lg border border-zinc-600 rounded' />
           <Contatos />
         </div>
       </motion.div>

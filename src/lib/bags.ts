@@ -73,9 +73,14 @@ export const Cartbags = [
   },
 ];
 
-// allcart bags em cima
+export const newCartbags: Bag[] = [];
 
-export const newCartbags: Bag[] = []; // armazenar os itens aqui
+let newCartbagsLength = newCartbags.length;
+let setNotificationCart: (value: number) => void;
+
+export const setNotificationCartHandler = (setter: (value: number) => void) => {
+  setNotificationCart = setter;
+};
 
 type Bag = {
   id: number;
@@ -86,15 +91,45 @@ type Bag = {
   quantidade: number;
 };
 
-// Função para adicionar um item ao newCartbags
+const cartBagsProxy = new Proxy(newCartbags, {
+  set: function (target, property, value) {
+    console.log("newCartbags foi modificado:", target);
+    newCartbagsLength = target.length;
+    if (setNotificationCart) {
+      setNotificationCart(newCartbagsLength);
+    }
+    return Reflect.set(target, property, value);
+  },
+});
+
 export const addToNewCartbags = (bag: Omit<Bag, "quantidade">) => {
-  newCartbags.push({ ...bag, quantidade: 1 });
+  const existingBagIndex = newCartbags.findIndex((item) => item.id === bag.id);
+
+  if (existingBagIndex !== -1) {
+    newCartbags[existingBagIndex].quantidade += 1;
+  } else {
+    cartBagsProxy.push({ ...bag, quantidade: 1 });
+  }
+
+  newCartbagsLength = newCartbags.length;
+  if (setNotificationCart) {
+    setNotificationCart(newCartbagsLength);
+  }
 };
 
-// Função para remover um item de newCartbags
 export const removeFromNewCartbags = (id: number) => {
-  const index = newCartbags.findIndex((bag) => bag.id === id);
+  const index = cartBagsProxy.findIndex((bag) => bag.id === id);
   if (index !== -1) {
-    newCartbags.splice(index, 1);
+    cartBagsProxy.splice(index, 1);
+    if (setNotificationCart) {
+      setNotificationCart(newCartbagsLength - 1);
+    }
+  }
+};
+
+export const updateQuantityInCart = (id: number, newQuantity: number) => {
+  const index = cartBagsProxy.findIndex((bag) => bag.id === id);
+  if (index !== -1) {
+    cartBagsProxy[index].quantidade = newQuantity;
   }
 };

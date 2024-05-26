@@ -2,37 +2,65 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Plus } from "lucide-react";
 import { Trash } from "@phosphor-icons/react/dist/ssr";
+import {
+  addToNewCartbags,
+  removeFromNewCartbags,
+  updateQuantityInCart,
+} from "../../../lib/bags"; // Importando funções necessárias
 
 interface VitrineConteudoCarrinhoProps {
   id: number;
   produtos: string;
   descricao?: string;
+  quantidade?: number;
   preco: string;
   onRemove: (id: number) => void;
+  handlerPlus: (bag: Omit<Bag, "quantidade">) => void; // Modificado para aceitar um parâmetro
+  handlerMinus: (id: number) => void; // Nova propriedade para decrementar a quantidade
 }
+
+type Bag = {
+  id: number;
+  produto: string;
+  descricao: string;
+  preco: string;
+  image: string;
+  quantidade: number;
+};
 
 export default function VitrineItensCarrinhos({
   id,
   produtos,
-  descricao,
+  descricao = "", // Valor padrão para descricao
+  quantidade = 1, // Valor padrão para quantidade
   preco,
   onRemove,
+  handlerPlus,
+  handlerMinus,
 }: VitrineConteudoCarrinhoProps) {
-  const [contador, setcontador] = useState(1);
+  const [Quantidade, setQuantidade] = useState(quantidade);
 
-  function handelplus() {
-    if (contador == 9) {
-      console.log("carrinho no maximo");
+  function handlePlus() {
+    if (Quantidade < 9) {
+      handlerPlus({
+        id,
+        produto: produtos,
+        descricao,
+        preco,
+        image: "/skeleton.png",
+      });
+      setQuantidade(Quantidade + 1);
     } else {
-      setcontador(contador + 1);
+      console.log("Quantidade máxima atingida");
     }
   }
 
-  function handletrash() {
-    if (contador > 1) {
-      setcontador(contador - 1);
+  function handleTrash() {
+    if (Quantidade > 1) {
+      handlerMinus(id);
+      setQuantidade(Quantidade - 1);
     } else {
-      onRemove(id);
+      onRemove(id); // Remove o item do carrinho se a quantidade for 1
     }
   }
 
@@ -59,16 +87,16 @@ export default function VitrineItensCarrinhos({
         </div>
       </div>
       <div className='shadow-md absolute right-4 top-[-17px] md:top-[-17px] w-16 h-[1.7rem]  md:w-24 md:h-[1.8rem] bg-green-600 border border-zinc-950 flex items-center justify-evenly'>
-        <button onClick={handletrash}>
+        <button onClick={handleTrash}>
           <Trash size={20} weight='bold' />
         </button>
         <hr className='mx-1 h-[80%] w-[1px] rounded  border-black bg-black rotate-[90] ' />
-        <button onClick={handelplus}>
+        <button onClick={handlePlus}>
           <Plus size={23} />
         </button>
       </div>
       <div className='shadow rounded-full absolute left-[-16px] top-[-10px] w-[1.2rem] h-[1.2rem] bg-green-600 border border-zinc-950 flex items-center justify-center font-semibold'>
-        {contador}
+        {Quantidade}
       </div>
     </div>
   );
