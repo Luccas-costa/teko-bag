@@ -17,7 +17,7 @@ export default function VitrineCard({
   onAddToCart,
 }: VitrineCardProps) {
   return (
-    <div className='menuxm3:w-96 w-80 min-h-[28rem] bg-[#3A6591]/30 backdrop-blur-xl overflow-hidden rounded'>
+    <div className='menuxm3:w-96 w-80 min-h-[28rem] bg-[#fff]/30 xl:bg-[#3A6591]/30 backdrop-blur-xl overflow-hidden rounded'>
       <div className='flex flex-col items-center p-4 space-y-1'>
         <div className='relative border border-zinc-950 w-full h-[17rem] shadow rounded'>
           <Image
