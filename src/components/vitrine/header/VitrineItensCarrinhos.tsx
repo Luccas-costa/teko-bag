@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
+
 import { Plus } from "lucide-react";
 import { Trash } from "@phosphor-icons/react/dist/ssr";
+import { useMediaQuery } from "react-responsive";
+
 import {
   addToNewCartbags,
   removeFromNewCartbags,
@@ -39,6 +42,9 @@ export default function VitrineItensCarrinhos({
   handlerMinus,
 }: VitrineConteudoCarrinhoProps) {
   const [Quantidade, setQuantidade] = useState(quantidade);
+
+  // Definir as media queries
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   function handlePlus() {
     if (Quantidade < 9) {
@@ -88,11 +94,11 @@ export default function VitrineItensCarrinhos({
       </div>
       <div className='shadow-md absolute right-4 top-[-17px] md:top-[-17px] w-16 h-[1.7rem]  md:w-24 md:h-[1.8rem] bg-green-600 border border-zinc-950 flex items-center justify-evenly'>
         <button onClick={handleTrash}>
-          <Trash size={20} weight='bold' />
+          <Trash size={isMobile ? 16 : 20} weight='bold' />
         </button>
         <hr className='mx-1 h-[80%] w-[1px] rounded  border-black bg-black rotate-[90] ' />
         <button onClick={handlePlus}>
-          <Plus size={23} />
+          <Plus size={isMobile ? 17 : 23} />
         </button>
       </div>
       <div className='shadow rounded-full absolute left-[-16px] top-[-10px] w-[1.2rem] h-[1.2rem] bg-green-600 border border-zinc-950 flex items-center justify-center font-semibold'>
