@@ -41,10 +41,8 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
         style={{
           backgroundImage: `url(${Imagem.src})`,
         }}
-      >
-        <div className='w-1/2 h-full'></div>
-        <div className='w-1/2 h-full' onClick={handleClose}></div>
-      </div>
+        onClick={handleClose}
+      ></div>
       <div className='bg-vblue w-[70vw] 2xl:w-[25vw] xl:w-[30vw] lg:w-[35vw] md:w-[40vw] sm:w-[45vw] menuxm:w-[60vw] h-full '>
         <div className='p-1 h-full relative right-[2vw]'>
           {Finalizar ? (
