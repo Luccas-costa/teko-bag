@@ -21,3 +21,17 @@
     top: 0;
     left: 0;
   }
+
+@keyframes rotate {
+  100% {
+    background-position: 15% 50%;
+  }
+}  
+
+.background {
+  background-color: #4D5E49;
+  background-image: url('../../../../public/bgmontagem.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: rotate 6s infinite alternate ;
+}
