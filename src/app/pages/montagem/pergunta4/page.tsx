@@ -77,7 +77,7 @@ export default function Pagina4() {
     <div
       className={`w-screen h-full flex flex-col items-center justify-center p-2 lg:p-6 xl:p-14 relative ${styles.background}`}
     >
-      <div className='p-3 2xl:w-1/4 md:w-1/2 w-4/5 bg-banner5/85 border border-zinc-950 rounded-lg flex flex-col items-center justify-center shadow-lg my-auto'>
+      <div className='p-3 2xl:w-1/4 md:w-1/2 w-[90%] bg-banner5/85 border border-zinc-950 rounded-lg flex flex-col items-center justify-center shadow-lg my-auto'>
         <div className='pt-6 pb-4'>
           <Image
             src='/logo-transparente.png'
