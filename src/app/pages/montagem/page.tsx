@@ -16,7 +16,7 @@ export default function Apresentacao() {
     <div
       className={`w-screen h-screen flex flex-col items-center justyfy-center lg:p-6 xl:p-14 relative ${style.background} `}
     >
-      <div className='p-3 2xl:w-1/4 md:w-1/2 w-3/4 border bg-banner5/90 border-zinc-950 rounded-lg flex flex-col items-center justyfy-center shadow-lg my-auto'>
+      <div className='p-3 2xl:w-1/4 md:w-1/2 w-3/4 border bg-banner5/85 border-zinc-950 rounded-lg flex flex-col items-center justyfy-center shadow-lg my-auto'>
         <div className='pt-6 pb-4'>
           <Image
             src='/logo-transparente.png'
