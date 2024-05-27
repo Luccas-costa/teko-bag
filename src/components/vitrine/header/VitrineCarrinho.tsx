@@ -40,6 +40,8 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
         className='w-[30vw] 2xl:w-[8vw] xl:w-[10vw] lg:w-[10vw] md:w-[15vw] sm:w-[20vw] menuxm:w-[20vw] h-full bg-cover  flex'
         style={{
           backgroundImage: `url(${Imagem.src})`,
+          position: `relative`,
+          left: `1px`,
         }}
         onClick={handleClose}
       ></div>

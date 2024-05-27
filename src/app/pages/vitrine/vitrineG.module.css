@@ -1,0 +1,13 @@
+
+.todo {
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+}
+.todo  ::-webkit-scrollbar-thumb {
+  background-color: #9b9b9b;
+}
+
+.todo ::-webkit-scrollbar {
+  width: 0.2vw;
+  background: #225485;
+}
