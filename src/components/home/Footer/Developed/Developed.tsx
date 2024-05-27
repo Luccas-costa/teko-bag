@@ -9,7 +9,7 @@ export default function Developed() {
     setCopiado(true); // Define o estado como true quando o texto é copiado
     setTimeout(() => {
       setCopiado(false); // Restaura o estado para false após 3 segundos
-    }, 2000);
+    }, 1750);
   };
 
   return (
