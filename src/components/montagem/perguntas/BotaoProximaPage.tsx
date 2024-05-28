@@ -13,20 +13,10 @@ export default function BotaoProximaPage({
   disabled,
   onClick,
 }: BotaoProximaPageProps) {
-  let caminho = "/pages/montagem/pergunta1";
+  let caminho = "/pages/montagem/perguntas";
   if (pergunta == 2) {
-    caminho = "/pages/montagem/pergunta2";
-  } else if (pergunta == 3) {
-    caminho = "/pages/montagem/pergunta3";
-  } else if (pergunta == 4) {
-    caminho = "/pages/montagem/pergunta4";
-  } else if (pergunta == 5) {
-    caminho = "/pages/montagem/pergunta5";
-  } else if (pergunta == 6) {
-    caminho = "/pages/montagem/pergunta6";
-  } else if (pergunta == 7) {
     caminho = "/pages/vitrine";
-  } else if (pergunta > 7) {
+  } else if (pergunta > 2) {
     caminho = "/";
   }
 

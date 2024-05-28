@@ -4,9 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
 
-import styles from "../perguntas.module.css";
+import styles from "@/app/pages/montagem/perguntas.module.css";
+
 import { salvarResposta } from "@/utils/perguntas"; // Importe a função para salvar a resposta
-import BotaoProximaPage from "@/components/montagem/perguntas/BotaoProximaPage";
+import BotaoProximaPageNew from "./BotaoProximaPageNew";
+
+interface PerguntaProps4 {
+  display: boolean;
+  handlerdisplay: () => void;
+}
 
 // Definindo o tipo para as opções
 interface Option {
@@ -16,7 +22,7 @@ interface Option {
   posbgColor: string;
 }
 
-export default function Pagina4() {
+export default function Pergunta4({ display, handlerdisplay }: PerguntaProps4) {
   const [isRadioSelected, setIsRadioSelected] = useState(false);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
 
@@ -75,9 +81,11 @@ export default function Pagina4() {
 
   return (
     <div
-      className={`w-screen h-full flex flex-col items-center justify-center p-2 lg:p-6 xl:p-14 relative ${styles.background}`}
+      className={`w-screen h-full flex flex-col items-center justify-center p-2 lg:p-6 xl:p-14 relative ${
+        styles.background
+      } ${display && "hidden"}`}
     >
-      <div className='p-3 2xl:w-1/4 md:w-1/2 w-[90%] bg-banner5/85 border border-zinc-950 rounded-lg flex flex-col items-center justify-center shadow-lg my-auto'>
+      <div className='p-3 2xl:w-1/4 md:w-1/2 w-[90%] bg-banner5/85 border border-zinc-950 rounded-lg flex flex-col items-center justify-center shadow-lg my-auto relative'>
         <div className='pt-6 pb-4'>
           <Image
             src='/logo-transparente.png'
@@ -105,10 +113,9 @@ export default function Pagina4() {
         <div className='mt-6 text-center font-semibold lg:text-lg sm:text-base text-xs text-zinc-800'>
           Prosseguir para quarta pergunta
         </div>
-        <BotaoProximaPage
-          pergunta={5}
+        <BotaoProximaPageNew
           disabled={!isRadioSelected}
-          onClick={handleProximaPage}
+          handlerdisplay={handlerdisplay}
         />
         <div className='mt-6 mb-2'>
           <Link
@@ -117,6 +124,11 @@ export default function Pagina4() {
           >
             voltar a home
           </Link>
+        </div>
+        <div className='absolute w-5 h-5 top-[9px] right-[30px] font-semibold text-2xl text-black/50'>
+          <div className='absolute top-0 left-0'>4</div>
+          <div className='absolute top-[6px] left-[12px] rotate-[4deg]'>/</div>
+          <div className='absolute bottom-[-28px] right-[-13px]'>6</div>
         </div>
       </div>
     </div>
