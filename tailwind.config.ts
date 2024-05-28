@@ -46,6 +46,9 @@ const config: Config = {
 
         vblue: "#225485",
         vsand: "#B39E7B",
+
+        // txtcart: "rgb(212 212 216)",
+        txtcart: "#000",
       },
     },
   },

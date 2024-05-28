@@ -4,7 +4,7 @@ export const Cartbags = [
     produto: "bag verde",
     descricao: "teste teste",
     preco: "89,99",
-    image: "/skeleton.png",
+    image: "/bag1.jpg",
     quantidade: 1,
   },
   {
@@ -12,7 +12,7 @@ export const Cartbags = [
     produto: "bag Rosa Choque",
     descricao: "gasda teste",
     preco: "43,99",
-    image: "/skeleton.png",
+    image: "/bag2.jpg",
     quantidade: 1,
   },
   {
@@ -20,7 +20,7 @@ export const Cartbags = [
     produto: "bag  preta",
     descricao: "teste teste",
     preco: "89,99",
-    image: "/skeleton.png",
+    image: "/bag3.jpg",
     quantidade: 1,
   },
   {
@@ -28,7 +28,7 @@ export const Cartbags = [
     produto: "bag Rosa Choque2",
     descricao: "gasda teste",
     preco: "43,99",
-    image: "/skeleton.png",
+    image: "/bag4.png",
     quantidade: 1,
   },
   {
@@ -36,7 +36,7 @@ export const Cartbags = [
     produto: "bag  roxo",
     descricao: "teste teste",
     preco: "89,99",
-    image: "/skeleton.png",
+    image: "/bag5.jpg",
     quantidade: 1,
   },
   {
@@ -44,7 +44,7 @@ export const Cartbags = [
     produto: "bag Rosa Choque3",
     descricao: "gasda teste",
     preco: "43,99",
-    image: "/skeleton.png",
+    image: "/bag6.jpg",
     quantidade: 1,
   },
   {
@@ -52,7 +52,7 @@ export const Cartbags = [
     produto: "bag  lilas",
     descricao: "teste teste",
     preco: "89,99",
-    image: "/skeleton.png",
+    image: "/bag1.jpg",
     quantidade: 1,
   },
   {
@@ -60,7 +60,7 @@ export const Cartbags = [
     produto: "bag Rosa Choque4",
     descricao: "gasda teste",
     preco: "43,99",
-    image: "/skeleton.png",
+    image: "/bag2.jpg",
     quantidade: 1,
   },
   {
@@ -68,7 +68,7 @@ export const Cartbags = [
     produto: "bag Rosa green3",
     descricao: "gasda teste",
     preco: "65,99",
-    image: "/skeleton.png",
+    image: "/bag3.jpg",
     quantidade: 1,
   },
 ];

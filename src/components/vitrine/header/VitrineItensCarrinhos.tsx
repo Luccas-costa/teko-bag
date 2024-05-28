@@ -17,6 +17,7 @@ interface VitrineConteudoCarrinhoProps {
   descricao?: string;
   quantidade?: number;
   preco: string;
+  imagem: string;
   onRemove: (id: number) => void;
   handlerPlus: (bag: Omit<Bag, "quantidade">) => void; // Modificado para aceitar um parâmetro
   handlerMinus: (id: number) => void; // Nova propriedade para decrementar a quantidade
@@ -37,6 +38,7 @@ export default function VitrineItensCarrinhos({
   descricao = "", // Valor padrão para descricao
   quantidade = 1, // Valor padrão para quantidade
   preco,
+  imagem,
   onRemove,
   handlerPlus,
   handlerMinus,
@@ -53,7 +55,7 @@ export default function VitrineItensCarrinhos({
         produto: produtos,
         descricao,
         preco,
-        image: "/skeleton.png",
+        image: imagem,
       });
       setQuantidade(Quantidade + 1);
     } else {
@@ -74,7 +76,7 @@ export default function VitrineItensCarrinhos({
     <div className='w-90% border border-zinc-950 py-2 flex space-x-2 items-center relative shadow-lg'>
       <div className='w-[30%]'>
         <Image
-          src='/skeleton.png'
+          src={imagem}
           width={100}
           height={100}
           alt=''
@@ -82,13 +84,13 @@ export default function VitrineItensCarrinhos({
         />
       </div>
       <div className='flex flex-col items-end w-[70%] mr-2  pr-2 md:pr-4 '>
-        <div className='text-base menuxm2:text-xl font-semibold truncate w-[90%] text-end'>
+        <div className='text-base menuxm2:text-xl font-semibold truncate w-[90%] text-end text-txtcart'>
           {produtos}
         </div>
-        <div className='text-sm menuxm2:text-md font-semibold truncate w-[90%] text-end'>
+        <div className='text-sm menuxm2:text-md font-semibold truncate w-[90%] text-end text-txtcart'>
           {descricao}
         </div>
-        <div className='text-md menuxm2:text-lg font-bold pr-2 truncate w-[90%] text-end'>
+        <div className='text-md menuxm2:text-lg font-bold pr-2 truncate w-[90%] text-end text-txtcart'>
           R$ {preco}
         </div>
       </div>
@@ -101,7 +103,7 @@ export default function VitrineItensCarrinhos({
           <Plus size={isMobile ? 17 : 23} />
         </button>
       </div>
-      <div className='shadow rounded-full absolute left-[-16px] top-[-10px] w-[1.2rem] h-[1.2rem] bg-vsand border border-zinc-950 flex items-center justify-center font-semibold'>
+      <div className='shadow rounded-full absolute left-[-16px] top-[-10px] w-[1.2rem] h-[1.2rem] bg-zinc-300 border border-zinc-950 flex items-center justify-center font-semibold'>
         {Quantidade}
       </div>
     </div>

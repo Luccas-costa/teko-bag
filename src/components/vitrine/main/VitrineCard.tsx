@@ -19,14 +19,14 @@ export default function VitrineCard({
   return (
     <div className='menuxm3:w-96 w-80 min-h-[28rem] bg-[#fff]/30 xl:bg-[#3A6591]/30 backdrop-blur-xl overflow-hidden rounded'>
       <div className='flex flex-col items-center p-4 space-y-1'>
-        <div className='relative border border-zinc-950 w-full h-[17rem] shadow rounded'>
+        <div className='relative border border-zinc-950/50 w-full h-[17rem] shadow rounded flex'>
           <Image
             src={image}
             alt={produto}
             layout='fill'
             objectFit='cover'
             objectPosition='center'
-            className='rounded'
+            className='rounded justify-center items-center'
           />
         </div>
         <div className='w-full py-2'>

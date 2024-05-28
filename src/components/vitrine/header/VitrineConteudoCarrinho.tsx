@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+
 import { ArrowLeft } from "lucide-react";
+
 import {
   newCartbags,
   removeFromNewCartbags,
@@ -58,7 +60,7 @@ export default function VitrineConteudoCarrinho({
         <button onClick={onclick}>
           <ArrowLeft size={32} />
         </button>
-        <div className='text-2xl font-bold ml-2'>CARRINHO</div>
+        <div className='text-2xl font-bold ml-2 text-txtcart'>CARRINHO</div>
       </div>
       <div className='flex-1 overflow-y-auto space-y-5 pl-[0.45rem] pt-[1rem] pr-[0.2rem]'>
         {itens.length > 0 ? (
@@ -70,17 +72,18 @@ export default function VitrineConteudoCarrinho({
               descricao={item.descricao}
               quantidade={item.quantidade}
               preco={item.preco}
+              imagem={item.image}
               onRemove={handleRemoveItem}
               handlerPlus={handlerPlus}
               handlerMinus={handlerMinus}
             />
           ))
         ) : (
-          <div className='text-center text-xl font-semibold mt-10 flex flex-col'>
+          <div className='text-center text-xl font-semibold mt-10 flex flex-col text-txtcart'>
             Não há itens no carrinho
             <button
               onClick={onclick}
-              className='mt-4 py-2 px-4 border border-black hover:bg-vsand active:bg-vsand font-semibold rounded'
+              className='mt-4 py-2 px-4 border border-black hover:bg-vsand active:bg-vsand font-semibold rounded text-txtcart'
             >
               Sair Carrinho
             </button>
@@ -90,7 +93,7 @@ export default function VitrineConteudoCarrinho({
       {itens.length > 0 && (
         <button
           onClick={handlerFinalizar}
-          className='shadow-lg py-2 my-2 w-[90%] border border-black hover:bg-vsand active:bg-vsand font-semibold rounded mt-4 mx-auto'
+          className='shadow-lg py-2 my-2 w-[90%] border border-black hover:bg-vsand active:bg-vsand font-semibold rounded mt-4 mx-auto text-txtcart'
         >
           Finalizar compra
         </button>
