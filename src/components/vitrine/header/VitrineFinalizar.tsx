@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-
 import { ArrowLeft } from "lucide-react";
 import { Trash } from "@phosphor-icons/react/dist/ssr";
-
 import {
   newCartbags,
   removeFromNewCartbags,
@@ -12,9 +10,13 @@ import VitrineDivisoriaFinalizar from "./VitrineDivisoriaFinalizar";
 
 interface VitrineFinalizarProps {
   onclick: () => void;
+  desconto: boolean;
 }
 
-export default function VitrineFinalizar({ onclick }: VitrineFinalizarProps) {
+export default function VitrineFinalizar({
+  onclick,
+  desconto,
+}: VitrineFinalizarProps) {
   // Estado para armazenar os itens do carrinho
   const [cartbags, setCartbags] = useState([...newCartbags]);
 
@@ -40,6 +42,10 @@ export default function VitrineFinalizar({ onclick }: VitrineFinalizarProps) {
     const preco = parseFloat(bag.preco.replace(",", "."));
     return total + preco * bag.quantidade;
   }, 0);
+
+  // Calcular o valor do desconto
+  const valorDesconto = desconto ? total * 0.15 : 0;
+  const totalComDesconto = total - valorDesconto;
 
   return (
     <div className='flex flex-col h-full'>
@@ -89,13 +95,18 @@ export default function VitrineFinalizar({ onclick }: VitrineFinalizarProps) {
             })}
           </div>
           <div className='text-end'>
-            <div className='font-bold'>Total: R$ {total.toFixed(2)}</div>
+            <div className='font-bold text-base'>Frete: R$ 00,00</div>
+            {desconto && (
+              <div className='font-bold text-base text-red-600'>
+                Desconto: -R$ {valorDesconto.toFixed(2).replace(".", ",")}
+              </div>
+            )}
+            <div className='font-bold '>
+              Total: R$ {totalComDesconto.toFixed(2).replace(".", ",")}
+            </div>
           </div>
-          <button
-            // onClick={FinalizarPedido}
-            className='w-full py-2 mb-2 border border-black hover:bg-vsand font-semibold rounded mt-2'
-          >
-            Finalizar pedido
+          <button className='w-full py-2 mb-2 border border-black hover:bg-vsand font-semibold rounded mt-2'>
+            Finalizar Compra
           </button>
         </>
       )}

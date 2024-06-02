@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-
 import { motion } from "framer-motion";
 
-import Imagem from "../../../../public/bglateralmenufinalizar.svg";
 import VitrineFinalizar from "./VitrineFinalizar";
+import VitrineConfirmarDados from "./VitrineConfirmarDados";
 import VitrineConteudoCarrinho from "./VitrineConteudoCarrinho";
+import Imagem from "../../../../public/bglateralmenufinalizar.svg";
 
 interface VitrineCarrinhoProps {
   isOpen: boolean;
@@ -16,14 +16,21 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
   handleClose,
 }) => {
   const [Finalizar, setFinalizar] = useState(false);
+  const [Confirmacao, setConfirmacao] = useState(false);
+  const [desconto, setDesconto] = useState(false);
 
   const handlerFinalizar = () => {
     setFinalizar(!Finalizar);
   };
+  const handlerConfirmacao = () => {
+    setConfirmacao(!Confirmacao);
+  };
   const handlerCloseFinalizar = () => {
     handleClose();
     setTimeout(() => {
-      setFinalizar(!Finalizar);
+      if (Confirmacao === false) {
+        setFinalizar(!Finalizar);
+      }
     }, 1000);
   };
 
@@ -48,7 +55,15 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
       <div className='bg-vblue w-[70vw] 2xl:w-[25vw] xl:w-[30vw] lg:w-[35vw] md:w-[40vw] sm:w-[45vw] menuxm:w-[60vw] h-full '>
         <div className='p-1 h-full relative right-[2vw]'>
           {Finalizar ? (
-            <VitrineFinalizar onclick={handlerCloseFinalizar} />
+            Confirmacao ? (
+              <VitrineFinalizar onclick={handleClose} desconto={desconto} />
+            ) : (
+              <VitrineConfirmarDados
+                onclick={handleClose}
+                onclick2={handlerConfirmacao}
+                setDesconto={setDesconto}
+              />
+            )
           ) : (
             <VitrineConteudoCarrinho
               onclick={handleClose}

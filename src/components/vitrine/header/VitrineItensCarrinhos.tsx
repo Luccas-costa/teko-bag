@@ -80,7 +80,7 @@ export default function VitrineItensCarrinhos({
           width={100}
           height={100}
           alt=''
-          className='shadow-md border border-zinc-950 ml-4'
+          className='shadow-md border border-zinc-950 ml-4 w-[100px] h-[100px] '
         />
       </div>
       <div className='flex flex-col items-end w-[70%] mr-2  pr-2 md:pr-4 '>
