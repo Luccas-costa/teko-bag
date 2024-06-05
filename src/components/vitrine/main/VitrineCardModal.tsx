@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-interface VitrineCardProps {
+interface VitrineCardModalProps {
   produto: string;
   descricao: string;
   preco: string;
@@ -9,17 +9,40 @@ interface VitrineCardProps {
   onAddToCart: () => void;
 }
 
-export default function VitrineCard({
+const VitrineCardModal: React.FC<VitrineCardModalProps> = ({
   produto,
   descricao,
   preco,
   image,
   onAddToCart,
-}: VitrineCardProps) {
+}) => {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerHeight < 700);
+    };
+
+    // Set initial state
+    handleResize();
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Clean up event listener on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className='w-full h-full relative'>
-      <div className='flex flex-col items-center p-4 space-y-1'>
-        <div className='relative border border-zinc-950/50 w-full h-[30rem] shadow rounded flex'>
+      <div className='flex flex-col items-center p-4 space-y-1 h-full'>
+        <div
+          className={`relative border border-zinc-950/50 w-full ${
+            isSmallScreen ? "h-[25rem]" : "h-[30rem]"
+          } shadow rounded flex`}
+        >
           <Image
             src={image}
             alt={produto}
@@ -29,9 +52,9 @@ export default function VitrineCard({
             className='rounded justify-center items-center'
           />
         </div>
-        <div className='w-full 2xl:py-10 xl:py-6 lg:py-4 md:py-4 py-3'>
+        <div className='w-full 2xl:pt-10 xl:pt-6 lg:pt-4 md:pt-4 pt-3'>
           <div className='font-semibold text-2xl text-center'>{produto}</div>
-          <div className='text-xl text-center truncate'>{descricao}</div>
+          <div className='text-xl text-center truncate mb-12'>{descricao}</div>
         </div>
         <div className='text-lg sm:text-xl font-bold text-start w-full absolute bottom-12'>
           R$: {preco}
@@ -45,4 +68,6 @@ export default function VitrineCard({
       </div>
     </div>
   );
-}
+};
+
+export default VitrineCardModal;
