@@ -1,25 +1,28 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { useState } from "react";
 
 import { Tote } from "@phosphor-icons/react/dist/ssr";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { AnimatePresence } from "framer-motion";
 
-import { newCartbags } from "@/lib/bags";
 import VitrineCarrinho from "./VitrineCarrinho";
 import { useFirstName } from "@/hooks/useFirstName";
 
 interface VitrineHeaderProps {
-  notificationCart: number; // Definindo o tipo da propriedade notificationCart como number
+  notificationCart: number;
 }
 
 export default function VitrineHeader({
   notificationCart,
 }: VitrineHeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+  const [Finalizar, setFinalizar] = useState(false);
+  const [Confirmacao, setConfirmacao] = useState(false);
+  const [Confirmacao2, setConfirmacao2] = useState(false);
+  const [Pagamento, setPagamento] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -29,7 +32,14 @@ export default function VitrineHeader({
     setIsOpen(false);
   };
 
+  const handleClose2 = () => {
+    setIsOpen2(false);
+    setFinalizar(false);
+    setConfirmacao(false);
+  };
+
   const firstName = useFirstName();
+
   return (
     <header className='w-full py-3 flex justify-between items-center px-2 space-x-2 mb-2 bg-transparent'>
       <div className='rounded-xl 2xl:w-[88%] lg:w-[82%] md2:w-[80%] sm1:w-[72%] xm1:w-[70%] xm2:w-[65%] sm2:w-[65%] xm6:w-[62%] w-[57%] bg-white/15 xm5:py-[0.6rem] xm6:py-[0.6rem] xm7:py-[0.75rem] py-[0.9rem] px-3 shadow-lg'>
@@ -49,7 +59,7 @@ export default function VitrineHeader({
           <li onClick={handleClick} className='relative'>
             <Tote size={28} weight={isOpen ? "fill" : "regular"} />
             {notificationCart > 0 && (
-              <div className='absolute top-[-3px] right-[-7px] w-4 h-4 rounded-full bg-red-500  font-extrabold text-sm flex justify-center items-center'>
+              <div className='absolute top-[-3px] right-[-7px] w-4 h-4 rounded-full bg-red-500 font-extrabold text-sm flex justify-center items-center'>
                 {notificationCart > 0 && notificationCart < 9
                   ? notificationCart
                   : notificationCart == 9
@@ -72,8 +82,23 @@ export default function VitrineHeader({
       </div>
       <AnimatePresence>
         {isOpen && (
-          <div className='fixed inset-0 z-40 flex' onClick={handleClose}>
-            <VitrineCarrinho isOpen={isOpen} handleClose={handleClose} />
+          <div
+            className='fixed inset-0 z-40 flex'
+            onClick={Finalizar ? handleClose2 : handleClose}
+          >
+            <VitrineCarrinho
+              isOpen={isOpen}
+              handleClose={handleClose}
+              handleClose2={handleClose2}
+              Finalizar={Finalizar}
+              setFinalizar={setFinalizar}
+              Confirmacao={Confirmacao}
+              setConfirmacao={setConfirmacao}
+              Confirmacao2={Confirmacao2}
+              setConfirmacao2={setConfirmacao2}
+              Pagamento={Pagamento}
+              setPagamento={setPagamento}
+            />
           </div>
         )}
       </AnimatePresence>

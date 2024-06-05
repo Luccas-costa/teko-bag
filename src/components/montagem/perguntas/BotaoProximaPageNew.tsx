@@ -29,7 +29,7 @@ export default function BotaoProximaPageNew({
     if (pergunta === 6) {
       setTimeout(() => {
         handlerdisplay();
-      }, 1000);
+      }, 2000);
     } else {
       handlerdisplay();
     }

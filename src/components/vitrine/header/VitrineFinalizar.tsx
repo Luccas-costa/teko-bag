@@ -10,11 +10,13 @@ import VitrineDivisoriaFinalizar from "./VitrineDivisoriaFinalizar";
 
 interface VitrineFinalizarProps {
   onclick: () => void;
+  onclick2: () => void;
   desconto: boolean;
 }
 
 export default function VitrineFinalizar({
   onclick,
+  onclick2,
   desconto,
 }: VitrineFinalizarProps) {
   // Estado para armazenar os itens do carrinho
@@ -44,7 +46,7 @@ export default function VitrineFinalizar({
   }, 0);
 
   // Calcular o valor do desconto
-  const valorDesconto = desconto ? total * 0.15 : 0;
+  const valorDesconto = desconto ? total * 0 : 0; // aqui no *0 eu escolho o quanto quero por de desconto e so por tipo 15% = 0.15
   const totalComDesconto = total - valorDesconto;
 
   return (
@@ -95,17 +97,27 @@ export default function VitrineFinalizar({
             })}
           </div>
           <div className='text-end'>
-            <div className='font-bold text-base'>Frete: R$ 00,00</div>
-            {desconto && (
+            {desconto == false || desconto == null || desconto == undefined ? (
+              <div className='font-bold text-base'>Frete: R$ 19,99</div>
+            ) : (
+              <div className='font-bold text-base relative line-through'>
+                Frete: R$ 12,99
+              </div>
+            )}
+
+            {/* {desconto && (
               <div className='font-bold text-base text-red-600'>
                 Desconto: -R$ {valorDesconto.toFixed(2).replace(".", ",")}
               </div>
-            )}
+            )} */}
             <div className='font-bold '>
               Total: R$ {totalComDesconto.toFixed(2).replace(".", ",")}
             </div>
           </div>
-          <button className='w-full py-2 mb-2 border border-black hover:bg-vsand font-semibold rounded mt-2'>
+          <button
+            className='w-full py-2 mb-2 border border-black hover:bg-vsand font-semibold rounded mt-2'
+            onClick={onclick2}
+          >
             Finalizar Compra
           </button>
         </>
