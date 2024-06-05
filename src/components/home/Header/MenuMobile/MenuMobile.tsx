@@ -50,7 +50,7 @@ export default function MenuMobile() {
           onClick={handlemenu}
           className='p-1 rounded-lg'
           style={{
-            backgroundColor: Itmenuopen ? "#e0b1d1" : "transparent",
+            backgroundColor: Itmenuopen ? "#3F493D" : "transparent",
           }}
         >
           {Itmenuopen ? (
@@ -83,7 +83,7 @@ export default function MenuMobile() {
             <div className='flex flex-col'>
               <a href='#inicio' onClick={handleHomeClick}>
                 <motion.div
-                  className='z-10 w-[180px] h-[48px] bg-pink2 font-semibold text-lg text-white flex items-center justify-center rounded-t-lg border-b border-l border-white'
+                  className='z-10 w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center rounded-t-lg border-b border-l border-white'
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -94,7 +94,7 @@ export default function MenuMobile() {
               </a>
               <a href='#sobre' onClick={handleSobreClick}>
                 <motion.div
-                  className='z-5 w-[180px] h-[48px] bg-pink2 font-semibold text-lg text-white flex items-center justify-center border-b border-l border-white'
+                  className='z-5 w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center border-b border-l border-white'
                   initial={{ opacity: 1, y: -48 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 1, y: -48 }}
@@ -105,7 +105,7 @@ export default function MenuMobile() {
               </a>
               <a href='#footer' onClick={handleFooterClick}>
                 <motion.div
-                  className='w-[180px] h-[48px] bg-pink2 font-semibold text-lg text-white flex items-center justify-center rounded-b-lg border-b border-l border-white'
+                  className='w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center rounded-b-lg border-b border-l border-white'
                   initial={{ opacity: 1, y: -96 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 1, y: -96 }}

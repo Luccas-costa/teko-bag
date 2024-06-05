@@ -7,6 +7,7 @@ interface VitrineCardProps {
   preco: string;
   image: string;
   onAddToCart: () => void;
+  onCardClick: () => void;
 }
 
 export default function VitrineCard({
@@ -15,9 +16,13 @@ export default function VitrineCard({
   preco,
   image,
   onAddToCart,
+  onCardClick,
 }: VitrineCardProps) {
   return (
-    <div className='menuxm3:w-96 w-80 min-h-[28rem] bg-[#fff]/30 xl:bg-[#3A6591]/30 backdrop-blur-xl overflow-hidden rounded'>
+    <div
+      className='menuxm3:w-96 w-80 min-h-[28rem] bg-[#fff]/30 xl:bg-zinc-200/30 backdrop-blur-xl overflow-hidden rounded cursor-pointer'
+      onClick={onCardClick}
+    >
       <div className='flex flex-col items-center p-4 space-y-1'>
         <div className='relative border border-zinc-950/50 w-full h-[17rem] shadow rounded flex'>
           <Image
@@ -36,7 +41,10 @@ export default function VitrineCard({
         <div className='text-lg font-bold text-start w-full'>R$: {preco}</div>
         <button
           className='w-full py-2 rounded border border-black shadow-lg font-semibold active:border-transparent'
-          onClick={onAddToCart}
+          onClick={(e) => {
+            e.stopPropagation();
+            onAddToCart();
+          }}
         >
           Adicionar ao Carrinho
         </button>

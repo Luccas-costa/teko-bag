@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Cartbags, addToNewCartbags, newCartbags } from "../../../lib/bags";
 import VitrineCard from "./VitrineCard";
 import VitrineDivisoria from "../VitrineDivisoria";
+import Modal from "./Modal";
+import VitrineCardModal from "./VitrineCardModal";
 
 type Bag = {
   id: number;
@@ -15,6 +17,7 @@ type Bag = {
 
 export default function VitrineMain() {
   const [localCartbags, setLocalCartbags] = useState<Bag[]>([]);
+  const [selectedBag, setSelectedBag] = useState<Bag | null>(null);
 
   useEffect(() => {
     setLocalCartbags([...newCartbags]);
@@ -24,6 +27,14 @@ export default function VitrineMain() {
   const addToCart = (bag: Omit<Bag, "quantidade">) => {
     addToNewCartbags(bag);
     setLocalCartbags([...newCartbags]);
+  };
+
+  const openModal = (bag: Bag) => {
+    setSelectedBag(bag);
+  };
+
+  const closeModal = () => {
+    setSelectedBag(null);
   };
 
   return (
@@ -38,9 +49,22 @@ export default function VitrineMain() {
             preco={bag.preco}
             image={bag.image}
             onAddToCart={() => addToCart(bag)}
+            onCardClick={() => openModal(bag)}
           />
         ))}
       </div>
+
+      {selectedBag && (
+        <Modal onClose={closeModal}>
+          <VitrineCardModal
+            produto={selectedBag.produto}
+            descricao={selectedBag.descricao}
+            preco={selectedBag.preco}
+            image={selectedBag.image}
+            onAddToCart={() => addToCart(selectedBag)}
+          />
+        </Modal>
+      )}
     </main>
   );
 }
