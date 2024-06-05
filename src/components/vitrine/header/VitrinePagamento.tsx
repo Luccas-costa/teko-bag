@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
+import styles from "./geral.module.css";
 
 interface VitrinePagamentoProps {
   onclick: () => void;
@@ -8,6 +9,7 @@ interface VitrinePagamentoProps {
 
 export default function VitrinePagamento({ onclick }: VitrinePagamentoProps) {
   const [buttonColor, setButtonColor] = useState("border-black");
+  const [isLoading, setIsLoading] = useState(true);
 
   const copyToClipboard = () => {
     const textToCopy =
@@ -25,6 +27,13 @@ export default function VitrinePagamento({ onclick }: VitrinePagamentoProps) {
       });
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className='flex flex-col h-full'>
       <div className='flex items-center mb-6'>
@@ -34,13 +43,19 @@ export default function VitrinePagamento({ onclick }: VitrinePagamentoProps) {
         <div className='text-2xl font-bold ml-2'>Pagamento</div>
       </div>
       <div className='mt-6 flex flex-col flex-1 items-center space-y-2'>
-        <div className='w-full'>
+        <div className='w-full relative'>
+          {isLoading && (
+            <div className='absolute inset-0 flex items-center justify-center'>
+              <div className={styles.loader}></div>
+            </div>
+          )}
           <Image
             src={"/QrcodePix2.png"}
             alt='Pagamento'
             width={300}
             height={300}
             className='rounded-md mx-auto p-1 border border-black'
+            onLoad={() => setIsLoading(false)}
           />
         </div>
         <button
@@ -52,11 +67,11 @@ export default function VitrinePagamento({ onclick }: VitrinePagamentoProps) {
         </button>
 
         <div className='w-[80%] text-zinc-900 text-center'>
-          Obrigado por nos escolher, por favor prociga com o pagamento do pix,
-          nossos atendentes entraram em contato em nos maximo 2 dias uteis,
-          refetente ao envio de sua{" "}
-          <span className='font-semibold'>teko bag</span> qualquer duvida ou
-          problema entre em contato com nosco via Dm{" "}
+          Obrigado por nos escolher, por favor prossiga com o pagamento do PIX,
+          nossos atendentes entraram em contato em no máximo 2 dias uteis,
+          referente ao envio de sua{" "}
+          <span className='font-semibold'>teko bag</span> qualquer dúvida ou
+          problema entre em contato com nos via Dm{" "}
           <a
             href='https://www.instagram.com/tekobags/'
             target='_blank'
