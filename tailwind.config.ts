@@ -49,6 +49,10 @@ const config: Config = {
 
         // txtcart: "rgb(212 212 216)",
         txtcart: "#000",
+
+        darkgreen: "#3F493D",
+        lightpurple: "#9999CC",
+        vitrinegreen: "#227428",
       },
     },
   },

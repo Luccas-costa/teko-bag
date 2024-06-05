@@ -62,7 +62,7 @@ export default function VitrineFinalizar({
           <div className='font-semibold'>Não há itens em seu carrinho</div>
           <button
             onClick={onclick}
-            className='mt-4 py-2 px-4 border border-black hover:bg-vsand font-semibold rounded'
+            className='mt-4 py-2 px-4 border border-black hover:bg-dourado font-semibold rounded'
           >
             Sair Finalização
           </button>
@@ -115,7 +115,7 @@ export default function VitrineFinalizar({
             </div>
           </div>
           <button
-            className='w-full py-2 mb-2 border border-black hover:bg-vsand font-semibold rounded mt-2'
+            className='w-full py-2 mb-2 border border-black hover:bg-dourado font-semibold rounded mt-2'
             onClick={onclick2}
           >
             Finalizar Compra

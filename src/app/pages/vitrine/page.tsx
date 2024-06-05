@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 import { setNotificationCartHandler } from "@/lib/bags";
-import imagem from "../../../../public/bgvitrine.svg";
+import imagem from "../../../../public/bgvitrine2.svg";
 
 import VitrineHeader from "@/components/vitrine/header/VitrineHeader";
 import VitrineMain from "@/components/vitrine/main/VitrineMain";

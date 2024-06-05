@@ -25,7 +25,7 @@ export default function Footer() {
 
   return (
     <motion.div
-      className='flex flex-col bg-[#9999CC]'
+      className='flex flex-col bg-green2'
       id='footer'
       initial={{ opacity: 0, y: -100 }}
       whileInView={{ opacity: 1, y: 0 }}

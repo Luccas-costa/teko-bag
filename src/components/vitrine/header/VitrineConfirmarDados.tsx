@@ -161,7 +161,7 @@ export default function VitrineConfirmarDados({
       </form>
 
       <button
-        className={`w-full py-2 mb-2 border border-black hover:bg-vsand font-semibold rounded mt-2 uppercase ${
+        className={`w-full py-2 mb-2 border border-black hover:bg-dourado font-semibold rounded mt-2 uppercase ${
           !isFormFilled && "opacity-50 cursor-not-allowed"
         }`}
         onClick={isFormFilled ? onclick2 : undefined}

@@ -23,6 +23,7 @@ export default function VitrineHeader({
   const [Confirmacao, setConfirmacao] = useState(false);
   const [Confirmacao2, setConfirmacao2] = useState(false);
   const [Pagamento, setPagamento] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -56,8 +57,13 @@ export default function VitrineHeader({
               <UserButton />
             </SignedIn>
           </li>
-          <li onClick={handleClick} className='relative'>
-            <Tote size={28} weight={isOpen ? "fill" : "regular"} />
+          <li
+            onClick={handleClick}
+            className='relative'
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <Tote size={28} weight={isOpen || isHovered ? "fill" : "regular"} />
             {notificationCart > 0 && (
               <div className='absolute top-[-3px] right-[-7px] w-4 h-4 rounded-full bg-red-500 font-extrabold text-sm flex justify-center items-center'>
                 {notificationCart > 0 && notificationCart < 9

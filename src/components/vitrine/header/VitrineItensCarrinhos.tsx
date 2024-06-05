@@ -94,7 +94,7 @@ export default function VitrineItensCarrinhos({
           R$ {preco}
         </div>
       </div>
-      <div className='shadow-md absolute right-4 top-[-17px] md:top-[-17px] w-16 h-[1.7rem]  md:w-24 md:h-[1.8rem] bg-vblue border border-zinc-950 flex items-center justify-evenly'>
+      <div className='shadow-md absolute right-4 top-[-17px] md:top-[-17px] w-16 h-[1.7rem]  md:w-24 md:h-[1.8rem] bg-vitrinegreen border border-zinc-950 flex items-center justify-evenly'>
         <button onClick={handleTrash}>
           <Trash size={isMobile ? 16 : 20} weight='bold' />
         </button>
@@ -103,7 +103,7 @@ export default function VitrineItensCarrinhos({
           <Plus size={isMobile ? 17 : 23} />
         </button>
       </div>
-      <div className='shadow rounded-full absolute left-[-16px] top-[-10px] w-[1.2rem] h-[1.2rem] bg-zinc-300 border border-zinc-950 flex items-center justify-center font-semibold'>
+      <div className='shadow rounded-full absolute left-[-16px] top-[-10px] w-[1.2rem] h-[1.2rem] bg-dourado border border-zinc-950 flex items-center justify-center font-semibold'>
         {Quantidade}
       </div>
     </div>

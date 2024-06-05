@@ -4,7 +4,7 @@ import styles from "../index.module.css";
 
 export default function Transicao3() {
   return (
-    <div className={`${styles.geral} bg-[#9999CC] `}>
+    <div className={`${styles.geral} bg-green2 `}>
       <Image
         src='/tilt.svg'
         alt='ondas de transiçao'

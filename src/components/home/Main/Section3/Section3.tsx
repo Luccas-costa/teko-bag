@@ -14,7 +14,7 @@ export default function Section3() {
     <div className={styles.degrade} id='sobre'>
       <div className='flex flex-wrap-reverse items-center justify-center gap-4 pt-28 pb-28'>
         <motion.div
-          className='bg-green3 w-[90vw] h-[70vh] md:w-[700px] md:h-[700px] rounded-l-lg  flex flex-col items-center 2xl:pt-28 sm:pt-28
+          className='bg-darkgreen w-[90vw] h-[70vh] md:w-[700px] md:h-[700px] rounded-l-lg  flex flex-col items-center 2xl:pt-28 sm:pt-28
          pt-32 text-yellow1 text-4xl font-extrabold shadow-2xl'
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}

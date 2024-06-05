@@ -36,7 +36,7 @@ export default function VitrinePagamento({ onclick }: VitrinePagamentoProps) {
       <div className='mt-6 flex flex-col flex-1 items-center space-y-2'>
         <div className='w-full'>
           <Image
-            src={"/QrcodePix.png"}
+            src={"/QrcodePix2.png"}
             alt='Pagamento'
             width={300}
             height={300}
@@ -45,14 +45,28 @@ export default function VitrinePagamento({ onclick }: VitrinePagamentoProps) {
         </div>
         <button
           className={`py-1 border font-semibold text-center border-black w-[30%] rounded-md ${buttonColor}`}
+          style={{ marginBottom: "1rem" }}
           onClick={copyToClipboard}
         >
           Copie e Cola
         </button>
 
-        <div>aqui e onde vai vir o textos</div>
+        <div className='w-[80%] text-zinc-900 text-center'>
+          Obrigado por nos escolher, por favor prociga com o pagamento do pix,
+          nossos atendentes entraram em contato em nos maximo 2 dias uteis,
+          refetente ao envio de sua{" "}
+          <span className='font-semibold'>teko bag</span> qualquer duvida ou
+          problema entre em contato com nosco via Dm{" "}
+          <a
+            href='https://www.instagram.com/tekobags/'
+            target='_blank'
+            className='font-semibold underline'
+          >
+            @tekobags
+          </a>
+        </div>
       </div>
-      <button className='w-full py-2 mb-2 border border-black hover:bg-vsand font-semibold rounded mt-2'>
+      <button className='w-full py-2 mb-2 border border-black hover:bg-dourado font-semibold rounded mt-2'>
         {"->"} Pago! {"->"}
       </button>
     </div>
