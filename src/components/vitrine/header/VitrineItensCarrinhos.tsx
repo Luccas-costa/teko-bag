@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import { Plus } from "lucide-react";
-import { Trash } from "@phosphor-icons/react/dist/ssr";
+import { Minus } from "@phosphor-icons/react/dist/ssr";
 import { useMediaQuery } from "react-responsive";
 
 import {
@@ -96,7 +96,7 @@ export default function VitrineItensCarrinhos({
       </div>
       <div className='shadow-md absolute right-4 top-[-17px] md:top-[-17px] w-16 h-[1.7rem]  md:w-24 md:h-[1.8rem] bg-vitrinegreen border border-zinc-950 flex items-center justify-evenly'>
         <button onClick={handleTrash}>
-          <Trash size={isMobile ? 16 : 20} weight='bold' />
+          <Minus size={isMobile ? 16 : 20} weight='bold' />
         </button>
         <hr className='mx-1 h-[80%] w-[1px] rounded  border-black bg-black rotate-[90] ' />
         <button onClick={handlePlus}>

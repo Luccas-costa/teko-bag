@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 interface VitrineCardProps {
@@ -18,6 +18,16 @@ export default function VitrineCard({
   onAddToCart,
   onCardClick,
 }: VitrineCardProps) {
+  const [buttonText, setButtonText] = useState("Adicionar ao Carrinho");
+
+  const handleAddToCart = () => {
+    onAddToCart();
+    setButtonText("Adicionado");
+    setTimeout(() => {
+      setButtonText("Adicionar ao Carrinho");
+    }, 750);
+  };
+
   return (
     <div
       className='menuxm3:w-96 w-80 min-h-[28rem] bg-[#fff]/30 xl:bg-zinc-200/30 backdrop-blur-xl overflow-hidden rounded cursor-pointer'
@@ -43,10 +53,10 @@ export default function VitrineCard({
           className='w-full py-2 rounded border border-black shadow-lg font-semibold active:border-transparent'
           onClick={(e) => {
             e.stopPropagation();
-            onAddToCart();
+            handleAddToCart();
           }}
         >
-          Adicionar ao Carrinho
+          {buttonText}
         </button>
       </div>
     </div>

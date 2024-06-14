@@ -17,6 +17,7 @@ const VitrineCardModal: React.FC<VitrineCardModalProps> = ({
   onAddToCart,
 }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [buttonText, setButtonText] = useState("Adicionar ao Carrinho");
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,6 +35,14 @@ const VitrineCardModal: React.FC<VitrineCardModalProps> = ({
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleAddToCart = () => {
+    onAddToCart();
+    setButtonText("Adicionado");
+    setTimeout(() => {
+      setButtonText("Adicionar ao Carrinho");
+    }, 750);
+  };
 
   return (
     <div className='w-full h-full relative'>
@@ -61,9 +70,9 @@ const VitrineCardModal: React.FC<VitrineCardModalProps> = ({
         </div>
         <button
           className='w-full py-2 rounded border border-black shadow-lg font-semibold active:border-transparent mt-4 absolute bottom-0 mb-1'
-          onClick={onAddToCart}
+          onClick={handleAddToCart}
         >
-          Adicionar ao Carrinho
+          {buttonText}
         </button>
       </div>
     </div>

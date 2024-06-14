@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-
 import { ArrowLeft } from "lucide-react";
-
+import { Trash } from "@phosphor-icons/react/dist/ssr";
 import {
   newCartbags,
   removeFromNewCartbags,
   addToNewCartbags,
   updateQuantityInCart,
+  clearCart,
 } from "../../../lib/bags";
 import VitrineItensCarrinhos from "./VitrineItensCarrinhos";
 
@@ -54,13 +54,23 @@ export default function VitrineConteudoCarrinho({
     setItens([...newCartbags]);
   };
 
+  const handleClearCart = () => {
+    clearCart();
+    setItens([...newCartbags]);
+  };
+
   return (
     <div className='flex flex-col h-full'>
-      <div className='flex items-center mb-4'>
-        <button onClick={onclick}>
-          <ArrowLeft size={32} />
+      <div className="flex justify-between items-center mb-4">
+        <div className='flex items-center'>
+          <button onClick={onclick}>
+            <ArrowLeft size={32} />
+          </button>
+          <div className='text-2xl font-bold ml-2 text-txtcart'>CARRINHO</div>
+        </div>
+        <button className="mr-1" onClick={handleClearCart}>
+          <Trash size={28} weight='bold' />
         </button>
-        <div className='text-2xl font-bold ml-2 text-txtcart'>CARRINHO</div>
       </div>
       <div className='flex-1 overflow-y-auto space-y-5 pl-[0.45rem] pt-[1rem] pr-[0.2rem]'>
         {itens.length > 0 ? (

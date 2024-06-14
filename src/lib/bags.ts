@@ -17,7 +17,7 @@ export const Cartbags = [
   },
   {
     id: 3,
-    produto: "bag  preta",
+    produto: "bag preta",
     descricao: "teste teste",
     preco: "89,99",
     image: "/bag3.jpg",
@@ -33,7 +33,7 @@ export const Cartbags = [
   },
   {
     id: 5,
-    produto: "bag  roxo",
+    produto: "bag roxo",
     descricao: "teste teste",
     preco: "89,99",
     image: "/bag5.jpg",
@@ -49,7 +49,7 @@ export const Cartbags = [
   },
   {
     id: 7,
-    produto: "bag  lilas",
+    produto: "bag lilas",
     descricao: "teste teste",
     preco: "89,99",
     image: "/bag1.jpg",
@@ -75,7 +75,6 @@ export const Cartbags = [
 
 export const newCartbags: Bag[] = [];
 
-let newCartbagsLength = newCartbags.length;
 let setNotificationCart: (value: number) => void;
 
 export const setNotificationCartHandler = (setter: (value: number) => void) => {
@@ -93,12 +92,11 @@ type Bag = {
 
 const cartBagsProxy = new Proxy(newCartbags, {
   set: function (target, property, value) {
-    console.log("newCartbags foi modificado:", target);
-    newCartbagsLength = target.length;
+    const result = Reflect.set(target, property, value);
     if (setNotificationCart) {
-      setNotificationCart(newCartbagsLength);
+      setNotificationCart(target.length);
     }
-    return Reflect.set(target, property, value);
+    return result;
   },
 });
 
@@ -111,9 +109,8 @@ export const addToNewCartbags = (bag: Omit<Bag, "quantidade">) => {
     cartBagsProxy.push({ ...bag, quantidade: 1 });
   }
 
-  newCartbagsLength = newCartbags.length;
   if (setNotificationCart) {
-    setNotificationCart(newCartbagsLength);
+    setNotificationCart(newCartbags.length);
   }
 };
 
@@ -122,7 +119,7 @@ export const removeFromNewCartbags = (id: number) => {
   if (index !== -1) {
     cartBagsProxy.splice(index, 1);
     if (setNotificationCart) {
-      setNotificationCart(newCartbagsLength - 1);
+      setNotificationCart(newCartbags.length);
     }
   }
 };
@@ -131,5 +128,14 @@ export const updateQuantityInCart = (id: number, newQuantity: number) => {
   const index = cartBagsProxy.findIndex((bag) => bag.id === id);
   if (index !== -1) {
     cartBagsProxy[index].quantidade = newQuantity;
+  }
+};
+
+export const getNewCartbagsLength = () => newCartbags.length;
+
+export const clearCart = () => {
+  newCartbags.length = 0;  // Limpa todos os itens do carrinho
+  if (setNotificationCart) {
+    setNotificationCart(newCartbags.length); // Atualiza o número de itens no carrinho
   }
 };
