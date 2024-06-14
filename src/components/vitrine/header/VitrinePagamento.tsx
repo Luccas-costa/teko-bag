@@ -71,7 +71,7 @@ export default function VitrinePagamento({ onclick }: VitrinePagamentoProps) {
           nossos atendentes entraram em contato em no máximo 2 dias uteis,
           referente ao envio de sua{" "}
           <span className='font-semibold'>teko bag</span> qualquer dúvida ou
-          problema entre em contato com nos via Dm{" "}
+          problema entre em contato com nosco via Dm{" "}
           <a
             href='https://www.instagram.com/tekobags/'
             target='_blank'
