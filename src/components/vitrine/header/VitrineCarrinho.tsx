@@ -11,6 +11,7 @@ interface VitrineCarrinhoProps {
   isOpen: boolean;
   handleClose: () => void;
   handleClose2: () => void;
+  handlerCloseFinal: () => void;
   Finalizar: boolean;
   setFinalizar: (value: boolean) => void;
   Confirmacao: boolean;
@@ -25,6 +26,7 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
   isOpen,
   handleClose,
   handleClose2,
+  handlerCloseFinal,
   Finalizar,
   setFinalizar,
   Confirmacao,
@@ -79,7 +81,10 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
           {Finalizar ? (
             Confirmacao ? (
               Pagamento ? (
-                <VitrinePagamento onclick={handleClose2} />
+                <VitrinePagamento
+                  onclick={handleClose2}
+                  handlerCloseFinal={handlerCloseFinal}
+                />
               ) : (
                 <VitrineFinalizar
                   onclick={handleClose2}

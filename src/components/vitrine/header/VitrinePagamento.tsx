@@ -5,9 +5,13 @@ import styles from "./geral.module.css";
 
 interface VitrinePagamentoProps {
   onclick: () => void;
+  handlerCloseFinal: () => void;
 }
 
-export default function VitrinePagamento({ onclick }: VitrinePagamentoProps) {
+export default function VitrinePagamento({
+  onclick,
+  handlerCloseFinal,
+}: VitrinePagamentoProps) {
   const [buttonColor, setButtonColor] = useState("border-black");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -81,7 +85,10 @@ export default function VitrinePagamento({ onclick }: VitrinePagamentoProps) {
           </a>
         </div>
       </div>
-      <button className='w-full py-2 mb-2 border border-black hover:bg-dourado font-semibold rounded mt-2'>
+      <button
+        className='w-full py-2 mb-2 border border-black hover:bg-dourado font-semibold rounded mt-2'
+        onClick={handlerCloseFinal}
+      >
         {"->"} Pago! {"->"}
       </button>
     </div>

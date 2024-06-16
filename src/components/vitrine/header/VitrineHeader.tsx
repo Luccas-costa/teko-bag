@@ -39,6 +39,16 @@ export default function VitrineHeader({
     setConfirmacao(false);
   };
 
+  const handleFinal = () => {
+    // eu vou querer que ele limpe o carrinho e feche todos os menus
+    setIsOpen(false);
+    setIsOpen2(false);
+    setFinalizar(false);
+    setConfirmacao(false);
+    setConfirmacao2(false);
+    setPagamento(false);
+  };
+
   const firstName = useFirstName();
 
   return (
@@ -96,6 +106,7 @@ export default function VitrineHeader({
               isOpen={isOpen}
               handleClose={handleClose}
               handleClose2={handleClose2}
+              handlerCloseFinal={handleFinal}
               Finalizar={Finalizar}
               setFinalizar={setFinalizar}
               Confirmacao={Confirmacao}

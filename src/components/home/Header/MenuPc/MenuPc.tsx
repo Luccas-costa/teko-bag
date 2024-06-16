@@ -1,16 +1,19 @@
 "use client";
+
+import Link from "next/link";
 import React, { useState } from "react";
 
-import { InstagramLogo } from "@phosphor-icons/react/dist/ssr";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { useUserEmail } from "@/hooks/useUserEmail";
+
+import { InstagramLogo } from "@phosphor-icons/react";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+
 export default function MenuPc() {
   const [isHovered, setIsHovered] = useState(false);
+  const userEmail = useUserEmail();
+
+  const AdmUsers = ["lucaspcosta700@gmail.com"];
+
   return (
     <>
       <ul className='flex space-x-4 items-center'>
@@ -23,6 +26,11 @@ export default function MenuPc() {
         <li className='text-base font-semibold hover:border-b-2 border-black'>
           <a href='#footer'>Contato</a>
         </li>
+        {userEmail && AdmUsers.includes(userEmail) && (
+          <li className='text-base font-semibold hover:border-b-2 border-black'>
+            <Link href='/pages/dashboard'>Dashboard</Link>
+          </li>
+        )}
         <li>
           <SignedIn>
             <UserButton />
