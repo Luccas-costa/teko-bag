@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
+import { AdmUsers } from "@/lib/admEmail";
 import { useUserEmail } from "@/hooks/useUserEmail";
 
 import { InstagramLogo } from "@phosphor-icons/react";
@@ -11,8 +12,6 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 export default function MenuPc() {
   const [isHovered, setIsHovered] = useState(false);
   const userEmail = useUserEmail();
-
-  const AdmUsers = ["lucaspcosta700@gmail.com"];
 
   return (
     <>

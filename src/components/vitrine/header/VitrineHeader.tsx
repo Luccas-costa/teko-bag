@@ -7,6 +7,7 @@ import { Tote } from "@phosphor-icons/react/dist/ssr";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { AnimatePresence } from "framer-motion";
 
+import { clearCart } from "../../../lib/bags";
 import VitrineCarrinho from "./VitrineCarrinho";
 import { useFirstName } from "@/hooks/useFirstName";
 
@@ -47,6 +48,8 @@ export default function VitrineHeader({
     setConfirmacao(false);
     setConfirmacao2(false);
     setPagamento(false);
+
+    clearCart();
   };
 
   const firstName = useFirstName();

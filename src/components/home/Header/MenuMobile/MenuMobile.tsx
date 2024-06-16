@@ -1,13 +1,20 @@
 import React, { useState } from "react";
-import { X } from "@phosphor-icons/react/dist/ssr";
-import { AlignJustify } from "lucide-react";
+import Link from "next/link";
+
+import { AdmUsers } from "@/lib/admEmail";
+import { useUserEmail } from "@/hooks/useUserEmail";
+
 import { motion } from "framer-motion";
+import { AlignJustify } from "lucide-react";
+import { X } from "@phosphor-icons/react/dist/ssr";
 import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
 
 export default function MenuMobile() {
   const [Itmenuopen, setItmenuopen] = useState(false);
   const [divY, setDivY] = useState(-0); // Estado para controlar a posição vertical da div
   const [borda, setBorda] = useState(false);
+
+  const userEmail = useUserEmail();
 
   const handlemenu = () => {
     setItmenuopen(!Itmenuopen);
@@ -22,6 +29,11 @@ export default function MenuMobile() {
   // Função para atualizar a posição vertical da div quando o link "#footer" for clicado
   const handleFooterClick = () => {
     setDivY(96);
+    setBorda(false);
+  };
+
+  const handleDashboardClick = () => {
+    setDivY(144);
     setBorda(false);
   };
 
@@ -105,7 +117,7 @@ export default function MenuMobile() {
               </a>
               <a href='#footer' onClick={handleFooterClick}>
                 <motion.div
-                  className='w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center rounded-b-lg border-b border-l border-white'
+                  className='w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center border-b border-l border-white'
                   initial={{ opacity: 1, y: -96 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 1, y: -96 }}
@@ -114,6 +126,19 @@ export default function MenuMobile() {
                   Contato
                 </motion.div>
               </a>
+              {userEmail && AdmUsers.includes(userEmail) && (
+                <Link href='/pages/dashboard' onClick={handleDashboardClick}>
+                  <motion.div
+                    className='w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center rounded-b-lg border-b border-l border-white'
+                    initial={{ opacity: 1, y: -96 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 1, y: -96 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    Dashboard
+                  </motion.div>
+                </Link>
+              )}
             </div>
           </div>
         </motion.div>
