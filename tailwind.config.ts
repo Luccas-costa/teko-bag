@@ -24,6 +24,18 @@ const config: Config = {
         xm7: "342px",
         sm2: "410px",
         sm3: "100px",
+
+        dash1: "1300px",
+        dash2: "1200px",
+        dash3: "1100px",
+        dash4: "1000px",
+        dash5: "900px",
+        dash6: "800px",
+        dash7: "700px",
+        dash8: "600px",
+        dash9: "500px",
+        dash10: "400px",
+        dash11: "300px",
       },
       colors: {
         green1: "#B9D19D",
