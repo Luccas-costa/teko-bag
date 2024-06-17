@@ -17,6 +17,7 @@
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
     "correios-brasil": "^3.0.6",
+    "dayjs": "^1.11.11",
     "framer-motion": "^11.1.9",
     "gsap": "^3.12.5",
     "lucide-react": "^0.372.0",

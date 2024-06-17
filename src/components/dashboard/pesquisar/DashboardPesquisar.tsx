@@ -1,9 +1,12 @@
 "use client";
 import React, { useState } from "react";
-
 import { MagnifyingGlass } from "@phosphor-icons/react";
 
-export default function DashboardPesquisar() {
+interface DashboardPesquisarProps {
+  onSearch: (value: string) => void;
+}
+
+export default function DashboardPesquisar({ onSearch }: DashboardPesquisarProps) {
   const [inputFocused, setInputFocused] = useState(false);
 
   const handleInputFocus = () => {
@@ -13,6 +16,11 @@ export default function DashboardPesquisar() {
   const handleInputBlur = () => {
     setInputFocused(false);
   };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onSearch(e.target.value);
+  };
+
   return (
     <div className='flex space-x-5 mt-4 ml-3 items-center'>
       <div className='text-3xl text-zinc-300 font-semibold'>Clientes</div>
@@ -30,6 +38,7 @@ export default function DashboardPesquisar() {
           type='text'
           placeholder='Buscar Clientes...'
           className='bg-transparent placeholder-zinc-600 text-zinc-300 text-[0.9rem] focus:outline-none w-full shadow-lg shadow-zinc-900'
+          onChange={handleInputChange}
         ></input>
       </div>
     </div>
