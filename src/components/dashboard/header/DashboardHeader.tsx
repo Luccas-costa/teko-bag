@@ -6,7 +6,7 @@ export default function DashboardHeader() {
     <div className='flex items-center space-x-4 text-zinc-300 text-xl font-semibold'>
       <div>
         <Image
-          src='/logo-dashboard.png'
+          src='/favicon.ico'
           width={100}
           height={100}
           alt='logo'
