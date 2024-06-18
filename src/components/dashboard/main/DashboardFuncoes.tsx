@@ -18,7 +18,7 @@ export default function DashboardFuncoes({
   onPageChange,
 }: DashboardFuncoesProps) {
   return (
-    <div className='h-[40px] w-full border-t border-zinc-700 dash10:px-5 dash10_5:px-2 flex items-center dash9:text-base dash10:text-sm dash10_5:text-xs text-zinc-400 font-semibold justify-between shadow-lg shadow-zinc-900'>
+    <div className='h-[40px] w-full border-y rounded-b-lg border-zinc-700 dash10:px-5 dash10_5:px-2 flex items-center dash9:text-base dash10:text-sm dash10_5:text-xs text-zinc-400 font-semibold justify-between shadow-lg shadow-zinc-900'>
       <div>
         Mostrando {currentPage * 8 - 7} a {Math.min(currentPage * 8, 228)}
       </div>

@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <>
       {userEmail && AdmUsers.includes(userEmail) ? (
-        <div className='w-full h-full flex flex-col dash7:px-12 dash8:pl-[1rem] dash8_5:pl-[1rem] dash8:pr-[1.8rem] dash8_5:pr-[1.8rem] dash9:pr-[0.8rem] dash10:pr-[0.9rem] dash10_5:pr-[0.9rem] py-4 bg-neutral-900'>
+        <div className='w-full h-full flex flex-col dash7:px-12 dash8:pl-[1rem] dash8_5:pl-[1rem] dash8:pr-[1.8rem] dash8_5:pr-[1.8rem] dash9:pr-[0.8rem] dash10:pr-[0.9rem] dash10_5:pr-[0.9rem] py-4 bg-neutral-900 pb-5'>
           <DashboardHeader />
           <DashboardPesquisar onSearch={handleSearch} />
           <DashboardMain searchTerm={searchTerm} />
