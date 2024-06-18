@@ -111,7 +111,7 @@ export default function DashboardClientes({
         </button>
       </div>
       {isOpen && (
-        <div className='h-[50px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-evenly text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
+        <div className='h-[50px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-evenly text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>       
             <button className="flex items-center space-x-1" onClick={handleropenItens}>
               <div>Itens</div>
               <div>
@@ -146,12 +146,25 @@ export default function DashboardClientes({
       )}
       {isOpenItens && (
         isOpen && (
-          <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'></div>
+          <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
+            
+          </div>
         )
       )}
       {isOpenEndereco && (
         isOpen && (
-          <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'></div>
+          <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex flex-col items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative dash8:text-base text-[10px] dash9:text-sm dash10:text-xs'>
+            <div className="h-[40px] w-full flex justify-evenly items-center">
+              <div>Cidade: Taubaté</div>
+              <div>Cep: 12030-212</div>
+              <div>Bairro: Jardim das Nações</div>
+            </div>
+            <div className="h-[40px] w-full flex justify-evenly items-center">
+              <div>Rua/Av: Rua Professor mario Bordine</div>
+              <div>Complemento: 1201 Van Gogh</div>
+              <div>Numero: 1000</div>
+            </div>            
+          </div>
         )
       )}
       {isOpenEmail && (
