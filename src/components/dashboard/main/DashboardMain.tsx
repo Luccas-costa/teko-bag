@@ -12,6 +12,7 @@ interface DashboardMainProps {
 
 export default function DashboardMain({ searchTerm }: DashboardMainProps) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [openClientId, setOpenClientId] = useState<string | null>(null);
   const clientsPerPage = 8;
 
   // Filtra os clientes com base no termo de busca
@@ -43,7 +44,12 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
       <DashboardCFuncoes />
       <div className='flex-1 flex flex-col overflow-auto'>
         {displayedClients.map((client) => (
-          <DashboardClientes key={client.id} {...client} />
+          <DashboardClientes
+            key={client.id}
+            {...client}
+            isOpen={openClientId === client.id}
+            onToggle={() => setOpenClientId(openClientId === client.id ? null : client.id)}
+          />
         ))}
       </div>
       <DashboardFuncoes
