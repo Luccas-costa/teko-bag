@@ -37,6 +37,7 @@ const config: Config = {
         dash9: "500px",
         dash9_5: "450px",
         dash10: "400px",
+        dash10_5: "350px",
         dash11: "300px",
       },
       colors: {
