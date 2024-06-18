@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
 import Link from "next/link";
+import React, { useState } from "react";
+
 import { AdmUsers } from "@/lib/admEmail";
 import { useUserEmail } from "@/hooks/useUserEmail";
 
 import DashboardHeader from "@/components/dashboard/header/DashboardHeader";
 import DashboardMain from "@/components/dashboard/main/DashboardMain";
 import DashboardPesquisar from "@/components/dashboard/pesquisar/DashboardPesquisar";
+import DashboardExit from "@/components/dashboard/DashboardExit";
 
 export default function Page() {
   const userEmail = useUserEmail();
@@ -24,6 +26,7 @@ export default function Page() {
           <DashboardHeader />
           <DashboardPesquisar onSearch={handleSearch} />
           <DashboardMain searchTerm={searchTerm} />
+          <DashboardExit />
         </div>
       ) : (
         <div className='h-[80vh] flex flex-col justify-center items-center space-y-2'>
