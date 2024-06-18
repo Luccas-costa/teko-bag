@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { CaretDown, CaretUp } from "@phosphor-icons/react/dist/ssr";
+import { CaretDown, CaretUp, ClipboardText } from "@phosphor-icons/react";
 
 // Extende o Day.js com o plugin relativeTime e define o locale
 dayjs.extend(relativeTime);
@@ -28,9 +28,13 @@ export default function DashboardClientes({
   isOpen,
   onToggle,
 }: DashboardClientesProps) {
-  const [openItens, setopenItens] = useState(false)
-  const [openEndereco, setopenEndereco] = useState(false)
-  const [openEmail, setopenEmail] = useState(false)
+  const [openItens, setopenItens] = useState(false);
+  const [openEndereco, setopenEndereco] = useState(false);
+  const [openEmail, setopenEmail] = useState(false);
+  const [isOpenItens, setisOpenItens] = useState(false);
+  const [isOpenEndereco, setisOpenEndereco] = useState(false);
+  const [isOpenEmail, setisOpenEmail] = useState(false);
+  const [iconWeight, setIconWeight] = useState<'regular' | 'fill'>('regular');
 
   const format = "DD/MM/YYYY";
   const entradaDate = dayjs(dataEntrada, format);
@@ -40,22 +44,39 @@ export default function DashboardClientes({
   const relativeCompra = compraDate.toNow(true);
 
   const handleropenItens = () => {
-    setopenItens(!openItens)
-    setopenEndereco(false)
-    setopenEmail(false)
-  }
+    setopenItens(!openItens);
+    setopenEndereco(false);
+    setopenEmail(false);
+    setisOpenItens(!isOpenItens);
+    setisOpenEndereco(false);
+    setisOpenEmail(false);
+  };
 
   const handleropenEndereco = () => {
-    setopenEndereco(!openEndereco)
-    setopenItens(false)
-    setopenEmail(false)
-  }
+    setopenEndereco(!openEndereco);
+    setopenItens(false);
+    setopenEmail(false);
+    setisOpenEndereco(!isOpenEndereco);
+    setisOpenItens(false);
+    setisOpenEmail(false);
+  };
 
   const handleropenEmail = () => {
-    setopenEmail(!openEmail)
-    setopenItens(false)
-    setopenEndereco(false)
-  }
+    setopenEmail(!openEmail);
+    setopenItens(false);
+    setopenEndereco(false);
+    setisOpenEmail(!isOpenEmail);
+    setisOpenEndereco(false);
+    setisOpenItens(false);
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(email);
+    setIconWeight('fill');
+    setTimeout(() => {
+      setIconWeight('regular');
+    }, 1000);
+  };
 
   return (
     <>
@@ -91,7 +112,7 @@ export default function DashboardClientes({
       </div>
       {isOpen && (
         <div className='h-[50px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-evenly text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
-            <button className="flex items-center" onClick={handleropenItens}>
+            <button className="flex items-center space-x-1" onClick={handleropenItens}>
               <div>Itens</div>
               <div>
                 {openItens ? (
@@ -101,7 +122,7 @@ export default function DashboardClientes({
                 )}
               </div>
             </button>
-            <button className="flex items-center" onClick={handleropenEndereco}>
+            <button className="flex items-center space-x-1" onClick={handleropenEndereco}>
               <div>Endereço</div>
               <div>
                 {openEndereco ? (
@@ -111,7 +132,7 @@ export default function DashboardClientes({
                 )}
               </div>
             </button>
-            <button className="flex items-center" onClick={handleropenEmail}>
+            <button className="flex items-center space-x-1" onClick={handleropenEmail}>
               <div>Email</div>
               <div>
                 {openEmail ? (
@@ -123,7 +144,26 @@ export default function DashboardClientes({
             </button>
         </div>
       )}
-
+      {isOpenItens && (
+        isOpen && (
+          <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'></div>
+        )
+      )}
+      {isOpenEndereco && (
+        isOpen && (
+          <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'></div>
+        )
+      )}
+      {isOpenEmail && (
+        isOpen && (
+          <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative space-x-2'>
+            <div>{email}</div>
+            <button onClick={copyEmail}>
+              <ClipboardText size={20} weight={iconWeight}/>
+            </button>
+          </div>
+        )
+      )}
     </>
   );
 }
