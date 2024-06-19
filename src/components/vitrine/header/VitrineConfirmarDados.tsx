@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
 import VitrineDivisoriaFinalizar from "./VitrineDivisoriaFinalizar";
+import { Dados } from "@/lib/confirmarDados";
+import { newCartbags } from "@/lib/bags";
 
 interface VitrineConfirmarDadosProps {
   onclick: () => void;
@@ -8,61 +10,86 @@ interface VitrineConfirmarDadosProps {
   setDesconto: (value: boolean) => void;
 }
 
-export default function VitrineConfirmarDados({
+const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
   onclick,
   onclick2,
   setDesconto,
-}: VitrineConfirmarDadosProps) {
-  const [value, setValue] = useState("");
+}) => {
+  const [instagram, setInstagram] = useState("");
+  const [email, setEmail] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [rua, setRua] = useState("");
+  const [complemento, setComplemento] = useState("");
+  const [numero, setNumero] = useState("");
   const [cep, setCep] = useState("");
-  const [corCidade, setCorCidade] = useState(false);
-  const [isFormFilled, setIsFormFilled] = useState(false);
+  const [cidade, setCidade] = useState("");
   const [cupomInput, setCupomInput] = useState("");
-  const cupom = "TEKOTEKO";
+  const [corCidade, setCorCidade] = useState(false);
 
   useEffect(() => {
     // Verifica se todos os campos estão preenchidos
-    setIsFormFilled(!!value && !!cep && corCidade);
-  }, [value, cep, corCidade]);
+    const filled =
+      instagram !== "" &&
+      email !== "" &&
+      bairro !== "" &&
+      rua !== "" &&
+      complemento !== "" &&
+      numero !== "" &&
+      cep !== "" &&
+      cidade !== "" &&
+      corCidade;
+
+    setIsFormFilled(filled);
+  }, [
+    instagram,
+    email,
+    bairro,
+    rua,
+    complemento,
+    numero,
+    cep,
+    cidade,
+    corCidade,
+  ]);
+
+  const [isFormFilled, setIsFormFilled] = useState(false);
 
   // input do instagram
   const handleFocus = () => {
-    if (!value.includes("@")) {
-      setValue("@");
+    if (!instagram.includes("@")) {
+      setInstagram("@");
     }
   };
 
   const handleBlur = () => {
-    if (value === "@") {
-      setValue("");
+    if (instagram === "@") {
+      setInstagram("");
     }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let newValue = e.target.value;
-    // Substitui duas ocorrências consecutivas de @ por uma única ocorrência
-    if (newValue.includes("@@")) {
-      newValue = newValue.replace(/@@/g, "@");
-    }
-    setValue(newValue);
-  };
-
-  // Função para formatar o CEP
-  const handleCepChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let newCep = e.target.value.replace(/\D/g, ""); // Remove tudo que não for dígito
-    if (newCep.length > 5) {
-      newCep = newCep.slice(0, 5) + "-" + newCep.slice(5, 8);
-    }
-    if (newCep.length > 9) {
-      newCep = newCep.slice(0, 9); // Limita a 9 caracteres (8 dígitos + 1 hífen)
-    }
-    setCep(newCep);
   };
 
   const handleCupomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newCupom = e.target.value.replace(/\s+/g, "").toUpperCase();
     setCupomInput(newCupom);
-    setDesconto(newCupom === cupom);
+    setDesconto(newCupom === "TEKOTEKO");
+  };
+
+  const handleAvancarClick = () => {
+    const data = {
+      instagram,
+      email,
+      bairro,
+      rua,
+      complemento,
+      numero,
+      cep,
+      cidade,
+    };
+
+    Dados.push(data);
+    console.log("///////////////");
+    console.log(Dados);
+
+    onclick2();
   };
 
   return (
@@ -77,12 +104,20 @@ export default function VitrineConfirmarDados({
       <form className='flex-1 flex-col'>
         <input
           type='text'
-          value={value}
-          onChange={handleChange}
+          value={instagram}
+          onChange={(e) => setInstagram(e.target.value)}
           onFocus={handleFocus}
           onBlur={handleBlur}
           placeholder='@ do Instagram'
-          className='w-full bg-transparent rounded border border-black py-2 px-2 mt-6 mb-4 text-black font-semibold'
+          className='w-full bg-transparent rounded border border-black py-2 px-2 mt-6 mb-2 text-black font-semibold'
+        />
+
+        <input
+          type='text'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder='Email para contato'
+          className='w-full bg-transparent rounded border border-black py-2 px-2 mt-2 mb-4 text-black font-semibold'
         />
 
         <div className='w-[90%] mx-auto'>
@@ -92,11 +127,15 @@ export default function VitrineConfirmarDados({
         <div className='flex space-x-2'>
           <input
             type='text'
+            value={bairro}
+            onChange={(e) => setBairro(e.target.value)}
             placeholder='Bairro'
             className='w-full bg-transparent rounded border border-black py-2 px-2 mt-6 text-black font-semibold'
           />
           <input
             type='text'
+            value={rua}
+            onChange={(e) => setRua(e.target.value)}
             placeholder='Rua / Av'
             className='w-1/2 bg-transparent rounded border border-black py-2 px-2 mt-6 text-black font-semibold'
           />
@@ -105,11 +144,15 @@ export default function VitrineConfirmarDados({
         <div className='flex space-x-2'>
           <input
             type='text'
+            value={complemento}
+            onChange={(e) => setComplemento(e.target.value)}
             placeholder='Complemento'
             className='w-1/2 bg-transparent rounded border border-black py-2 px-2 mt-6 text-black font-semibold'
           />
           <input
             type='text'
+            value={numero}
+            onChange={(e) => setNumero(e.target.value)}
             placeholder='Número'
             className='w-1/2 bg-transparent rounded border border-black py-2 px-2 mt-6 text-black font-semibold'
           />
@@ -118,13 +161,15 @@ export default function VitrineConfirmarDados({
         <div className='flex space-x-2'>
           <select
             id='cidadeSelect'
+            value={cidade}
+            onChange={(e) => {
+              setCidade(e.target.value);
+              setCorCidade(e.target.value !== "");
+            }}
             className='w-[60%] bg-transparent rounded border border-black py-2 px-2 mt-6 font-semibold'
-            onChange={(e) => setCorCidade(e.target.value !== "")}
             style={{ color: corCidade ? "black" : "#939DAC" }}
           >
-            <option value='' disabled selected>
-              Escolha uma cidade
-            </option>
+            <option value=''>Escolha uma cidade</option>
             <option value='Taubaté'>Taubaté</option>
             <option value='Pindamonhangaba'>Pindamonhangaba</option>
             <option value='Tremembé'>Tremembé</option>
@@ -134,9 +179,11 @@ export default function VitrineConfirmarDados({
 
           <input
             type='text'
-            placeholder='Cep'
             value={cep}
-            onChange={handleCepChange}
+            onChange={(e) =>
+              setCep(e.target.value.replace(/\D/g, "").slice(0, 9))
+            }
+            placeholder='Cep'
             className='w-[40%] bg-transparent rounded border border-black py-2 px-2 mt-6 text-black font-semibold'
           />
         </div>
@@ -147,28 +194,31 @@ export default function VitrineConfirmarDados({
         <div className='mb-4'>
           <input
             type='text'
-            placeholder='Cupom de desconto'
             value={cupomInput}
             onChange={handleCupomChange}
-            className='w-full bg-transparent rounded border border-black py-2 px-2 mt-6  text-black font-semibold'
+            placeholder='Cupom de desconto'
+            className='w-full bg-transparent rounded border border-black py-2 px-2 mt-6 text-black font-semibold'
           />
-          {cupomInput === cupom && (
+          {cupomInput === "TEKOTEKO" && (
             <div className='text-green-600 font-bold'>
               Cupom válido! Desconto aplicado.
             </div>
           )}
         </div>
-      </form>
 
-      <button
-        className={`w-full py-2 mb-2 border border-black hover:bg-dourado font-semibold rounded mt-2 uppercase ${
-          !isFormFilled && "opacity-50 cursor-not-allowed"
-        }`}
-        onClick={isFormFilled ? onclick2 : undefined}
-        disabled={!isFormFilled}
-      >
-        Avançar
-      </button>
+        <button
+          type='button' // Defina explicitamente o tipo como "button"
+          className={`w-full py-2 mb-2 border border-black hover:bg-dourado font-semibold rounded mt-2 uppercase ${
+            !isFormFilled && "opacity-50 cursor-not-allowed"
+          }`}
+          onClick={isFormFilled ? handleAvancarClick : undefined}
+          disabled={!isFormFilled}
+        >
+          Avançar
+        </button>
+      </form>
     </div>
   );
-}
+};
+
+export default VitrineConfirmarDados;

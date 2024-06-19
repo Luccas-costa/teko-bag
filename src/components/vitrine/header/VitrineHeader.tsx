@@ -7,17 +7,19 @@ import { Tote } from "@phosphor-icons/react/dist/ssr";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { AnimatePresence } from "framer-motion";
 
-import { clearCart } from "../../../lib/bags";
+import { insertBD } from "@/utils/insertBD";
+import { Dados } from "@/lib/confirmarDados";
 import VitrineCarrinho from "./VitrineCarrinho";
 import { useFirstName } from "@/hooks/useFirstName";
+import { clearCart, newCartbags } from "../../../lib/bags";
 
 interface VitrineHeaderProps {
   notificationCart: number;
 }
 
-export default function VitrineHeader({
+const VitrineHeader: React.FC<VitrineHeaderProps> = ({
   notificationCart,
-}: VitrineHeaderProps) {
+}: VitrineHeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [Finalizar, setFinalizar] = useState(false);
@@ -40,16 +42,74 @@ export default function VitrineHeader({
     setConfirmacao(false);
   };
 
-  const handleFinal = () => {
-    // eu vou querer que ele limpe o carrinho e feche todos os menus
+  const idAleatorio = () => {
+    const id = Math.floor(10000 + Math.random() * 90000);
+    return id.toString();
+  };
+
+  const handleFinal = async () => {
+    //   console.log({
+    //     externalid: "C545140382", // Substitua pelo ID externo adequado
+    //     email: Dados.email,
+    //     bairro: Dados.bairro,
+    //     rua: Dados.rua,
+    //     complemento: dadosCliente.complemento,
+    //     numero: dadosCliente.numero,
+    //     cidade: dadosCliente.cidade,
+    //     cep: dadosCliente.cep,
+    //     instagram: dadosCliente.instagram,
+    //     itens: newCartbags.map((item) => ({
+    //       produto: item.produto, // Supondo que 'produto' seja o campo desejado em cada item
+    //     })),
+    //   }),
+    // };
+
+    const id = idAleatorio();
+    const itens = newCartbags.map((bag) => bag.produto).join(", ");
+    const quantidade = newCartbags
+      .map((bag) => bag.quantidade)
+      .join(", ")
+      .toString();
+
+    console.log({
+      id: id,
+      email: Dados[0].email,
+      instagram: Dados[0].instagram,
+      bairro: Dados[0].bairro,
+      rua: Dados[0].rua,
+      complemento: Dados[0].complemento,
+      nurmo: Dados[0].numero,
+      cep: Dados[0].cep,
+      cidade: Dados[0].cidade,
+      itens: itens,
+      quantidade: quantidade,
+    });
+
+    await insertBD({
+      id: id,
+      email: Dados[0].email,
+      instagram: Dados[0].instagram,
+      bairro: Dados[0].bairro,
+      rua: Dados[0].rua,
+      complemento: Dados[0].complemento,
+      nurmo: Dados[0].numero,
+      cep: Dados[0].cep,
+      cidade: Dados[0].cidade,
+      itens: itens,
+      quantidade: quantidade,
+    });
+
+    // Limpar carrinho após salvar os dados
+    clearCart();
+
+    // Fechar modais e limpar estados de confirmação
     setIsOpen(false);
     setIsOpen2(false);
     setFinalizar(false);
     setConfirmacao(false);
     setConfirmacao2(false);
     setPagamento(false);
-
-    clearCart();
+    // Tratar erros, se necessário
   };
 
   const firstName = useFirstName();
@@ -124,4 +184,6 @@ export default function VitrineHeader({
       </AnimatePresence>
     </header>
   );
-}
+};
+
+export default VitrineHeader;

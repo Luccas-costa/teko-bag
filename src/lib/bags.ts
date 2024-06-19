@@ -134,7 +134,7 @@ export const updateQuantityInCart = (id: number, newQuantity: number) => {
 export const getNewCartbagsLength = () => newCartbags.length;
 
 export const clearCart = () => {
-  newCartbags.length = 0;  // Limpa todos os itens do carrinho
+  newCartbags.length = 0; // Limpa todos os itens do carrinho
   if (setNotificationCart) {
     setNotificationCart(newCartbags.length); // Atualiza o número de itens no carrinho
   }

@@ -9,7 +9,9 @@ import VitrineFooter from "@/components/vitrine/footer/VitrineFooter";
 
 export default function Vitrine() {
   // Definindo o estado para o número de itens no carrinho
-  const [notificationCart, setNotificationCart] = useState(getNewCartbagsLength());
+  const [notificationCart, setNotificationCart] = useState(
+    getNewCartbagsLength()
+  );
 
   useEffect(() => {
     setNotificationCartHandler(setNotificationCart);
@@ -20,7 +22,7 @@ export default function Vitrine() {
   }, []);
 
   return (
-    <div className="w-full h-full bg-transparent flex flex-col relative">
+    <div className='w-full h-full bg-transparent flex flex-col relative'>
       <div
         className={`absolute -z-10 h-full w-full bg-cover`}
         style={{

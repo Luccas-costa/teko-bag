@@ -34,7 +34,7 @@ export default function DashboardClientes({
   const [isOpenItens, setisOpenItens] = useState(false);
   const [isOpenEndereco, setisOpenEndereco] = useState(false);
   const [isOpenEmail, setisOpenEmail] = useState(false);
-  const [iconWeight, setIconWeight] = useState<'regular' | 'fill'>('regular');
+  const [iconWeight, setIconWeight] = useState<"regular" | "fill">("regular");
 
   const format = "DD/MM/YYYY";
   const entradaDate = dayjs(dataEntrada, format);
@@ -72,9 +72,9 @@ export default function DashboardClientes({
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
-    setIconWeight('fill');
+    setIconWeight("fill");
     setTimeout(() => {
-      setIconWeight('regular');
+      setIconWeight("regular");
     }, 1000);
   };
 
@@ -100,7 +100,8 @@ export default function DashboardClientes({
         <div className='dash6:text-base dash7:text-sm dash9:text-xs dash10:text-[11px] dash10_5:text-[11px] text-zinc-400'>
           {relativeCompra} atrás
         </div>
-        <button className='dash9_5:w-8 dash9_5:h-8 dash10:w-6 dash10:h-6 border absolute dash7:right-5 dash8:right-[0.6rem] dash9:right-2 dash10:right-2 dash10_5:right-[6px] border-zinc-700 dash9_5:rounded-lg dash10:rounded-md dash10_5:rounded-md flex items-center justify-center z-1 bg-zinc-900'
+        <button
+          className='dash9_5:w-8 dash9_5:h-8 dash10:w-6 dash10:h-6 border absolute dash7:right-5 dash8:right-[0.6rem] dash9:right-2 dash10:right-2 dash10_5:right-[6px] border-zinc-700 dash9_5:rounded-lg dash10:rounded-md dash10_5:rounded-md flex items-center justify-center z-1 bg-zinc-900'
           onClick={onToggle}
         >
           {isOpen ? (
@@ -111,71 +112,82 @@ export default function DashboardClientes({
         </button>
       </div>
       {isOpen && (
-        <div className='h-[50px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-evenly text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>       
-            <button className="flex items-center space-x-1" onClick={handleropenItens}>
-              <div>Itens</div>
-              <div>
-                {openItens ? (
-                  <CaretUp size={15} weight='bold' />
-                ) : (
-                  <CaretDown size={15} weight='bold' />
-                )}
-              </div>
-            </button>
-            <button className="flex items-center space-x-1" onClick={handleropenEndereco}>
-              <div>Endereço</div>
-              <div>
-                {openEndereco ? (
-                  <CaretUp size={15} weight='bold' />
-                ) : (
-                  <CaretDown size={15} weight='bold' />
-                )}
-              </div>
-            </button>
-            <button className="flex items-center space-x-1" onClick={handleropenEmail}>
-              <div>Email</div>
-              <div>
-                {openEmail ? (
-                  <CaretUp size={15} weight='bold' />
-                ) : (
-                  <CaretDown size={15} weight='bold' />
-                )}
-              </div>
-            </button>
+        <div className='h-[50px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-evenly text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
+          <button
+            className='flex items-center space-x-1'
+            onClick={handleropenItens}
+          >
+            <div>Itens</div>
+            <div>
+              {openItens ? (
+                <CaretUp size={15} weight='bold' />
+              ) : (
+                <CaretDown size={15} weight='bold' />
+              )}
+            </div>
+          </button>
+          <button
+            className='flex items-center space-x-1'
+            onClick={handleropenEndereco}
+          >
+            <div>Endereço</div>
+            <div>
+              {openEndereco ? (
+                <CaretUp size={15} weight='bold' />
+              ) : (
+                <CaretDown size={15} weight='bold' />
+              )}
+            </div>
+          </button>
+          <button
+            className='flex items-center space-x-1'
+            onClick={handleropenEmail}
+          >
+            <div>Email</div>
+            <div>
+              {openEmail ? (
+                <CaretUp size={15} weight='bold' />
+              ) : (
+                <CaretDown size={15} weight='bold' />
+              )}
+            </div>
+          </button>
         </div>
       )}
-      {isOpenItens && (
-        isOpen && (
-          <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
-            
-          </div>
-        )
+      {isOpenItens && isOpen && (
+        <div className='h-[300px] w-full border-y border-zinc-700 py-1 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex flex-col items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
+          <div>Bag rosa X | Quantidade 2</div>
+          <hr className='w-[75%] h-2 dash9:w-1/2 dash6:w-1/3 dash5:w-1/4 dash4:w-1/4 dash2:w-1/5' />
+          <div>Bag rosa X | Quantidade 2</div>
+          <hr className='w-[75%] h-2 dash9:w-1/2 dash6:w-1/3 dash5:w-1/4 dash4:w-1/4 dash2:w-1/5' />
+          <div>Bag rosa X | Quantidade 2</div>
+          <hr className='w-[75%] h-2 dash9:w-1/2 dash6:w-1/3 dash5:w-1/4 dash4:w-1/4 dash2:w-1/5' />
+          <div>Bag rosa X | Quantidade 2</div>
+          <hr className='w-[75%] h-2 dash9:w-1/2 dash6:w-1/3 dash5:w-1/4 dash4:w-1/4 dash2:w-1/5' />
+          <div>Bag rosa X | Quantidade 2</div>
+        </div>
       )}
-      {isOpenEndereco && (
-        isOpen && (
-          <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex flex-col items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative dash8:text-base text-[10px] dash9:text-sm dash10:text-xs'>
-            <div className="h-[40px] w-full flex justify-evenly items-center">
-              <div>Cidade: Taubaté</div>
-              <div>Cep: 12030-212</div>
-              <div>Bairro: Jardim das Nações</div>
-            </div>
-            <div className="h-[40px] w-full flex justify-evenly items-center">
-              <div>Rua/Av: Rua Professor mario Bordine</div>
-              <div>Complemento: 1201 Van Gogh</div>
-              <div>Numero: 1000</div>
-            </div>            
+      {isOpenEndereco && isOpen && (
+        <div className='h-[200px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative dash8:text-base text-[10px] dash9:text-sm dash10:text-xs'>
+          <div className='h-[100px] w-1/2 flex justify-evenly items-center flex-col'>
+            <div>Cidade: Taubaté</div>
+            <div>Cep: 12030-212</div>
+            <div>Bairro: Jardim das Nações</div>
           </div>
-        )
+          <div className='h-[100px] w-1/2 flex justify-evenly items-center flex-col space-y-2'>
+            <div>Rua/Av: Rua Professor mario Bordine</div>
+            <div>Complemento: 1201 Van Gogh</div>
+            <div>Numero: 1000</div>
+          </div>
+        </div>
       )}
-      {isOpenEmail && (
-        isOpen && (
-          <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative space-x-2'>
-            <div>{email}</div>
-            <button onClick={copyEmail}>
-              <ClipboardText size={20} weight={iconWeight}/>
-            </button>
-          </div>
-        )
+      {isOpenEmail && isOpen && (
+        <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative space-x-2'>
+          <div>{email}</div>
+          <button onClick={copyEmail}>
+            <ClipboardText size={20} weight={iconWeight} />
+          </button>
+        </div>
       )}
     </>
   );
