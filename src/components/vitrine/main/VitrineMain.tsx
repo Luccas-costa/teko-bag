@@ -1,9 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Cartbags, addToNewCartbags, newCartbags } from "../../../lib/bags";
+import Link from "next/link";
+import Modal from "./Modal";
+
+import { Cartbags, addToNewCartbags, newCartbags } from "@/lib/bags";
+
 import VitrineCard from "./VitrineCard";
 import VitrineDivisoria from "../VitrineDivisoria";
-import Modal from "./Modal";
 import VitrineCardModal from "./VitrineCardModal";
 
 type Bag = {
@@ -53,6 +56,13 @@ export default function VitrineMain() {
           />
         ))}
       </div>
+
+      <Link
+        href='/'
+        className='mx-auto rounded flex items-center justify-center py-2 w-[95%] mb-2 bg-white/30'
+      >
+        Voltar a Home
+      </Link>
 
       {selectedBag && (
         <Modal onClose={closeModal}>
