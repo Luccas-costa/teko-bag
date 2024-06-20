@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-import { AdmUsers } from "@/lib/admEmail";
+import { AdmUsers, AdmUsersDados } from "@/lib/admEmail";
 import { useUserEmail } from "@/hooks/useUserEmail";
 
 import { InstagramLogo } from "@phosphor-icons/react";
@@ -28,6 +28,11 @@ export default function MenuPc() {
         {userEmail && AdmUsers.includes(userEmail) && (
           <li className='text-base font-semibold hover:border-b-2 border-black'>
             <Link href='/pages/dashboard'>Dashboard</Link>
+          </li>
+        )}
+        {userEmail && AdmUsersDados.includes(userEmail) && (
+          <li className='text-base font-semibold hover:border-b-2 border-black'>
+            <Link href='/pages/configpage'>Configuração</Link>
           </li>
         )}
         <li>

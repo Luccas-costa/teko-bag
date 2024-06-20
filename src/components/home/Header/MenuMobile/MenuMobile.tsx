@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import { AdmUsers } from "@/lib/admEmail";
+import { AdmUsers, AdmUsersDados } from "@/lib/admEmail";
 import { useUserEmail } from "@/hooks/useUserEmail";
 
 import { motion } from "framer-motion";
@@ -129,13 +129,30 @@ export default function MenuMobile() {
               {userEmail && AdmUsers.includes(userEmail) && (
                 <Link href='/pages/dashboard' onClick={handleDashboardClick}>
                   <motion.div
-                    className='w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center rounded-b-lg border-b border-l border-white'
+                    className={`w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center ${
+                      userEmail && AdmUsers.includes(userEmail)
+                        ? "rounded-none"
+                        : "rounded-b-lg"
+                    } border-b border-l border-white`}
                     initial={{ opacity: 1, y: -96 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 1, y: -96 }}
                     transition={{ duration: 0.6 }}
                   >
                     Dashboard
+                  </motion.div>
+                </Link>
+              )}
+              {userEmail && AdmUsersDados.includes(userEmail) && (
+                <Link href='/pages/dashboard' onClick={handleDashboardClick}>
+                  <motion.div
+                    className='w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center rounded-b-lg border-b border-l border-white'
+                    initial={{ opacity: 1, y: -96 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 1, y: -96 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    Configuração
                   </motion.div>
                 </Link>
               )}
