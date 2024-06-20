@@ -1,23 +1,31 @@
-import { createPool } from "@vercel/postgres";
+import { Client } from "@vercel/postgres";
 
-const postgresUrl =
-  process.env.POSTGRES_URL ||
-  "postgres://default:WzFiPHu40jEG@ep-lucky-mouse-a4i2wfc3-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require";
+// Função para deletar cliente do banco de dados
+export async function DeletClientBD(clientId: string): Promise<void> {
+  const client = new Client({
+    connectionString: process.env.POSTGRES_URL,
+    ssl: {
+      rejectUnauthorized: false, // Apenas necessário se estiver usando SSL localmente
+    },
+  });
 
-const pool = createPool({
-  connectionString: postgresUrl,
-});
-
-export async function DeletClientBD(clientId: string): Promise<number> {
   try {
-    const client = await pool.connect();
-    const result = await client.query(`DELETE FROM ClientesC WHERE id = $1`, [
-      clientId,
-    ]);
-    client.release(); // Liberar cliente de volta ao pool
-    return result.rowCount; // Retorna o número de linhas afetadas (deletadas)
+    await client.connect(); // Conecta ao banco de dados
+
+    // Query para deletar o cliente pelo ID
+    const query = {
+      text: "DELETE FROM ClientesC WHERE id = $1",
+      values: [clientId],
+    };
+
+    // Executa a query
+    await client.query(query);
+
+    console.log(`Cliente com ID ${clientId} deletado com sucesso.`);
   } catch (error) {
     console.error("Erro ao deletar cliente:", error);
     throw new Error("Erro ao deletar cliente do banco de dados");
+  } finally {
+    await client.end(); // Fecha a conexão com o banco de dados
   }
 }
