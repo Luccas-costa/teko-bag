@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-
 import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { CaretDown, CaretUp, ClipboardText } from "@phosphor-icons/react";
 
-// Extende o Day.js com o plugin relativeTime e define o locale
 dayjs.extend(relativeTime);
 dayjs.locale("pt-br");
 
@@ -17,6 +15,8 @@ interface DashboardClientesProps {
   dataCompra: string;
   isOpen: boolean;
   onToggle: () => void;
+  itens: string;
+  quantidades: string; // Corrigido para 'quantidades' (plural)
 }
 
 export default function DashboardClientes({
@@ -27,13 +27,15 @@ export default function DashboardClientes({
   dataCompra,
   isOpen,
   onToggle,
+  itens,
+  quantidades, // Corrigido para 'quantidades' (plural)
 }: DashboardClientesProps) {
-  const [openItens, setopenItens] = useState(false);
-  const [openEndereco, setopenEndereco] = useState(false);
-  const [openEmail, setopenEmail] = useState(false);
-  const [isOpenItens, setisOpenItens] = useState(false);
-  const [isOpenEndereco, setisOpenEndereco] = useState(false);
-  const [isOpenEmail, setisOpenEmail] = useState(false);
+  const [openItens, setOpenItens] = useState(false);
+  const [openEndereco, setOpenEndereco] = useState(false);
+  const [openEmail, setOpenEmail] = useState(false);
+  const [isOpenItens, setIsOpenItens] = useState(false);
+  const [isOpenEndereco, setIsOpenEndereco] = useState(false);
+  const [isOpenEmail, setIsOpenEmail] = useState(false);
   const [iconWeight, setIconWeight] = useState<"regular" | "fill">("regular");
 
   const format = "DD/MM/YYYY";
@@ -43,31 +45,31 @@ export default function DashboardClientes({
   const relativeEntrada = entradaDate.toNow(true);
   const relativeCompra = compraDate.toNow(true);
 
-  const handleropenItens = () => {
-    setopenItens(!openItens);
-    setopenEndereco(false);
-    setopenEmail(false);
-    setisOpenItens(!isOpenItens);
-    setisOpenEndereco(false);
-    setisOpenEmail(false);
+  const handlerOpenItens = () => {
+    setOpenItens(!openItens);
+    setOpenEndereco(false);
+    setOpenEmail(false);
+    setIsOpenItens(!isOpenItens);
+    setIsOpenEndereco(false);
+    setIsOpenEmail(false);
   };
 
-  const handleropenEndereco = () => {
-    setopenEndereco(!openEndereco);
-    setopenItens(false);
-    setopenEmail(false);
-    setisOpenEndereco(!isOpenEndereco);
-    setisOpenItens(false);
-    setisOpenEmail(false);
+  const handlerOpenEndereco = () => {
+    setOpenEndereco(!openEndereco);
+    setOpenItens(false);
+    setOpenEmail(false);
+    setIsOpenEndereco(!isOpenEndereco);
+    setIsOpenItens(false);
+    setIsOpenEmail(false);
   };
 
-  const handleropenEmail = () => {
-    setopenEmail(!openEmail);
-    setopenItens(false);
-    setopenEndereco(false);
-    setisOpenEmail(!isOpenEmail);
-    setisOpenEndereco(false);
-    setisOpenItens(false);
+  const handlerOpenEmail = () => {
+    setOpenEmail(!openEmail);
+    setOpenItens(false);
+    setOpenEndereco(false);
+    setIsOpenEmail(!isOpenEmail);
+    setIsOpenEndereco(false);
+    setIsOpenItens(false);
   };
 
   const copyEmail = () => {
@@ -78,9 +80,12 @@ export default function DashboardClientes({
     }, 1000);
   };
 
+  const itensArray = itens.split(",");
+  const quantidadesArray = quantidades.split(",");
+
   return (
     <>
-      <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 flex items-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
+      <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
         <input
           type='checkbox'
           className='w-4 h-4 appearance-none bg-transparent border border-zinc-700 rounded shadow-lg checked:bg-[#849994] dash7:mr-8 dash8:mr-4 dash8_5:mr-3 dash9:mr-2 dash10:mr-1  dash10_5:mr-1'
@@ -115,7 +120,7 @@ export default function DashboardClientes({
         <div className='h-[50px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-evenly text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
           <button
             className='flex items-center space-x-1'
-            onClick={handleropenItens}
+            onClick={handlerOpenItens}
           >
             <div>Itens</div>
             <div>
@@ -128,7 +133,7 @@ export default function DashboardClientes({
           </button>
           <button
             className='flex items-center space-x-1'
-            onClick={handleropenEndereco}
+            onClick={handlerOpenEndereco}
           >
             <div>Endereço</div>
             <div>
@@ -141,7 +146,7 @@ export default function DashboardClientes({
           </button>
           <button
             className='flex items-center space-x-1'
-            onClick={handleropenEmail}
+            onClick={handlerOpenEmail}
           >
             <div>Email</div>
             <div>
@@ -156,15 +161,14 @@ export default function DashboardClientes({
       )}
       {isOpenItens && isOpen && (
         <div className='h-[300px] w-full border-y border-zinc-700 py-1 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex flex-col items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
-          <div>Bag rosa X | Quantidade 2</div>
-          <hr className='w-[75%] h-2 dash9:w-1/2 dash6:w-1/3 dash5:w-1/4 dash4:w-1/4 dash2:w-1/5' />
-          <div>Bag rosa X | Quantidade 2</div>
-          <hr className='w-[75%] h-2 dash9:w-1/2 dash6:w-1/3 dash5:w-1/4 dash4:w-1/4 dash2:w-1/5' />
-          <div>Bag rosa X | Quantidade 2</div>
-          <hr className='w-[75%] h-2 dash9:w-1/2 dash6:w-1/3 dash5:w-1/4 dash4:w-1/4 dash2:w-1/5' />
-          <div>Bag rosa X | Quantidade 2</div>
-          <hr className='w-[75%] h-2 dash9:w-1/2 dash6:w-1/3 dash5:w-1/4 dash4:w-1/4 dash2:w-1/5' />
-          <div>Bag rosa X | Quantidade 2</div>
+          {itensArray.map((item, index) => (
+            <React.Fragment key={index}>
+              <div>
+                {item} | Quantidade {quantidadesArray[index]}
+              </div>
+              <hr className='w-[75%] h-2 dash9:w-1/2 dash6:w-1/3 dash5:w-1/4 dash4:w-1/4 dash2:w-1/5' />
+            </React.Fragment>
+          ))}
         </div>
       )}
       {isOpenEndereco && isOpen && (

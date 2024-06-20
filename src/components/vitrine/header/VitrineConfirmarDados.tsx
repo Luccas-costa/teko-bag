@@ -208,7 +208,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
 
         <button
           type='button' // Defina explicitamente o tipo como "button"
-          className={`w-full py-2 mb-2 border border-black hover:bg-dourado font-semibold rounded mt-2 uppercase ${
+          className={`w-full py-2 mb-2 border border-black hover:bg-dourado font-semibold rounded mt-2 uppercase absolute bottom-1 ${
             !isFormFilled && "opacity-50 cursor-not-allowed"
           }`}
           onClick={isFormFilled ? handleAvancarClick : undefined}

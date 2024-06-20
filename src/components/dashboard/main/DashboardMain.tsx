@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import { clients } from "../../../lib/clientes";
+import React, { useState, useEffect } from "react";
+
 import dayjs from "dayjs";
+import { Client } from "@/types/Client";
+import { SearchBD } from "@/utils/searchBD";
 
 import DashboardCFuncoes from "./DashboardCFuncoes";
 import DashboardFuncoes from "./DashboardFuncoes";
@@ -11,18 +13,30 @@ interface DashboardMainProps {
 }
 
 export default function DashboardMain({ searchTerm }: DashboardMainProps) {
+  const [clients, setClients] = useState<Client[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [openClientId, setOpenClientId] = useState<string | null>(null);
   const clientsPerPage = 8;
 
-  // Filtra os clientes com base no termo de busca
+  useEffect(() => {
+    const fetchClients = async () => {
+      try {
+        const data = await SearchBD();
+        setClients(data);
+      } catch (error) {
+        console.error("Erro ao buscar dados:", error);
+      }
+    };
+
+    fetchClients();
+  }, []);
+
   const filteredClients = clients.filter(
     (client) =>
       client.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
       client.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Ordena os clientes pela data de compra, do mais novo para o mais antigo
   const sortedClients = filteredClients.sort((a, b) => {
     return dayjs(b.dataCompra).diff(dayjs(a.dataCompra));
   });
@@ -47,8 +61,11 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
           <DashboardClientes
             key={client.id}
             {...client}
+            dataEntrada={client.dataCompra} // Certifique-se de passar a dataEntrada
             isOpen={openClientId === client.id}
-            onToggle={() => setOpenClientId(openClientId === client.id ? null : client.id)}
+            onToggle={() =>
+              setOpenClientId(openClientId === client.id ? null : client.id)
+            }
           />
         ))}
       </div>
