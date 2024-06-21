@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { DeletClientBD } from "@/utils/deletClientBD";
+import { DeletClientBD } from "@/utils/deletClientBD"; // Certifique-se de ajustar o caminho conforme necessário
 
 export default function ConfigPage() {
   const [clientId, setClientId] = useState<string>("");
@@ -32,7 +32,7 @@ export default function ConfigPage() {
     <div className='w-screen h-screen flex flex-col items-center justify-center bg-zinc-800'>
       <div className='border border-white-200 rounded p-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[80%]'>
         <h1 className='text-center text-3xl font-semibold text-zinc-200 mb-4'>
-          Excluir Cliente2
+          Excluir Cliente
         </h1>
         <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
           <label className='flex flex-col'>
