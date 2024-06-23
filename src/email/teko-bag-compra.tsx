@@ -42,7 +42,7 @@ export const TekoBagCompraEmail = ({
               width='50'
               height='50'
               alt='Teko bag'
-              className='mx-auto w-[150px] h-[150px] bg-green2 rounded-lg'
+              className='mx-auto w-[150px] h-[150px] bg-green-500 rounded-lg'
             />
             <Hr style={hr} />
             <Text style={paragraph} className='text-center mb-10'>
@@ -53,7 +53,8 @@ export const TekoBagCompraEmail = ({
               termino dos dois dias uteis
             </Text>
             <Text style={paragraph} className='text-center'>
-              A compra foi feita no nome de: {nome}
+              A compra foi feita no nome de:{" "}
+              <span className='font-semibold text-black'>{nome}</span>
               <span className='font-semibold text-black'>{comprador}</span>{" "}
               provedor do email:{" "}
               <span className='font-semibold text-black'>{email}</span> e do
@@ -141,7 +142,7 @@ const button = {
   textDecoration: "none",
   textAlign: "center" as const,
   display: "block",
-  width: "100%",
+  width: "95%",
   padding: "10px",
 };
 
