@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import {
   Body,
   Button,
@@ -23,7 +22,7 @@ interface TekoBagCompraEmailProps {
   nome?: string;
 }
 
-export const TekoBagCompraEmail = ({
+export const TekoBagCompraEmailCliente = ({
   subtitulo = "",
   comprador = "",
   email = "",
@@ -46,11 +45,12 @@ export const TekoBagCompraEmail = ({
             />
             <Hr style={hr} />
             <Text style={paragraph} className='text-center mb-10'>
-              Acabaram de fazer uma compra no site da{" "}
-              <span className='font-bold text-black'>teko bag</span> entao
-              partiu la atender que temos{" "}
+              Muito obrigado por nos escolher para a compra de sua{" "}
+              <span className='font-bold text-black'>teko bag</span>. Em no
+              máximo 2 dias uteis um de nossos atendentes entrara em contato
+              para confirmar sua entrega{" "}
               <span className='font-bold text-black'>47:56:43</span> horas até o
-              termino dos dois dias uteis
+              termino dos dois dias uteis.
             </Text>
             <Text style={paragraph} className='text-center'>
               A compra foi feita no nome de:{" "}
@@ -62,32 +62,19 @@ export const TekoBagCompraEmail = ({
               <span className='font-semibold text-black'>{instagram}</span>
             </Text>
             <Hr style={hr} />
-            <Text style={paragraph} className='text-center'>
-              Para acessar o dashboard do{" "}
-              <Link
-                style={anchor}
-                href='https://teko-bag.vercel.app/pages/dashboard'
-              >
-                site
-              </Link>{" "}
-              <br />
-              <span className='font-semibold text-zinc-500'>
-                "Lembrar de estar com o login de ADM no site"
-              </span>
-            </Text>
             <Button
               style={button}
               href='https://teko-bag.vercel.app/pages/dashboard'
             >
-              View your Teko Bag Dashboard
+              View site Teko Bag
             </Button>
             <Text style={paragraph}>
-              Quaisquer duvida ou pergunta, por favor entrar em contato com o{" "}
+              Quaisquer dúvida ou pergunta, por favor entrar em contato com o{" "}
               {""}
-              <Link style={anchor} href=''>
-                support site
+              <Link style={anchor} href='https://www.instagram.com/tekobags/'>
+                support Instagram
               </Link>
-              . Estaremos a disposição para responder quaiquer questionamento.
+              . Estaremos à disposição para responder qualquer questionamento.
             </Text>
             <Text style={paragraph}>— The Teko-Bag team</Text>
             <Hr style={hr} />
@@ -101,7 +88,7 @@ export const TekoBagCompraEmail = ({
   </Html>
 );
 
-export default TekoBagCompraEmail;
+export default TekoBagCompraEmailCliente;
 
 const main = {
   backgroundColor: "#f6f9fc",
