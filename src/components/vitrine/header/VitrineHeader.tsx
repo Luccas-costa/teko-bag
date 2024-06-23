@@ -12,6 +12,7 @@ import { Dados } from "@/lib/confirmarDados";
 import VitrineCarrinho from "./VitrineCarrinho";
 import { useFirstName } from "@/hooks/useFirstName";
 import { clearCart, newCartbags } from "../../../lib/bags";
+import { sendEmailCompra } from "@/utils/sendEmailCompra";
 
 interface VitrineHeaderProps {
   notificationCart: number;
@@ -27,6 +28,8 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
   const [Confirmacao2, setConfirmacao2] = useState(false);
   const [Pagamento, setPagamento] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
+  const firstName = useFirstName();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -48,22 +51,6 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
   };
 
   const handleFinal = async () => {
-    //   console.log({
-    //     externalid: "C545140382", // Substitua pelo ID externo adequado
-    //     email: Dados.email,
-    //     bairro: Dados.bairro,
-    //     rua: Dados.rua,
-    //     complemento: dadosCliente.complemento,
-    //     numero: dadosCliente.numero,
-    //     cidade: dadosCliente.cidade,
-    //     cep: dadosCliente.cep,
-    //     instagram: dadosCliente.instagram,
-    //     itens: newCartbags.map((item) => ({
-    //       produto: item.produto, // Supondo que 'produto' seja o campo desejado em cada item
-    //     })),
-    //   }),
-    // };
-
     const id = idAleatorio();
     const itens = newCartbags.map((bag) => bag.produto).join(", ");
     const quantidade = newCartbags
@@ -99,6 +86,14 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
       quantidade: quantidade,
     });
 
+    // Chamar a função de envio de email
+    await sendEmailCompra({
+      subtitulo: "Teko Bag",
+      email: Dados[0].email,
+      instagram: Dados[0].instagram,
+      nome: `${firstName}`, // nome vindo do clerk
+    });
+
     // Limpar carrinho após salvar os dados
     clearCart();
 
@@ -111,8 +106,6 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
     setPagamento(false);
     // Tratar erros, se necessário
   };
-
-  const firstName = useFirstName();
 
   return (
     <header className='w-full py-3 flex justify-between items-center px-2 space-x-2 mb-2 bg-transparent'>
