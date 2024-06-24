@@ -13,6 +13,7 @@ import VitrineCarrinho from "./VitrineCarrinho";
 import { useFirstName } from "@/hooks/useFirstName";
 import { clearCart, newCartbags } from "../../../lib/bags";
 import { sendEmailCompra } from "@/utils/sendEmailCompra";
+import { sendEmailCompraCliente } from "@/utils/sendEmailCompraCliente";
 
 interface VitrineHeaderProps {
   notificationCart: number;
@@ -88,6 +89,13 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
 
     // Chamar a função de envio de email
     await sendEmailCompra({
+      subtitulo: "Teko Bag",
+      email: Dados[0].email,
+      instagram: Dados[0].instagram,
+      nome: `${firstName}`, // nome vindo do clerk
+    });
+
+    await sendEmailCompraCliente({
       subtitulo: "Teko Bag",
       email: Dados[0].email,
       instagram: Dados[0].instagram,

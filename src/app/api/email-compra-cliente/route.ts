@@ -1,5 +1,3 @@
-// esse ainda nao funciona por nao ter dominio pago, por isso nao da para fazer para enviar email para outro que nao seja o meu do site
-
 import { TekoBagCompraEmailCliente } from "@/email/teko-bag-compra-cliente";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
