@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
     const data = await resend.emails.send({
       from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_EMAIL}>`,
-      to: ["tekobag@gmail.com"],
+      to: [email],
       subject: "Obrigado por comprar na teko bag!",
       react: TekoBagCompraEmailCliente({
         subtitulo,

@@ -11,6 +11,7 @@ import { insertBD } from "@/utils/insertBD";
 import { Dados } from "@/lib/confirmarDados";
 import VitrineCarrinho from "./VitrineCarrinho";
 import { useFirstName } from "@/hooks/useFirstName";
+import { useUserEmail } from "@/hooks/useUserEmail";
 import { clearCart, newCartbags } from "../../../lib/bags";
 import { sendEmailCompra } from "@/utils/sendEmailCompra";
 import { sendEmailCompraCliente } from "@/utils/sendEmailCompraCliente";
@@ -50,6 +51,8 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
     const id = Math.floor(10000 + Math.random() * 90000);
     return id.toString();
   };
+
+  const userEmail = useUserEmail();
 
   const handleFinal = async () => {
     const id = idAleatorio();
