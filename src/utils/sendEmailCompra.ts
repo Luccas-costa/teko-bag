@@ -12,21 +12,18 @@ export const sendEmailCompra = async ({
   nome,
 }: sendEmailCompraProps) => {
   try {
-    const response = await fetch(
-      "https://teko-bag.vercel.app/api/email-compra",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          subtitulo,
-          email,
-          instagram,
-          nome,
-        }),
-      }
-    );
+    const response = await fetch("https://teko-bag.com/api/email-compra", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        subtitulo,
+        email,
+        instagram,
+        nome,
+      }),
+    });
 
     if (!response.ok) {
       throw new Error("Erro ao enviar o email");

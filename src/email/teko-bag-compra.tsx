@@ -38,7 +38,7 @@ export const TekoBagCompraEmail = ({
         <Container style={container}>
           <Section className='w-full h-full py-2 px-4'>
             <Img
-              src='	https://teko-bag.vercel.app/_next/image?url=%2Flogo-transparente.png&w=64&q=75'
+              src='	https://teko-bag.com/_next/image?url=%2Flogo-transparente.png&w=64&q=75'
               width='50'
               height='50'
               alt='Teko bag'
@@ -66,7 +66,7 @@ export const TekoBagCompraEmail = ({
               Para acessar o dashboard do{" "}
               <Link
                 style={anchor}
-                href='https://teko-bag.vercel.app/pages/dashboard'
+                href='https://teko-bag.com/pages/dashboard'
               >
                 site
               </Link>{" "}
@@ -77,7 +77,7 @@ export const TekoBagCompraEmail = ({
             </Text>
             <Button
               style={button}
-              href='https://teko-bag.vercel.app/pages/dashboard'
+              href='https://teko-bag.com/pages/dashboard'
             >
               View your Teko Bag Dashboard
             </Button>
