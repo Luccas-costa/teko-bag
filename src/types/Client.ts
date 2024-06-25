@@ -11,5 +11,5 @@ export interface Client {
   itens: string;
   quantidades: string;
   nome: string;
-  dataCompra: string;
+  // dataCompra: string;
 }
