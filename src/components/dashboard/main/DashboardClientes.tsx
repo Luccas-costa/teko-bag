@@ -11,8 +11,8 @@ interface DashboardClientesProps {
   id: string;
   nome: string;
   email: string;
-  dataEntrada: string;
-  dataCompra: string;
+  dataEntrada: string; // Deve ser uma string formatada como "YYYY-MM-DD HH:mm:ss"
+  dataCompra: string; // Certifique-se de que dataCompra está corretamente formatada
   isOpen: boolean;
   onToggle: () => void;
   itens: string;
@@ -38,7 +38,7 @@ export default function DashboardClientes({
   const [isOpenEmail, setIsOpenEmail] = useState(false);
   const [iconWeight, setIconWeight] = useState<"regular" | "fill">("regular");
 
-  const format = "DD/MM/YYYY";
+  const format = "DD/MM/YYYY HH:mm:ss"; // Formato esperado para exibição
   const entradaDate = dayjs(dataEntrada, format);
   const compraDate = dayjs(dataCompra, format);
 
@@ -180,9 +180,9 @@ export default function DashboardClientes({
             <div>Bairro: Jardim das Nações</div>
           </div>
           <div className='h-[100px] w-1/2 flex justify-evenly items-center flex-col space-y-2'>
-            <div>Rua/Av: Rua Professor mario Bordine</div>
+            <div>Rua/Av: Rua Professor Mario Bordine</div>
             <div>Complemento: 1201 Van Gogh</div>
-            <div>Numero: 1000</div>
+            <div>Número: 1000</div>
           </div>
         </div>
       )}

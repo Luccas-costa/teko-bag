@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-
 import dayjs from "dayjs";
 import { Client } from "@/types/Client";
 import { SearchBD } from "@/utils/searchBD";
-
 import DashboardCFuncoes from "./DashboardCFuncoes";
 import DashboardFuncoes from "./DashboardFuncoes";
 import DashboardClientes from "./DashboardClientes";
@@ -31,7 +29,13 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
     fetchClients();
   }, []);
 
-  const filteredClients = clients.filter(
+  // Formate as datas ao buscar os clientes
+  const formattedClients = clients.map((client) => ({
+    ...client,
+    dataCompraFormatted: dayjs(client.dataCompra).format("YYYY-MM-DD HH:mm:ss"),
+  }));
+
+  const filteredClients = formattedClients.filter(
     (client) =>
       client.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
       client.email.toLowerCase().includes(searchTerm.toLowerCase())
@@ -61,7 +65,7 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
           <DashboardClientes
             key={client.id}
             {...client}
-            dataEntrada={client.dataCompra} // Certifique-se de passar a dataEntrada
+            dataEntrada={client.dataCompraFormatted} // Use a data formatada aqui
             isOpen={openClientId === client.id}
             onToggle={() =>
               setOpenClientId(openClientId === client.id ? null : client.id)
