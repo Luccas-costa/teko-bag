@@ -75,6 +75,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
       cidade: Dados[0].cidade,
       itens: itens,
       quantidade: quantidade,
+      datacompra: datacompra,
     });
 
     await insertBD({
