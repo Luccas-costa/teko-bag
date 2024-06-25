@@ -75,7 +75,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
       cidade: Dados[0].cidade,
       itens: itens,
       quantidade: quantidade,
-      // datacompra: datacompra,
+      datacompra: datacompra,
     });
 
     await insertBD({
@@ -90,7 +90,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
       cidade: Dados[0].cidade,
       itens: itens,
       quantidade: quantidade,
-      datacompra: "2023-05-10",
+      datacompra: datacompra,
     });
 
     // Chamar a função de envio de email
