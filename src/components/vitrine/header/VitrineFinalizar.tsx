@@ -46,8 +46,10 @@ export default function VitrineFinalizar({
   }, 0);
 
   // Calcular o valor do desconto
+  const valorFrete = 5.99
   const valorDesconto = desconto ? total * 0 : 0; // aqui no *0 eu escolho o quanto quero por de desconto e so por tipo 15% = 0.15
   const totalComDesconto = total - valorDesconto;
+  const totalFinal = totalComDesconto + valorFrete;
 
   return (
     <div className='flex flex-col h-full'>
@@ -98,10 +100,10 @@ export default function VitrineFinalizar({
           </div>
           <div className='text-end'>
             {desconto == false || desconto == null || desconto == undefined ? (
-              <div className='font-bold text-base'>Frete: R$ 19,99</div>
+              <div className='font-bold text-base'>Frete: R$ 5,99</div>
             ) : (
               <div className='font-bold text-base relative line-through'>
-                Frete: R$ 12,99
+                Frete: R$ 5,99
               </div>
             )}
 
@@ -111,7 +113,7 @@ export default function VitrineFinalizar({
               </div>
             )} */}
             <div className='font-bold '>
-              Total: R$ {totalComDesconto.toFixed(2).replace(".", ",")}
+              Total: R$ {desconto ? totalComDesconto.toFixed(2).replace(".", ",") : totalFinal.toFixed(2).replace(".", ",")}
             </div>
           </div>
           <button

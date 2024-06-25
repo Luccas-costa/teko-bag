@@ -32,7 +32,7 @@ export default function MenuPc() {
         )}
         {userEmail && AdmUsersDados.includes(userEmail) && (
           <li className='text-base font-semibold hover:border-b-2 border-black'>
-            <Link href='/pages/configpage'>Configuração</Link>
+            <Link href='/pages/configpage'>Configurações</Link>
           </li>
         )}
         <li>

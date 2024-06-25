@@ -144,7 +144,7 @@ export default function MenuMobile() {
                 </Link>
               )}
               {userEmail && AdmUsersDados.includes(userEmail) && (
-                <Link href='/pages/dashboard' onClick={handleDashboardClick}>
+                <Link href='/pages/configpage' onClick={handleDashboardClick}>
                   <motion.div
                     className='w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center rounded-b-lg border-b border-l border-white'
                     initial={{ opacity: 1, y: -96 }}
@@ -152,7 +152,7 @@ export default function MenuMobile() {
                     exit={{ opacity: 1, y: -96 }}
                     transition={{ duration: 0.6 }}
                   >
-                    Configuração
+                    Configurações
                   </motion.div>
                 </Link>
               )}

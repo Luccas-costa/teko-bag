@@ -89,7 +89,7 @@ export default function VitrinePagamento({
         className='w-full py-2 mb-2 border border-black hover:bg-dourado font-semibold rounded mt-2'
         onClick={handlerCloseFinal}
       >
-        {"->"} Pago! {"->"}
+        {"<-"} Pago! {"<-"}
       </button>
     </div>
   );
