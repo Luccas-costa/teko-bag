@@ -94,14 +94,11 @@ export default function DashboardClientes({
         <div className='dash3:w-[10rem] dash4:w-[7rem] dash5:w-[6rem] dash6:w-[5rem] dash6:text-base dash7:w-[5rem] dash8:w-[5rem] dash8_5:w-[3.8rem] dash7:text-sm dash9:text-xs dash10:text-[11px] dash10_5:text-[11px] dash9:w-[4rem] dash10:w-[3rem] dash10_5:w-[3rem]  text-zinc-400'>
           {id}
         </div>
-        <div className='dash1:w-[28rem] dash2:w-[19rem] dash3:w-[15rem] dash4:w-[14rem] dash5:w-[13rem] dash6:w-[12rem] dash6:text-base dash7:w-[10.5rem] dash7:text-sm dash8:w-[9rem] dash8_5:w-[9rem] dash9:text-xs dash10:text-[11px] dash10_5:text-[11px] dash9:w-[8.5rem] dash9_5:w-[8rem] dash10:w-[7.6rem] dash10_5:w-[4rem] flex flex-col '>
+        <div className='dash1:w-[28rem] dash2:w-[28rem] dash3:w-[25rem] dash4:w-[23rem] dash5:w-[20rem] dash6:w-[18rem] dash6:text-base dash7:w-[15rem] dash7:text-sm dash8:w-[14rem] dash8_5:w-[13rem] dash9:text-xs dash10:text-[11px] dash10_5:text-[11px] dash9:w-[12rem] dash9_5:w-[12rem] dash10:w-[10rem] dash10_5:w-[8rem] flex flex-col '>
           <div>{nome}</div>
-          <div className='text-zinc-500 dash7:text-sm dash8:text-xs dash10_5:text-[10px] dash10:block dash10_5:hidden'>
+          <div className='text-zinc-500 dash7:text-sm dash8:text-xs dash10_5:text-[10px] dash10:w-full dash10_5:w-[7rem] truncate '>
             {email}
           </div>
-        </div>
-        <div className='dash1:w-[22.4rem] dash2:w-[18rem] dash3:w-[15rem] dash4:w-[14rem] dash5:w-[13rem] dash6:w-[10rem] dash6:text-base dash7:w-[8rem] dash7:text-sm dash8:w-[7.5rem] dash9:w-[7.5rem] dash9_5:w-[6.5rem] dash9:text-xs dash10:text-[11px] dash10_5:text-[11px] dash10:w-[5rem] dash10_5:w-[5.3rem] text-zinc-400'>
-          {relativeEntrada} atrás
         </div>
         <div className='dash6:text-base dash7:text-sm dash9:text-xs dash10:text-[11px] dash10_5:text-[11px] text-zinc-400'>
           {relativeCompra} atrás
