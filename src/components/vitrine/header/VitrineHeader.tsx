@@ -12,8 +12,9 @@ import { Dados } from "@/lib/confirmarDados";
 import VitrineCarrinho from "./VitrineCarrinho";
 import { useFirstName } from "@/hooks/useFirstName";
 import { useUserEmail } from "@/hooks/useUserEmail";
-import { clearCart, newCartbags } from "../../../lib/bags";
 import { sendEmailCompra } from "@/utils/sendEmailCompra";
+import { clearCart, newCartbags } from "../../../lib/bags";
+import { getFormattedDate } from "@/utils/diaAtual";
 import { sendEmailCompraCliente } from "@/utils/sendEmailCompraCliente";
 
 interface VitrineHeaderProps {
@@ -52,7 +53,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
     return id.toString();
   };
 
-  const userEmail = useUserEmail();
+  const datacompra = getFormattedDate();
 
   const handleFinal = async () => {
     const id = idAleatorio();
@@ -88,6 +89,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
       cidade: Dados[0].cidade,
       itens: itens,
       quantidade: quantidade,
+      datacompra: datacompra,
     });
 
     // Chamar a função de envio de email

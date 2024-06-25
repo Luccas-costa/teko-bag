@@ -5,8 +5,6 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.EMAIL_API_KEY);
 
 export async function POST(req: NextRequest) {
-  // const userEmail = useUserEmail(); depois achar um jeito de mandar o email do comprador via o body pois desta maneira nao funciona
-  // const userEmail = useUserEmail(); depois achar um jeito de mandar o email do comprador via o body pois desta maneira nao funciona
   try {
     const { subtitulo, email, instagram, nome } = await req.json();
 
