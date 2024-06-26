@@ -1,3 +1,4 @@
+import BotaoIndicaScroll from "@/components/home/BotaoIndicaScroll";
 import BotaoVoltarAoTopo from "@/components/home/BotaoVoltarAoTopo";
 import Footer from "@/components/home/Footer/Footer";
 import Header from "@/components/home/Header/Header";
@@ -18,6 +19,9 @@ export default function Home() {
 
       {/* botao voltar ao topo */}
       <BotaoVoltarAoTopo />
+
+      {/* botao indica scroll */}
+      <BotaoIndicaScroll />
     </div>
   );
 }

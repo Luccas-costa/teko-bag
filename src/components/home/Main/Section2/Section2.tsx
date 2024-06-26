@@ -3,7 +3,7 @@ import Cards from "./Cards/Cards";
 
 export default function Section2() {
   return (
-    <div className='flex flex-col bg-darkgreen w-full h-full'>
+    <div className='flex flex-col bg-darkgreen w-full h-full' id='impacto'>
       <div className='pl-14 pr-14 pb-28'>
         <div className='flex flex-col 2xl:mt-16 xl:mt-12 md:mt-10 sm:mt-8 mt-6'>
           <div className='text-5xl font-bold text-white text-center'>
