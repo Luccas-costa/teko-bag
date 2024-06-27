@@ -36,7 +36,14 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
   const firstName = useFirstName();
 
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    if (Agradecimento) {
+      setIsOpen(!isOpen)
+      setFinalizar(true)
+      setConfirmacao(true)
+      setPagamento(true)
+    } else {
+      setIsOpen(!isOpen);
+    }
   };
 
   const handleClose = () => {
