@@ -20,6 +20,7 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
     const fetchClients = async () => {
       try {
         const data = await SearchBD();
+        console.log("Dados buscados do banco de dados:", data);
         setClients(data);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
@@ -34,6 +35,7 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
     ...client,
     dataCompraFormatted: dayjs(client.dataCompra).format("YYYY-MM-DD HH:mm:ss"),
   }));
+  console.log("Clientes formatados:", formattedClients);
 
   // Filtra os clientes com base no termo de busca
   const filteredClients = formattedClients.filter(
@@ -41,11 +43,15 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
       client.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
       client.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  console.log("Clientes filtrados:", filteredClients);
 
   // Ordena os clientes do mais recente ao mais antigo
   const sortedClients = filteredClients.sort((a, b) => {
-    return dayjs(b.dataCompra).diff(dayjs(a.dataCompra));
+    const diff = dayjs(b.dataCompra).diff(dayjs(a.dataCompra));
+    console.log(`Comparando ${b.nome} (${b.dataCompra}) com ${a.nome} (${a.dataCompra}): ${diff}`);
+    return diff;
   });
+  console.log("Clientes ordenados:", sortedClients);
 
   // Calcula o número total de páginas
   const totalPages = Math.ceil(sortedClients.length / clientsPerPage);
@@ -55,6 +61,7 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
     (currentPage - 1) * clientsPerPage,
     currentPage * clientsPerPage
   );
+  console.log("Clientes exibidos na página atual:", displayedClients);
 
   // Manipula a mudança de página
   const handlePageChange = (newPage: number) => {
