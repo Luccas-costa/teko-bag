@@ -33,7 +33,7 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
   // Formate as datas ao buscar os clientes
   const formattedClients = clients.map((client) => ({
     ...client,
-    dataCompraFormatted: dayjs(client.dataCompra).format("YYYY-MM-DD HH:mm:ss"),
+    dataCompraFormatted: client.dataCompra ? dayjs(client.dataCompra).format("YYYY-MM-DD HH:mm:ss") : null,
   }));
   console.log("Clientes formatados:", formattedClients);
 
@@ -47,6 +47,8 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
 
   // Ordena os clientes do mais recente ao mais antigo
   const sortedClients = filteredClients.sort((a, b) => {
+    if (!a.dataCompra) return 1;
+    if (!b.dataCompra) return -1;
     const diff = dayjs(b.dataCompra).diff(dayjs(a.dataCompra));
     console.log(`Comparando ${b.nome} (${b.dataCompra}) com ${a.nome} (${a.dataCompra}): ${diff}`);
     return diff;

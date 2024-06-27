@@ -11,7 +11,7 @@ interface DashboardClientesProps {
   id: string;
   nome: string;
   email: string;
-  dataEntrada: string; // Deve ser uma string formatada como "YYYY-MM-DD HH:mm:ss"
+  dataEntrada: string | null; // Deve ser uma string formatada como "YYYY-MM-DD HH:mm:ss"
   dataCompra: string; // Certifique-se de que dataCompra está corretamente formatada
   isOpen: boolean;
   onToggle: () => void;
