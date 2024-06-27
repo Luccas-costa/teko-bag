@@ -35,22 +35,28 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
     dataCompraFormatted: dayjs(client.dataCompra).format("YYYY-MM-DD HH:mm:ss"),
   }));
 
+  // Filtra os clientes com base no termo de busca
   const filteredClients = formattedClients.filter(
     (client) =>
       client.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
       client.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Ordena os clientes do mais recente ao mais antigo
   const sortedClients = filteredClients.sort((a, b) => {
     return dayjs(b.dataCompra).diff(dayjs(a.dataCompra));
   });
 
+  // Calcula o número total de páginas
   const totalPages = Math.ceil(sortedClients.length / clientsPerPage);
+
+  // Obtém os clientes a serem exibidos na página atual
   const displayedClients = sortedClients.slice(
     (currentPage - 1) * clientsPerPage,
     currentPage * clientsPerPage
   );
 
+  // Manipula a mudança de página
   const handlePageChange = (newPage: number) => {
     if (newPage > 0 && newPage <= totalPages) {
       setCurrentPage(newPage);
