@@ -30,6 +30,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
   const [Confirmacao, setConfirmacao] = useState(false);
   const [Confirmacao2, setConfirmacao2] = useState(false);
   const [Pagamento, setPagamento] = useState(false);
+  const [Agradecimento, setAgradecimento] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   const firstName = useFirstName();
@@ -46,6 +47,15 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
     setIsOpen2(false);
     setFinalizar(false);
     setConfirmacao(false);
+  };
+
+  const handleClose3 = () => {
+    setIsOpen(false);
+    setIsOpen2(false);
+    setFinalizar(false);
+    setConfirmacao(false);
+    setPagamento(false);
+    setAgradecimento(true);
   };
 
   const idAleatorio = () => {
@@ -110,15 +120,16 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
 
     // Limpar carrinho após salvar os dados
     clearCart();
+  };
 
-    // Fechar modais e limpar estados de confirmação
+  const handlerCloseAgradecimento = () => {
     setIsOpen(false);
     setIsOpen2(false);
     setFinalizar(false);
     setConfirmacao(false);
     setConfirmacao2(false);
     setPagamento(false);
-    // Tratar erros, se necessário
+    setAgradecimento(false);
   };
 
   return (
@@ -170,7 +181,13 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
         {isOpen && (
           <div
             className='fixed inset-0 z-40 flex'
-            onClick={Finalizar ? handleClose2 : handleClose}
+            onClick={
+              Agradecimento
+                ? handleClose3
+                : Finalizar
+                ? handleClose2
+                : handleClose
+            } // vou ter que mexer aqui
           >
             <VitrineCarrinho
               isOpen={isOpen}
@@ -185,6 +202,10 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
               setConfirmacao2={setConfirmacao2}
               Pagamento={Pagamento}
               setPagamento={setPagamento}
+              handleClose3={handleClose3}
+              handlerCloseAgradecimento={handlerCloseAgradecimento}
+              Agradecimento={Agradecimento}
+              setAgradecimento={setAgradecimento}
             />
           </div>
         )}

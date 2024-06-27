@@ -6,6 +6,7 @@ import VitrineFinalizar from "./VitrineFinalizar";
 import VitrineConfirmarDados from "./VitrineConfirmarDados";
 import VitrineConteudoCarrinho from "./VitrineConteudoCarrinho";
 import Imagem from "../../../../public/bglateralmenufinalizar.svg";
+import VitrineAgradecimento from "./VitrineAgradecimento";
 
 interface VitrineCarrinhoProps {
   isOpen: boolean;
@@ -20,6 +21,10 @@ interface VitrineCarrinhoProps {
   setConfirmacao2: (value: boolean) => void;
   Pagamento: boolean;
   setPagamento: (value: boolean) => void;
+  handleClose3: () => void;
+  handlerCloseAgradecimento: () => void;
+  Agradecimento: boolean;
+  setAgradecimento: (value: boolean) => void;
 }
 
 const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
@@ -35,6 +40,10 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
   setConfirmacao2,
   Pagamento,
   setPagamento,
+  handleClose3,
+  handlerCloseAgradecimento,
+  Agradecimento,
+  setAgradecimento,
 }) => {
   const [desconto, setDesconto] = useState(true);
 
@@ -56,6 +65,11 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
 
   const handlePagamento = () => {
     setPagamento(true); // quando eu pagar resetar para false
+  };
+
+  const handleAgradecimento = () => {
+    setAgradecimento(true);
+    handlerCloseFinal();
   };
 
   return (
@@ -81,10 +95,17 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
           {Finalizar ? (
             Confirmacao ? (
               Pagamento ? (
-                <VitrinePagamento
-                  onclick={handleClose2}
-                  handlerCloseFinal={handlerCloseFinal}
-                />
+                Agradecimento ? (
+                  <VitrineAgradecimento
+                    onclick={handleClose3}
+                    handlerCloseAgradecimento={handlerCloseAgradecimento}
+                  />
+                ) : (
+                  <VitrinePagamento
+                    onclick={handleClose2}
+                    handlerCloseFinal={handleAgradecimento}
+                  />
+                )
               ) : (
                 <VitrineFinalizar
                   onclick={handleClose2}
