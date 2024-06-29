@@ -24,6 +24,7 @@ export default function Footer() {
   }, []);
 
   return (
+    <div>     
     <motion.div
       className='flex flex-col bg-green2'
       id='footer'
@@ -54,5 +55,6 @@ export default function Footer() {
       </div>
       <Developed />
     </motion.div>
+    </div>
   );
 }
