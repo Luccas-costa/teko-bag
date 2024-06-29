@@ -24,7 +24,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <div clasName="bg-yellow1">     
+    <div clasName="bg-green2">     
     <motion.div
       className='flex flex-col bg-green2'
       id='footer'
