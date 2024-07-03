@@ -13,7 +13,7 @@ const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
       onClick={onClose}
     >
       <div
-        className='bg-zinc-400/50 2xl:w-[40%] h-[85%] xl:w-[50%] lg:w-[60%] md:w-[70%] sm:w-[78%] w-[85%] p-4 backdrop-blur-xl overflow-hidden rounded cursor-pointer relative'
+        className='bg-zinc-400/50 2xl:w-[40%] dash9:h-[85%] dash9_5:h-[90%] dash10:h-[90%] dash10_5:h-[95%] dash11:h-[95%] h-[97%] xl:w-[50%] lg:w-[60%] md:w-[70%] sm:w-[78%] w-[85%] p-4 backdrop-blur-xl overflow-hidden rounded cursor-pointer relative'
         onClick={(e) => e.stopPropagation()}
       >
         <X

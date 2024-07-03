@@ -1,74 +1,108 @@
 export const Cartbags = [
   {
     id: 1,
-    produto: "bag verde",
-    descricao: "teste teste",
+    produto: "Bag turma do Mickey",
+    descricao:
+      "Estampa com o rosto dos quatro integrantes da turma do Mickey: Donald, Minnie, Mickey e Pateta",
     preco: "45,00",
-    image: "/bag1.jpg",
+    image: [
+      "/bags/bag-mikey-3.jpg",
+      "/bags/bag-mikey-2.jpg",
+      "/bags/bag-mikey-1.jpg",
+    ],
     quantidade: 1,
   },
   {
     id: 2,
-    produto: "bag Rosa Choque",
-    descricao: "gasda teste",
+    produto: "Bag do Sol com frase",
+    descricao: "Estampa com do sol com frase motivacional",
     preco: "45,00",
-    image: "/bag2.jpg",
+    image: ["/bags/bag-sol-1.jpg", "/bags/bag-sol-2.jpg"],
     quantidade: 1,
   },
   {
     id: 3,
-    produto: "bag preta",
-    descricao: "teste teste",
+    produto: "Bag do artista Jâo",
+    descricao: "Estampa com coisas que refere-se ao artista Jão",
     preco: "45,00",
-    image: "/bag3.jpg",
+    image: ["/bags/bag-jao-1.jpg", "/bags/bag-jao-2.jpg"],
+    quantidade: 1,
+  },
+];
+export const CartbagsEstampas = [
+  {
+    id: 1,
+    produto: "Estampa floral estilo 1",
+    descricao: "Floral de rosas",
+    preco: "45,00",
+    image: "/bags/bag-estampa-flor-1.png",
+    quantidade: 1,
+  },
+  {
+    id: 2,
+    produto: "Estampa floral estilo 2",
+    descricao: "Mix floral",
+    preco: "45,00",
+    image: "/bags/bag-estampa-flor-2.jpg",
+    quantidade: 1,
+  },
+  {
+    id: 3,
+    produto: "Estampa floral estilo 3",
+    descricao: "Floral de tulipas vermelhas",
+    preco: "45,00",
+    image: "/bags/bag-estampa-flor-3.jpg",
     quantidade: 1,
   },
   {
     id: 4,
-    produto: "bag Rosa Choque2",
-    descricao: "gasda teste",
+    produto: "Estampa floral estilo 4",
+    descricao: "Floral de tulipas azuis",
     preco: "45,00",
-    image: "/bag4.png",
+    image: "/bags/bag-estampa-flor-4.jpg",
     quantidade: 1,
   },
   {
     id: 5,
-    produto: "bag roxo",
-    descricao: "teste teste",
+    produto: "Estampa floral estilo 5",
+    descricao: "Xadrez de flor",
     preco: "45,00",
-    image: "/bag5.jpg",
+    image: "/bags/bag-estampa-flor-5.jpg",
     quantidade: 1,
   },
   {
     id: 6,
-    produto: "bag Rosa Choque3",
-    descricao: "gasda teste",
+    produto: "Hakuna Matata",
+    descricao: "Personagens da Hakuna Matata",
     preco: "45,00",
-    image: "/bag6.jpg",
+    image: "/bags/bag-estampa-reileao.jpg",
     quantidade: 1,
   },
   {
     id: 7,
-    produto: "bag lilas",
-    descricao: "teste teste",
+    produto: "Simpsons",
+    descricao: "Personagens da Simpson em forma de flores",
     preco: "45,00",
-    image: "/bag1.jpg",
+    image: "/bags/bag-estampa-simpsons.jpg",
     quantidade: 1,
   },
   {
     id: 8,
-    produto: "bag Rosa Choque4",
-    descricao: "gasda teste",
+    produto: "Ondas",
+    descricao: "Ilustração de ondas com frase motivacional",
     preco: "45,00",
-    image: "/bag2.jpg",
+    image: "/bags/bag-estampa-onda.jpg",
     quantidade: 1,
   },
+];
+export const CartbagsPersonalize = [
   {
-    id: 9,
-    produto: "bag Rosa green3",
-    descricao: "gasda teste",
+    id: 1,
+    produto: "Personalize sua bag",
+    descricao:
+      "Personalize sua bag para o sua estampa favorita, ao escolher esta opção em ate 2 dias nossa equipe entrara em contato sobre a sua bag",
     preco: "45,00",
-    image: "/bag3.jpg",
+    image: "/bags/bag-personalize.jpg",
     quantidade: 1,
   },
 ];
@@ -81,12 +115,12 @@ export const setNotificationCartHandler = (setter: (value: number) => void) => {
   setNotificationCart = setter;
 };
 
-type Bag = {
+export type Bag = {
   id: number;
   produto: string;
   descricao: string;
   preco: string;
-  image: string;
+  image: string | string[];
   quantidade: number;
 };
 

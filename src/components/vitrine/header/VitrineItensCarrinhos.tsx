@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
-
 import { Plus } from "lucide-react";
 import { Minus } from "@phosphor-icons/react/dist/ssr";
 import { useMediaQuery } from "react-responsive";
-
 import {
   addToNewCartbags,
   removeFromNewCartbags,
@@ -17,7 +15,7 @@ interface VitrineConteudoCarrinhoProps {
   descricao?: string;
   quantidade?: number;
   preco: string;
-  imagem: string;
+  imagem: string | string[];
   onRemove: (id: number) => void;
   handlerPlus: (bag: Omit<Bag, "quantidade">) => void; // Modificado para aceitar um parâmetro
   handlerMinus: (id: number) => void; // Nova propriedade para decrementar a quantidade
@@ -28,7 +26,7 @@ type Bag = {
   produto: string;
   descricao: string;
   preco: string;
-  image: string;
+  image: string | string[];
   quantidade: number;
 };
 
@@ -47,6 +45,10 @@ export default function VitrineItensCarrinhos({
 
   // Definir as media queries
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+
+  const getImageSrc = (image: string | string[]) => {
+    return Array.isArray(image) ? image[0] : image;
+  };
 
   function handlePlus() {
     if (Quantidade < 9) {
@@ -76,7 +78,7 @@ export default function VitrineItensCarrinhos({
     <div className='w-90% border border-zinc-950 py-2 flex space-x-2 items-center relative shadow-lg'>
       <div className='w-[30%]'>
         <Image
-          src={imagem}
+          src={getImageSrc(imagem)}
           width={100}
           height={100}
           alt=''

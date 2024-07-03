@@ -3,18 +3,25 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Modal from "./Modal";
 
-import { Cartbags, addToNewCartbags, newCartbags } from "@/lib/bags";
+import {
+  Cartbags,
+  CartbagsEstampas,
+  CartbagsPersonalize,
+  addToNewCartbags,
+  newCartbags,
+} from "@/lib/bags";
 
 import VitrineCard from "./VitrineCard";
 import VitrineDivisoria from "../VitrineDivisoria";
 import VitrineCardModal from "./VitrineCardModal";
+import VitrineDivisoriaMain from "./VitrineDivisoriaMain";
 
 type Bag = {
   id: number;
   produto: string;
   descricao: string;
   preco: string;
-  image: string;
+  image: string | string[];
   quantidade: number;
 };
 
@@ -40,21 +47,38 @@ export default function VitrineMain() {
     setSelectedBag(null);
   };
 
+  const renderCards = (bags: Bag[]) => {
+    return bags.map((bag) => (
+      <VitrineCard
+        key={bag.id}
+        produto={bag.produto}
+        descricao={bag.descricao}
+        preco={bag.preco}
+        image={bag.image}
+        onAddToCart={() => addToCart(bag)}
+        onCardClick={() => openModal(bag)}
+      />
+    ));
+  };
+
   return (
-    <main className={` w-full h-full bg-transparent px-4 py-2`}>
-      <VitrineDivisoria />
+    <main className={`w-full h-full bg-transparent px-4 py-2`}>
+      <VitrineDivisoriaMain texto={"Bags"} cor='#b09775' />
+
       <div className='grid xl:grid-cols-3 md3:grid-cols-2 grid-cols-1 gap-y-10 my-8 place-items-center'>
-        {Cartbags.map((bag) => (
-          <VitrineCard
-            key={bag.id}
-            produto={bag.produto}
-            descricao={bag.descricao}
-            preco={bag.preco}
-            image={bag.image}
-            onAddToCart={() => addToCart(bag)}
-            onCardClick={() => openModal(bag)}
-          />
-        ))}
+        {renderCards(Cartbags)}
+      </div>
+
+      <VitrineDivisoriaMain texto={"Estampas"} cor='#CCB596' />
+
+      <div className='grid xl:grid-cols-3 md3:grid-cols-2 grid-cols-1 gap-y-10 my-8 place-items-center'>
+        {renderCards(CartbagsEstampas)}
+      </div>
+
+      <VitrineDivisoriaMain texto={"Personalize"} cor='#227428' />
+
+      <div className='grid xl:grid-cols-3 md3:grid-cols-2 grid-cols-1 gap-y-10 my-8 place-items-center'>
+        {renderCards(CartbagsPersonalize)}
       </div>
 
       <Link
