@@ -20,7 +20,7 @@ type Bag = {
   produto: string;
   descricao: string;
   preco: string;
-  image: string;
+  image: string | string[];
   quantidade: number;
 };
 
@@ -61,14 +61,14 @@ export default function VitrineConteudoCarrinho({
 
   return (
     <div className='flex flex-col h-full'>
-      <div className="flex justify-between items-center mb-4">
+      <div className='flex justify-between items-center mb-4'>
         <div className='flex items-center'>
           <button onClick={onclick}>
             <ArrowLeft size={32} />
           </button>
           <div className='text-2xl font-bold ml-2 text-txtcart'>CARRINHO</div>
         </div>
-        <button className="mr-1" onClick={handleClearCart}>
+        <button className='mr-1' onClick={handleClearCart}>
           <Trash size={28} weight='bold' />
         </button>
       </div>
