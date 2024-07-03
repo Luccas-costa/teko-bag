@@ -24,6 +24,7 @@ export default function Footer() {
   }, []);
 
   return (
+<<<<<<< HEAD
     <div className='w-full h-full bg-yellow1'>
       <motion.div
         className='flex flex-col bg-green2'
@@ -46,6 +47,30 @@ export default function Footer() {
                 />
               )}
             </div>
+=======
+    <div clasName="bg-green2">     
+    <motion.div
+      className='flex flex-col bg-green2'
+      id='footer'
+      initial={{ opacity: 0, y: -100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -100 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Transicao3 />
+      <div className='flex flex-col items-center pt-12 pl-16 pr-16 '>
+        <div className='flex justify-evenly gap-x-6 pb-12'>
+          <div className='flex items-center justify-center'>
+            {isMobile && (
+              <Image
+                src='/logo-transparente.png'
+                width={125}
+                height={125}
+                alt='logo'
+              />
+            )}
+          </div>
+>>>>>>> b4ed05cced907075c48924dac7b491073fea5e07
 
             <hr className='w-1 md:h-48 sm:h-52 h-[32vh] bg-zinc-600 shadow-lg border border-zinc-600 rounded' />
             <Time />
@@ -53,8 +78,14 @@ export default function Footer() {
             <Contatos />
           </div>
         </div>
+<<<<<<< HEAD
         <Developed />
       </motion.div>
+=======
+      </div>
+      <Developed />
+    </motion.div>
+>>>>>>> b4ed05cced907075c48924dac7b491073fea5e07
     </div>
   );
 }
