@@ -4,7 +4,7 @@ export const Qrcode = [
     copiaecola:
       "00020101021126580014br.gov.bcb.pix0136ff2d9684-f300-4642-bd76-3ac56d343a52520400005303986540545.005802BR5918ANA C R DOS SANTOS6007TAUBATE62070503***6304F63D",
     preco: "45,00",
-    image: "/Qrcode/Qr45.png",
+    image: "/Qr45.png",
   },
   {
     id: 2,

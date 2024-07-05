@@ -23,7 +23,7 @@ export default function VitrinePagamento({
   const copyToClipboard = () => {
     const textToCopy = matchedItem
       ? matchedItem.copiaecola
-      : "Entrar em contato com o suporte | Entrar em contato com o suporte | Entrar em contato com o suporte | Entrar em contato com o suporte |";
+      : "| Entrar em contato com o suporte | Entrar em contato com o suporte | Entrar em contato com o suporte | Entrar em contato com o suporte |";
     navigator.clipboard
       .writeText(textToCopy)
       .then(() => {
@@ -95,7 +95,7 @@ export default function VitrinePagamento({
           <div className='w-[80%] text-zinc-900 text-center'>
             Error o valor de sua compra ultrapassou o limite imposto no site por
             favor entre em contato com nosco via Dm{" "}
-            <span className='font-semibold text-blue-700'>
+            <span className='font-semibold text-blue-400'>
               <a href='https://www.instagram.com/tekobags/' target='_blank'>
                 @tekobags
               </a>
