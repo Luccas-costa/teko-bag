@@ -22,13 +22,13 @@ export default function Section2() {
           />
           <Cards
             image='/teste2.png'
-            title='Produtos voltados a saúde '
+            title='Produtos voltados à saúde '
             titleaposbr='e bem estar'
             description='Maior conforto e praticidade'
           />
           <Cards
             image='/teste3.png'
-            title='Uma peça única para seu '
+            title='Uma peça única para sua '
             titleaposbr='Moda Style'
             description='Estampas criativas escolhidas pelo '
             descriptionaposbr='nosso time'

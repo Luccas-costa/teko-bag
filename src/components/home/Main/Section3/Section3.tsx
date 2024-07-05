@@ -27,7 +27,7 @@ export default function Section3() {
           >
             Somos uma Startup desenvolvida sob um projeto escolar, com um time
             de 12 pessoas mais 1 mentor. Nosso objetivo é trazer soluções
-            relacionadas a Eco Bags, fazendo uma mediação e conexão de uma Bag
+            relacionadas a Eco Bags, fazendo uma mediação e conexão entre Bag
             totalmente personalizada e especial a sua necessidade, visando a
             Qualidade, Estética e Resistência. <br /> Ao final 25% de nosso
             lucros serão doados a uma instituição de caridade.
