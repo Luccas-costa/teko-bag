@@ -69,8 +69,13 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
 
   const handleCupomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newCupom = e.target.value.replace(/\s+/g, "").toUpperCase();
+    console.log(newCupom);
     setCupomInput(newCupom);
-    setDesconto(newCupom === "TEKOTEKO");
+    if (newCupom === "TEKOTEKO") {
+      setDesconto(true);
+    } else {
+      setDesconto(false);
+    }
   };
 
   const handleAvancarClick = () => {
@@ -86,6 +91,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
     };
 
     Dados.push(data);
+    console.log(cupomInput);
     console.log("///////////////");
     console.log(Dados);
 

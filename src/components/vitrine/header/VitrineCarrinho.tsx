@@ -45,7 +45,8 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
   Agradecimento,
   setAgradecimento,
 }) => {
-  const [desconto, setDesconto] = useState(true);
+  const [desconto, setDesconto] = useState(false);
+  const [valor, setValor] = useState("");
 
   const handlerFinalizar = () => {
     setFinalizar(!Finalizar);
@@ -104,6 +105,7 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
                   <VitrinePagamento
                     onclick={handleClose2}
                     handlerCloseFinal={handleAgradecimento}
+                    valor={valor}
                   />
                 )
               ) : (
@@ -111,6 +113,7 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
                   onclick={handleClose2}
                   desconto={desconto}
                   onclick2={handlePagamento}
+                  setvalor={setValor}
                 />
               )
             ) : Confirmacao2 ? (

@@ -2,22 +2,28 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import styles from "./geral.module.css";
+import { Qrcode } from "@/lib/qrcodes";
 
 interface VitrinePagamentoProps {
   onclick: () => void;
   handlerCloseFinal: () => void;
+  valor: string;
 }
 
 export default function VitrinePagamento({
   onclick,
   handlerCloseFinal,
+  valor,
 }: VitrinePagamentoProps) {
   const [buttonColor, setButtonColor] = useState("border-black");
   const [isLoading, setIsLoading] = useState(true);
 
+  const matchedItem = Qrcode.find((item) => item.preco === valor);
+
   const copyToClipboard = () => {
-    const textToCopy =
-      "00020101021126330014br.gov.bcb.pix0111241073658085204000053039865802BR5919LUCAS PEREIRA COSTA6007TAUBATE62070503***63045F83";
+    const textToCopy = matchedItem
+      ? matchedItem.copiaecola
+      : "Entrar em contato com o suporte | Entrar em contato com o suporte | Entrar em contato com o suporte | Entrar em contato com o suporte |";
     navigator.clipboard
       .writeText(textToCopy)
       .then(() => {
@@ -54,7 +60,7 @@ export default function VitrinePagamento({
             </div>
           )}
           <Image
-            src={"/QrcodePix2.png"}
+            src={matchedItem ? matchedItem.image : "/ErrorQr.png"}
             alt='Pagamento'
             width={300}
             height={300}
@@ -70,20 +76,33 @@ export default function VitrinePagamento({
           Copie e Cola
         </button>
 
-        <div className='w-[80%] text-zinc-900 text-center'>
-          Obrigado por nos escolher, por favor prossiga com o pagamento do PIX,
-          nossos atendentes entraram em contato em no máximo 2 dias uteis,
-          referente ao envio de sua{" "}
-          <span className='font-semibold'>teko bag</span> qualquer dúvida ou
-          problema entre em contato com nosco via Dm{" "}
-          <a
-            href='https://www.instagram.com/tekobags/'
-            target='_blank'
-            className='font-semibold underline'
-          >
-            @tekobags
-          </a>
-        </div>
+        {matchedItem ? (
+          <div className='w-[80%] text-zinc-900 text-center'>
+            Obrigado por nos escolher, por favor prossiga com o pagamento do
+            PIX, nossos atendentes entraram em contato em no máximo 2 dias
+            uteis, referente ao envio de sua{" "}
+            <span className='font-semibold'>teko bag</span> qualquer dúvida ou
+            problema entre em contato com nosco via Dm{" "}
+            <a
+              href='https://www.instagram.com/tekobags/'
+              target='_blank'
+              className='font-semibold underline'
+            >
+              @tekobags
+            </a>
+          </div>
+        ) : (
+          <div className='w-[80%] text-zinc-900 text-center'>
+            Error o valor de sua compra ultrapassou o limite imposto no site por
+            favor entre em contato com nosco via Dm{" "}
+            <span className='font-semibold text-blue-700'>
+              <a href='https://www.instagram.com/tekobags/' target='_blank'>
+                @tekobags
+              </a>
+            </span>{" "}
+            nossa equipe Prosseguirá com sua compra
+          </div>
+        )}
       </div>
       <button
         className='w-full py-2 mb-2 border border-black hover:bg-dourado font-semibold rounded mt-2'

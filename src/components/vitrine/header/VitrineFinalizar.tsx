@@ -12,12 +12,14 @@ interface VitrineFinalizarProps {
   onclick: () => void;
   onclick2: () => void;
   desconto: boolean;
+  setvalor: (value: string) => void;
 }
 
 export default function VitrineFinalizar({
   onclick,
   onclick2,
   desconto,
+  setvalor,
 }: VitrineFinalizarProps) {
   // Estado para armazenar os itens do carrinho
   const [cartbags, setCartbags] = useState([...newCartbags]);
@@ -46,10 +48,15 @@ export default function VitrineFinalizar({
   }, 0);
 
   // Calcular o valor do desconto
-  const valorFrete = 5.99
+  const valorFrete = 5.99;
   const valorDesconto = desconto ? total * 0 : 0; // aqui no *0 eu escolho o quanto quero por de desconto e so por tipo 15% = 0.15
   const totalComDesconto = total - valorDesconto;
   const totalFinal = totalComDesconto + valorFrete;
+  if (desconto) {
+    setvalor(totalComDesconto.toFixed(2).replace(".", ","));
+  } else {
+    setvalor(totalFinal.toFixed(2).replace(".", ","));
+  }
 
   return (
     <div className='flex flex-col h-full'>
@@ -113,7 +120,11 @@ export default function VitrineFinalizar({
               </div>
             )} */}
             <div className='font-bold '>
-              Total: R$ {desconto ? totalComDesconto.toFixed(2).replace(".", ",") : totalFinal.toFixed(2).replace(".", ",")}
+              {/* se desconto for true mostro valor total se for false mostro valor sem o frete*/}
+              Total: R${" "}
+              {desconto
+                ? totalComDesconto.toFixed(2).replace(".", ",")
+                : totalFinal.toFixed(2).replace(".", ",")}
             </div>
           </div>
           <button
