@@ -79,7 +79,7 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
       animate={{ right: isOpen ? ["-100%", "0%"] : "-100%" }}
       exit={{ right: "-100%" }}
       transition={{ type: "spring", stiffness: 500, damping: 50 }}
-      className='fixed top-0 right-0 h-full z-50 flex'
+      className='fixed top-0 right-0 h-full z-90 flex'
       onClick={(e) => e.stopPropagation()} // Previne o clique no próprio menu de fechá-lo
     >
       <div

@@ -15,7 +15,7 @@ export const Cartbags = [
   {
     id: 2,
     produto: "Bag do Sol com frase",
-    descricao: "Estampa com do sol com frase motivacional",
+    descricao: "Estampa de sol com frase motivacional",
     preco: "45,00",
     image: ["/bags/bag-sol-1.jpg", "/bags/bag-sol-2.jpg"],
     quantidade: 1,
@@ -26,6 +26,14 @@ export const Cartbags = [
     descricao: "Estampa com coisas que refere-se ao artista Jão",
     preco: "45,00",
     image: ["/bags/bag-jao-1.jpg", "/bags/bag-jao-2.jpg"],
+    quantidade: 1,
+  },
+  {
+    id: 13,
+    produto: "Bag de borboleta",
+    descricao: "Estampa de borboleta metade flores",
+    preco: "45,00",
+    image: "/bags/bag-borboleta.jpg",
     quantidade: 1,
   },
 ];

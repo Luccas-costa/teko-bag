@@ -99,7 +99,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
   };
 
   return (
-    <div className='flex flex-col h-full'>
+    <div className='flex flex-col h-full overflow-y-auto'>
       <div className='flex items-center mb-4'>
         <button onClick={onclick}>
           <ArrowLeft size={32} />
@@ -203,7 +203,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
             value={cupomInput}
             onChange={handleCupomChange}
             placeholder='Cupom de desconto'
-            className='w-full bg-transparent rounded border border-black py-2 px-2 mt-6 text-black font-semibold'
+            className='w-full bg-transparent rounded border border-black py-2 px-2 mt-6 mb-12 text-black font-semibold'
           />
           {cupomInput === "TEKOTEKO" && (
             <div className='text-green-600 font-bold'>

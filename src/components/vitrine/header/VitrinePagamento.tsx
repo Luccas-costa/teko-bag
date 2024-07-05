@@ -45,7 +45,7 @@ export default function VitrinePagamento({
   }, []);
 
   return (
-    <div className='flex flex-col h-full'>
+    <div className='flex flex-col h-full overflow-y-auto'>
       <div className='flex items-center mb-6'>
         <button onClick={onclick}>
           <ArrowLeft size={32} />

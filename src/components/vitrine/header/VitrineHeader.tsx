@@ -37,10 +37,10 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
 
   const handleClick = () => {
     if (Agradecimento) {
-      setIsOpen(!isOpen)
-      setFinalizar(true)
-      setConfirmacao(true)
-      setPagamento(true)
+      setIsOpen(!isOpen);
+      setFinalizar(true);
+      setConfirmacao(true);
+      setPagamento(true);
     } else {
       setIsOpen(!isOpen);
     }
@@ -187,7 +187,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
       <AnimatePresence>
         {isOpen && (
           <div
-            className='fixed inset-0 z-40 flex'
+            className='fixed inset-0 z-40 flex h-full'
             onClick={
               Agradecimento
                 ? handleClose3
