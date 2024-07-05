@@ -31,7 +31,7 @@ export const Cartbags = [
 ];
 export const CartbagsEstampas = [
   {
-    id: 1,
+    id: 4,
     produto: "Estampa floral estilo 1",
     descricao: "Floral de rosas",
     preco: "45,00",
@@ -39,7 +39,7 @@ export const CartbagsEstampas = [
     quantidade: 1,
   },
   {
-    id: 2,
+    id: 5,
     produto: "Estampa floral estilo 2",
     descricao: "Mix floral",
     preco: "45,00",
@@ -47,7 +47,7 @@ export const CartbagsEstampas = [
     quantidade: 1,
   },
   {
-    id: 3,
+    id: 6,
     produto: "Estampa floral estilo 3",
     descricao: "Floral de tulipas vermelhas",
     preco: "45,00",
@@ -55,7 +55,7 @@ export const CartbagsEstampas = [
     quantidade: 1,
   },
   {
-    id: 4,
+    id: 7,
     produto: "Estampa floral estilo 4",
     descricao: "Floral de tulipas azuis",
     preco: "45,00",
@@ -63,7 +63,7 @@ export const CartbagsEstampas = [
     quantidade: 1,
   },
   {
-    id: 5,
+    id: 8,
     produto: "Estampa floral estilo 5",
     descricao: "Xadrez de flor",
     preco: "45,00",
@@ -71,7 +71,7 @@ export const CartbagsEstampas = [
     quantidade: 1,
   },
   {
-    id: 6,
+    id: 9,
     produto: "Hakuna Matata",
     descricao: "Personagens da Hakuna Matata",
     preco: "45,00",
@@ -79,7 +79,7 @@ export const CartbagsEstampas = [
     quantidade: 1,
   },
   {
-    id: 7,
+    id: 10,
     produto: "Simpsons",
     descricao: "Personagens da Simpson em forma de flores",
     preco: "45,00",
@@ -87,7 +87,7 @@ export const CartbagsEstampas = [
     quantidade: 1,
   },
   {
-    id: 8,
+    id: 11,
     produto: "Ondas",
     descricao: "Ilustração de ondas com frase motivacional",
     preco: "45,00",
@@ -97,7 +97,7 @@ export const CartbagsEstampas = [
 ];
 export const CartbagsPersonalize = [
   {
-    id: 1,
+    id: 12,
     produto: "Personalize sua bag",
     descricao:
       "Personalize sua bag para o sua estampa favorita, ao escolher esta opção em ate 2 dias nossa equipe entrara em contato sobre a sua bag",
