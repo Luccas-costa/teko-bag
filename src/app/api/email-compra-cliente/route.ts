@@ -8,6 +8,7 @@ export async function POST(req: NextRequest) {
   try {
     const { subtitulo, email, instagram, nome } = await req.json();
 
+    console.log(email);
     const data = await resend.emails.send({
       from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_EMAIL}>`,
       to: [email],
