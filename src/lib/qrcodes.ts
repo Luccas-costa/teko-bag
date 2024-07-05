@@ -11,48 +11,48 @@ export const Qrcode = [
     copiaecola:
       "00020101021126580014br.gov.bcb.pix0136ff2d9684-f300-4642-bd76-3ac56d343a52520400005303986540550.995802BR5918ANA C R DOS SANTOS6007TAUBATE62070503***6304CA2E",
     preco: "50,99",
-    image: "/Qrcode/Qr50.png",
+    image: "/Qr50.png",
   },
   {
     id: 3,
     copiaecola:
       "00020101021126580014br.gov.bcb.pix0136ff2d9684-f300-4642-bd76-3ac56d343a52520400005303986540590.005802BR5918ANA C R DOS SANTOS6007TAUBATE62070503***63047640",
     preco: "90,00",
-    image: "/Qrcode/Qr90.png",
+    image: "/Qr90.png",
   },
   {
     id: 4,
     copiaecola:
       "00020101021126580014br.gov.bcb.pix0136ff2d9684-f300-4642-bd76-3ac56d343a52520400005303986540595.995802BR5918ANA C R DOS SANTOS6007TAUBATE62070503***6304EF0D",
     preco: "95,99",
-    image: "/Qrcode/Qr95.png",
+    image: "/Qr95.png",
   },
   {
     id: 5,
     copiaecola:
       "00020101021126580014br.gov.bcb.pix0136ff2d9684-f300-4642-bd76-3ac56d343a525204000053039865406135.005802BR5918ANA C R DOS SANTOS6007TAUBATE62070503***630482F1",
     preco: "135,00",
-    image: "/Qrcode/Qr135.png",
+    image: "/Qr135.png",
   },
   {
     id: 6,
     copiaecola:
       "00020101021126580014br.gov.bcb.pix0136ff2d9684-f300-4642-bd76-3ac56d343a525204000053039865406140.995802BR5918ANA C R DOS SANTOS6007TAUBATE62070503***63045145",
     preco: "140,99",
-    image: "/Qrcode/Qr140.png",
+    image: "/Qr140.png",
   },
   {
     id: 7,
     copiaecola:
       "00020101021126580014br.gov.bcb.pix0136ff2d9684-f300-4642-bd76-3ac56d343a525204000053039865406180.005802BR5918ANA C R DOS SANTOS6007TAUBATE62070503***6304ED2B",
     preco: "180,00",
-    image: "/Qrcode/Qr180.png",
+    image: "/Qr180.png",
   },
   {
     id: 8,
     copiaecola:
       "00020101021126580014br.gov.bcb.pix0136ff2d9684-f300-4642-bd76-3ac56d343a525204000053039865406185.995802BR5918ANA C R DOS SANTOS6007TAUBATE62070503***63047466",
     preco: "185,99",
-    image: "/Qrcode/Qr185.png",
+    image: "/Qr185.png",
   },
 ];
