@@ -26,6 +26,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
   const [cidade, setCidade] = useState("");
   const [cupomInput, setCupomInput] = useState("");
   const [corCidade, setCorCidade] = useState(false);
+  const [isFormFilled, setIsFormFilled] = useState(false);
 
   useEffect(() => {
     // Verifica se todos os campos estão preenchidos
@@ -54,18 +55,63 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
     corCidade,
   ]);
 
-  const [isFormFilled, setIsFormFilled] = useState(false);
+  // Função para formatar o telefone
+  const formatarTelefone = (inputTelefone: string) => {
+    // Remove todos os caracteres não numéricos
+    let telefoneFormatado = inputTelefone.replace(/\D/g, "");
 
-  // input do instagram
+    // Verifica se o telefone está vazio
+    if (telefoneFormatado.length === 0) {
+      return "";
+    } else if (telefoneFormatado.length <= 4) {
+      // Se tiver até quatro dígitos, apenas adiciona o código do país
+      telefoneFormatado = `(${telefoneFormatado}`;
+    } else if (telefoneFormatado.length <= 10) {
+      // Se tiver até dez dígitos, formata com o código do país, o DDD e os primeiros dígitos
+      telefoneFormatado = `(${telefoneFormatado.slice(
+        0,
+        2
+      )}) ${telefoneFormatado.slice(2, 4)} ${telefoneFormatado.slice(4)}`;
+    } else {
+      // Formata o telefone completo com o código do país, DDD, primeiros dígitos e separa o último grupo
+      telefoneFormatado = `(${telefoneFormatado.slice(
+        0,
+        2
+      )}) ${telefoneFormatado.slice(2, 4)} ${telefoneFormatado.slice(
+        4,
+        9
+      )} ${telefoneFormatado.slice(9)}`;
+    }
+
+    return telefoneFormatado;
+  };
+  // Handler para o evento onChange do input de telefone
+  const handleTelefoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const valorDigitado = e.target.value;
+    const telefoneFormatado = formatarTelefone(valorDigitado);
+    setTelefone(telefoneFormatado);
+  };
+
   const handleFocus = () => {
     if (!instagram.includes("@")) {
       setInstagram("@");
     }
   };
 
+  const handleFocusTell = () => {
+    if (!telefone.includes("55")) {
+      setTelefone("(55) ");
+    }
+  };
+
   const handleBlur = () => {
     if (instagram === "@") {
       setInstagram("");
+    }
+  };
+  const handleBlurTell = () => {
+    if (telefone === "(55) ") {
+      setTelefone("");
     }
   };
 
@@ -132,8 +178,10 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
         <input
           type='text'
           value={telefone}
-          onChange={(e) => setTelefone(e.target.value)}
-          placeholder='Telefone para contato'
+          onChange={handleTelefoneChange} // Ajuste aqui para chamar handleTelefoneChange
+          onBlur={handleBlurTell}
+          onFocus={handleFocusTell}
+          placeholder='Telefone para contato (55) XX XXXXX XXXX'
           className='w-full bg-transparent rounded border border-black py-2 px-2 mt-2 mb-4 text-black font-semibold'
         />
 
@@ -214,10 +262,12 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
             value={cupomInput}
             onChange={handleCupomChange}
             placeholder='Cupom de desconto'
-            className='w-full bg-transparent rounded border border-black py-2 px-2 mt-6 mb-12 text-black font-semibold'
+            className={`w-full bg-transparent rounded border border-black py-2 px-2 mt-6 ${
+              cupomInput === "TEKOTEKO" ? "mb-0" : "mb-12"
+            } text-black font-semibold`}
           />
           {cupomInput === "TEKOTEKO" && (
-            <div className='text-green-600 font-bold'>
+            <div className='text-green-600 font-bold mb-12'>
               Cupom válido! Desconto aplicado.
             </div>
           )}
