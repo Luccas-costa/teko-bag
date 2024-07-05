@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -11,12 +12,18 @@ interface DashboardClientesProps {
   id: string;
   nome: string;
   email: string;
-  dataEntrada: string | null; // Deve ser uma string formatada como "YYYY-MM-DD HH:mm:ss"
-  dataCompra: string; // Certifique-se de que dataCompra está corretamente formatada
+  dataEntrada: string | null;
+  dataCompra: string;
   isOpen: boolean;
   onToggle: () => void;
   itens: string;
   quantidades: string;
+  cidade: string;
+  cep: string;
+  bairro: string;
+  rua: string;
+  complemento: string;
+  numero: string;
 }
 
 export default function DashboardClientes({
@@ -29,6 +36,12 @@ export default function DashboardClientes({
   onToggle,
   itens,
   quantidades,
+  cidade,
+  cep,
+  bairro,
+  rua,
+  complemento,
+  numero,
 }: DashboardClientesProps) {
   const [openItens, setOpenItens] = useState(false);
   const [openEndereco, setOpenEndereco] = useState(false);
@@ -37,6 +50,7 @@ export default function DashboardClientes({
   const [isOpenEndereco, setIsOpenEndereco] = useState(false);
   const [isOpenEmail, setIsOpenEmail] = useState(false);
   const [iconWeight, setIconWeight] = useState<"regular" | "fill">("regular");
+  const [totalQuantidades, setTotalQuantidades] = useState<number>(0);
 
   const format = "DD/MM/YYYY HH:mm:ss"; // Formato esperado para exibição
   const entradaDate = dayjs(dataEntrada, format);
@@ -44,6 +58,15 @@ export default function DashboardClientes({
 
   const relativeEntrada = entradaDate.toNow(true);
   const relativeCompra = compraDate.toNow(true);
+
+  useEffect(() => {
+    if (isOpenItens && isOpen) {
+      // Calcular o total das quantidades
+      const quantidadesArray = quantidades.split(",").map(Number);
+      const total = quantidadesArray.reduce((acc, curr) => acc + curr, 0);
+      setTotalQuantidades(total * 45);
+    }
+  }, [isOpenItens, isOpen, quantidades]);
 
   const handlerOpenItens = () => {
     setOpenItens(!openItens);
@@ -74,6 +97,48 @@ export default function DashboardClientes({
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
+    setIconWeight("fill");
+    setTimeout(() => {
+      setIconWeight("regular");
+    }, 1000);
+  };
+  const copyCidade = () => {
+    navigator.clipboard.writeText(cidade);
+    setIconWeight("fill");
+    setTimeout(() => {
+      setIconWeight("regular");
+    }, 1000);
+  };
+  const copyBairro = () => {
+    navigator.clipboard.writeText(bairro);
+    setIconWeight("fill");
+    setTimeout(() => {
+      setIconWeight("regular");
+    }, 1000);
+  };
+  const copyRua = () => {
+    navigator.clipboard.writeText(rua);
+    setIconWeight("fill");
+    setTimeout(() => {
+      setIconWeight("regular");
+    }, 1000);
+  };
+  const copyCep = () => {
+    navigator.clipboard.writeText(cep);
+    setIconWeight("fill");
+    setTimeout(() => {
+      setIconWeight("regular");
+    }, 1000);
+  };
+  const copyComplemento = () => {
+    navigator.clipboard.writeText(complemento);
+    setIconWeight("fill");
+    setTimeout(() => {
+      setIconWeight("regular");
+    }, 1000);
+  };
+  const copyNumero = () => {
+    navigator.clipboard.writeText(numero);
     setIconWeight("fill");
     setTimeout(() => {
       setIconWeight("regular");
@@ -165,6 +230,12 @@ export default function DashboardClientes({
                 {item} | Quantidade {quantidadesArray[index]}
               </div>
               <hr className='w-[75%] h-2 dash9:w-1/2 dash6:w-1/3 dash5:w-1/4 dash4:w-1/4 dash2:w-1/5' />
+              {index === itensArray.length - 1 && (
+                <div className='text-green-300'>
+                  Total: R$: {totalQuantidades}.00 ou R$:{" "}
+                  {totalQuantidades + 5.99}{" "}
+                </div>
+              )}
             </React.Fragment>
           ))}
         </div>
@@ -172,14 +243,44 @@ export default function DashboardClientes({
       {isOpenEndereco && isOpen && (
         <div className='h-[200px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative dash8:text-base text-[10px] dash9:text-sm dash10:text-xs'>
           <div className='h-[100px] w-1/2 flex justify-evenly items-center flex-col'>
-            <div>Cidade: Taubaté</div>
-            <div>Cep: 12030-212</div>
-            <div>Bairro: Jardim das Nações</div>
+            <div className='flex items-center space-x-1'>
+              <div>Cidade: {cidade} </div>
+              <button onClick={copyCidade}>
+                <ClipboardText size={20} weight={iconWeight} />
+              </button>
+            </div>
+            <div className='flex items-center space-x-1'>
+              <div>Cep: {cep} </div>
+              <button onClick={copyCep}>
+                <ClipboardText size={20} weight={iconWeight} />
+              </button>
+            </div>
+            <div className='flex items-center space-x-1'>
+              <div>Bairro: {bairro} </div>
+              <button onClick={copyBairro}>
+                <ClipboardText size={20} weight={iconWeight} />
+              </button>
+            </div>
           </div>
           <div className='h-[100px] w-1/2 flex justify-evenly items-center flex-col space-y-2'>
-            <div>Rua/Av: Rua Professor Mario Bordine</div>
-            <div>Complemento: 1201 Van Gogh</div>
-            <div>Número: 1000</div>
+            <div className='flex items-center space-x-1'>
+              <div>Rua/Av: {rua} </div>
+              <button onClick={copyRua}>
+                <ClipboardText size={20} weight={iconWeight} />
+              </button>
+            </div>
+            <div className='flex items-center space-x-1'>
+              <div>Complemento: {complemento} </div>
+              <button onClick={copyComplemento}>
+                <ClipboardText size={20} weight={iconWeight} />
+              </button>
+            </div>
+            <div className='flex items-center space-x-1'>
+              <div>Número: {numero} </div>
+              <button onClick={copyNumero}>
+                <ClipboardText size={20} weight={iconWeight} />
+              </button>
+            </div>
           </div>
         </div>
       )}

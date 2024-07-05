@@ -33,7 +33,9 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
   // Formate as datas ao buscar os clientes
   const formattedClients = clients.map((client) => ({
     ...client,
-    dataCompraFormatted: client.dataCompra ? dayjs(client.dataCompra).format("YYYY-MM-DD HH:mm:ss") : null,
+    dataCompraFormatted: client.dataCompra
+      ? dayjs(client.dataCompra).format("YYYY-MM-DD HH:mm:ss")
+      : null,
   }));
   console.log("Clientes formatados:", formattedClients);
 
@@ -50,7 +52,9 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
     if (!a.dataCompra) return 1;
     if (!b.dataCompra) return -1;
     const diff = dayjs(b.dataCompra).diff(dayjs(a.dataCompra));
-    console.log(`Comparando ${b.nome} (${b.dataCompra}) com ${a.nome} (${a.dataCompra}): ${diff}`);
+    console.log(
+      `Comparando ${b.nome} (${b.dataCompra}) com ${a.nome} (${a.dataCompra}): ${diff}`
+    );
     return diff;
   });
   console.log("Clientes ordenados:", sortedClients);
@@ -85,6 +89,12 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
             onToggle={() =>
               setOpenClientId(openClientId === client.id ? null : client.id)
             }
+            cidade={client.cidade}
+            cep={client.cep}
+            bairro={client.bairro}
+            rua={client.rua}
+            complemento={client.complemento}
+            numero={client.nurmo} // Certifique-se de passar o número aqui
           />
         ))}
       </div>
