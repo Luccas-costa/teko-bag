@@ -37,34 +37,36 @@ export const TekoBagCompraEmailCliente = ({
         <Container style={container}>
           <Section className='w-full h-full py-2 px-4'>
             <Img
-              src='	https://teko-bag.com/_next/image?url=%2Flogo-transparente.png&w=64&q=75'
+              src='	https://teko-bag.vercel.app/_next/image?url=%2Flogo-transparente.png&w=64&q=75'
               width='50'
               height='50'
               alt='Teko bag'
               className='mx-auto w-[150px] h-[110px]'
             />
             <Hr style={hr} />
-            <Text style={paragraph} className='text-center mb-10'>
-              Muito obrigado por nos escolher para a compra de sua{" "}
-              <span className='font-bold text-black'>teko bag</span>. Em no
-              máximo 2 dias uteis um de nossos atendentes entrara em contato
-              para confirmar sua entrega{" "}
-              <span className='font-bold text-black'>47:56:43</span> horas até o
-              termino dos dois dias uteis.
+            <Text
+              style={paragraph}
+              className='text-2xl text-zinc-600 text-center'
+            >
+              Olá {nome}
             </Text>
             <Text style={paragraph} className='text-center'>
-              A compra foi feita no nome de:{" "}
-              <span className='font-semibold text-black'>{nome}</span>
-              <span className='font-semibold text-black'>{comprador}</span>{" "}
-              provedor do email:{" "}
-              <span className='font-semibold text-black'>{email}</span> e do
-              instagram:{" "}
-              <span className='font-semibold text-black'>{instagram}</span>
+              Gostaríamos de expressar nossa sincera gratidão por escolher a{" "}
+              <span className='font-bold text-black'>Tekobags</span> para sua
+              recente compra. Estamos muito felizes em saber que nossos produtos
+              atendem às suas expectativas.
+            </Text>
+            <Text style={paragraph} className='text-center'>
+              Em até 2 dias úteis, nossa equipe entrará em contato com você para
+              confirmar o início da produção da sua encomenda e fornecer o prazo
+              estimado para a entrega. Estamos à disposição para esclarecer
+              quaisquer dúvidas ou prestar assistência adicional que você possa
+              precisar.
             </Text>
             <Hr style={hr} />
             <Button
               style={button}
-              href='https://teko-bag.com/pages/dashboard'
+              href='https://teko-bag.vercel.app/pages/dashboard'
             >
               View site Teko Bag
             </Button>
