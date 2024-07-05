@@ -10,7 +10,7 @@ export default function Time() {
             <strong>Mentor:</strong> Patrick
           </li>
           <li className='lg:text-base md:text-sm text-xs'>
-            <strong>CEO:</strong> Ana Clara
+            <strong className='font-bold'>CEO:</strong> Ana Clara
           </li>
           <li className='lg:text-base md:text-sm text-xs'>
             <strong>Diretor financeiro:</strong> Ana Luiza
@@ -19,8 +19,8 @@ export default function Time() {
             <strong>Diretores administrativo:</strong> Lauren e Sarah
           </li>
           <li className='lg:text-base md:text-sm text-xs'>
-            <strong>Marketing - produto/serviço:</strong> Laís,João, kallan,
-            lucas ,kevin ,pedro,juan
+            <strong>Marketing - produto/serviço:</strong> Laís, João, Kallan,
+            Lucas, Kevin, Pedro, Juan
           </li>
           <li className='lg:text-base md:text-sm text-xs'>
             <strong>Marketing - marca/comunicação:</strong> Ana Julia, Lucena
