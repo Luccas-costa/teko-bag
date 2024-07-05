@@ -17,6 +17,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
 }) => {
   const [instagram, setInstagram] = useState("");
   const [email, setEmail] = useState("");
+  const [telefone, setTelefone] = useState("");
   const [bairro, setBairro] = useState("");
   const [rua, setRua] = useState("");
   const [complemento, setComplemento] = useState("");
@@ -31,6 +32,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
     const filled =
       instagram !== "" &&
       email !== "" &&
+      telefone !== "" &&
       bairro !== "" &&
       rua !== "" &&
       numero !== "" &&
@@ -42,6 +44,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
   }, [
     instagram,
     email,
+    telefone,
     bairro,
     rua,
     complemento,
@@ -81,6 +84,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
     const data = {
       instagram,
       email,
+      telefone,
       bairro,
       rua,
       complemento,
@@ -122,6 +126,14 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder='Email para contato'
+          className='w-full bg-transparent rounded border border-black py-2 px-2 mt-2 mb-4 text-black font-semibold'
+        />
+
+        <input
+          type='text'
+          value={telefone}
+          onChange={(e) => setTelefone(e.target.value)}
+          placeholder='Telefone para contato'
           className='w-full bg-transparent rounded border border-black py-2 px-2 mt-2 mb-4 text-black font-semibold'
         />
 

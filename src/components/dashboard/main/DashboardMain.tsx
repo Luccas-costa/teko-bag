@@ -95,6 +95,7 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
             rua={client.rua}
             complemento={client.complemento}
             numero={client.nurmo} // Certifique-se de passar o número aqui
+            telefone={client.telefone}
           />
         ))}
       </div>

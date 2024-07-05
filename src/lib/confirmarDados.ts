@@ -2,6 +2,7 @@
 
 export interface DadosType {
   instagram: string;
+  telefone: string;
   cep: string;
   email: string;
   bairro: string;

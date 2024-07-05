@@ -10,6 +10,7 @@ export async function SearchBD(): Promise<Client[]> {
     const clientes: Client[] = result.rows.map((row) => ({
       id: row.id,
       email: row.email,
+      telefone: row.telefone,
       instagram: row.instagram,
       bairro: row.bairro,
       rua: row.rua,

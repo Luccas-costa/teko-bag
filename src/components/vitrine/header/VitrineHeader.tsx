@@ -83,6 +83,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
     console.log({
       id: id,
       email: Dados[0].email,
+      telefone: Dados[0].telefone,
       instagram: Dados[0].instagram,
       bairro: Dados[0].bairro,
       rua: Dados[0].rua,
@@ -98,6 +99,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
     await insertBD({
       id: id,
       email: Dados[0].email,
+      telefone: Dados[0].telefone,
       instagram: Dados[0].instagram,
       bairro: Dados[0].bairro,
       rua: Dados[0].rua,

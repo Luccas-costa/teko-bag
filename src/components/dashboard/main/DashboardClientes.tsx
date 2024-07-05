@@ -24,6 +24,7 @@ interface DashboardClientesProps {
   rua: string;
   complemento: string;
   numero: string;
+  telefone: string;
 }
 
 export default function DashboardClientes({
@@ -42,13 +43,16 @@ export default function DashboardClientes({
   rua,
   complemento,
   numero,
+  telefone,
 }: DashboardClientesProps) {
   const [openItens, setOpenItens] = useState(false);
   const [openEndereco, setOpenEndereco] = useState(false);
   const [openEmail, setOpenEmail] = useState(false);
+  const [openTell, setOpenTell] = useState(false);
   const [isOpenItens, setIsOpenItens] = useState(false);
   const [isOpenEndereco, setIsOpenEndereco] = useState(false);
   const [isOpenEmail, setIsOpenEmail] = useState(false);
+  const [isOpenTell, setIsOpenTell] = useState(false);
   const [iconWeight, setIconWeight] = useState<"regular" | "fill">("regular");
   const [totalQuantidades, setTotalQuantidades] = useState<number>(0);
 
@@ -95,8 +99,25 @@ export default function DashboardClientes({
     setIsOpenItens(false);
   };
 
+  const handlerOpenTell = () => {
+    setOpenTell(!openTell);
+    setIsOpenTell(!isOpenTell);
+    setOpenEmail(false);
+    setOpenItens(false);
+    setOpenEndereco(false);
+    setIsOpenEndereco(false);
+    setIsOpenItens(false);
+  };
+
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
+    setIconWeight("fill");
+    setTimeout(() => {
+      setIconWeight("regular");
+    }, 1000);
+  };
+  const copyTell = () => {
+    navigator.clipboard.writeText(telefone);
     setIconWeight("fill");
     setTimeout(() => {
       setIconWeight("regular");
@@ -220,6 +241,19 @@ export default function DashboardClientes({
               )}
             </div>
           </button>
+          <button
+            className='flex items-center space-x-1'
+            onClick={handlerOpenTell}
+          >
+            <div>Tell</div>
+            <div>
+              {openTell ? (
+                <CaretUp size={15} weight='bold' />
+              ) : (
+                <CaretDown size={15} weight='bold' />
+              )}
+            </div>
+          </button>
         </div>
       )}
       {isOpenItens && isOpen && (
@@ -288,6 +322,14 @@ export default function DashboardClientes({
         <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative space-x-2'>
           <div>{email}</div>
           <button onClick={copyEmail}>
+            <ClipboardText size={20} weight={iconWeight} />
+          </button>
+        </div>
+      )}
+      {isOpenTell && isOpen && (
+        <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center justify-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative space-x-2'>
+          <div>{telefone}</div>
+          <button onClick={copyTell}>
             <ClipboardText size={20} weight={iconWeight} />
           </button>
         </div>

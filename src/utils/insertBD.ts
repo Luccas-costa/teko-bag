@@ -5,6 +5,7 @@ import { sql } from "@vercel/postgres";
 export async function insertBD({
   id,
   email,
+  telefone,
   instagram,
   bairro,
   rua,
@@ -18,6 +19,7 @@ export async function insertBD({
 }: {
   id: string;
   email: string;
+  telefone: string;
   instagram: string;
   bairro: string;
   rua: string;
@@ -31,7 +33,7 @@ export async function insertBD({
 }) {
   try {
     console.log("Enviando dados para o banco de dados...");
-    await sql`INSERT INTO ClientesC (id, email, instagram, bairro, rua, complemento, nurmo, cidade, cep, itens, quantidade, datacompra) VALUES (${id}, ${email}, ${instagram}, ${bairro}, ${rua}, ${complemento}, ${nurmo}, ${cidade}, ${cep}, ${itens}, ${quantidade} , ${datacompra})`;
+    await sql`INSERT INTO ClientesC (id, email, instagram, bairro, rua, complemento, nurmo, cidade, cep, itens, quantidade, datacompra, telefone) VALUES (${id}, ${email}, ${instagram}, ${bairro}, ${rua}, ${complemento}, ${nurmo}, ${cidade}, ${cep}, ${itens}, ${quantidade} , ${datacompra} ${telefone})`;
     console.log("Enviado com sucesso!");
   } catch (error) {
     console.log(error);

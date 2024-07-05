@@ -1,6 +1,7 @@
 export interface Client {
   id: string;
   email: string;
+  telefone: string;
   instagram: string;
   bairro: string;
   rua: string;
