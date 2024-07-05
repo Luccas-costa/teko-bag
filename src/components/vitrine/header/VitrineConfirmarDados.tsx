@@ -33,7 +33,6 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
       email !== "" &&
       bairro !== "" &&
       rua !== "" &&
-      complemento !== "" &&
       numero !== "" &&
       cep !== "" &&
       cidade !== "" &&
