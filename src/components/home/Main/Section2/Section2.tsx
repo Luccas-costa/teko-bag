@@ -18,7 +18,7 @@ export default function Section2() {
           <Cards
             image='/teste1.png'
             title='Produtos escolhidos a mão'
-            description='Melhor qualidade a seu serviço'
+            description='Melhor qualidade no seu serviço'
           />
           <Cards
             image='/teste2.png'
