@@ -21,21 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      localization={ptBR}
-      appearance={{
-        baseTheme: dark,
-        variables: { colorPrimary: "#86B27A" },
-      }}
-    >
-      <html lang='pt-br'>
-        <link rel='icon' href='/favicon.ico' sizes='any' />
-        <body className={` ${inter.className} ${styles.todo}`}>
-          {children}
-          <SpeedInsights />
-          <Analytics />
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang='pt-br'>
+      <link rel='icon' href='/favicon.ico' sizes='any' />
+      <body className={` ${inter.className} ${styles.todo}`}>
+        {children}
+        <SpeedInsights />
+        <Analytics />
+      </body>
+    </html>
   );
 }
