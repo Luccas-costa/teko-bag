@@ -5,9 +5,11 @@ export default authMiddleware({
     "/",
     "/api/webhooks/user",
     "/api/email-compra",
+    "/api/email-compra-cliente",
     "teko-bag.com",
     "teko-bag.com/api/webhooks/user",
     "teko-bag.com/api/email-compra",
+    "teko-bag.com/api/email-compra-cliente",
   ],
 });
 
