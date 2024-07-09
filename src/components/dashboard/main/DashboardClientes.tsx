@@ -74,11 +74,13 @@ export default function DashboardClientes({
 
   const handlerOpenItens = () => {
     setOpenItens(!openItens);
+    setIsOpenItens(!isOpenItens);
     setOpenEndereco(false);
     setOpenEmail(false);
-    setIsOpenItens(!isOpenItens);
     setIsOpenEndereco(false);
     setIsOpenEmail(false);
+    setOpenTell(false);
+    setIsOpenTell(false);
   };
 
   const handlerOpenEndereco = () => {
@@ -88,6 +90,8 @@ export default function DashboardClientes({
     setIsOpenEndereco(!isOpenEndereco);
     setIsOpenItens(false);
     setIsOpenEmail(false);
+    setOpenTell(false);
+    setIsOpenTell(false);
   };
 
   const handlerOpenEmail = () => {
@@ -97,16 +101,19 @@ export default function DashboardClientes({
     setIsOpenEmail(!isOpenEmail);
     setIsOpenEndereco(false);
     setIsOpenItens(false);
+    setOpenTell(false);
+    setIsOpenTell(false);
   };
 
   const handlerOpenTell = () => {
     setOpenTell(!openTell);
     setIsOpenTell(!isOpenTell);
-    setOpenEmail(false);
-    setOpenItens(false);
     setOpenEndereco(false);
+    setOpenItens(false);
+    setOpenEmail(false);
     setIsOpenEndereco(false);
     setIsOpenItens(false);
+    setIsOpenEmail(false);
   };
 
   const copyEmail = () => {
