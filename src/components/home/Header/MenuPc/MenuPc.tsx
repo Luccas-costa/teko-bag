@@ -42,10 +42,10 @@ export default function MenuPc() {
           <SignedOut>
             <SignInButton
               mode='modal'
-              // forceRedirectUrl='https://teko-bag.com'
-              // fallbackRedirectUrl='https://teko-bag.com'
-              // signUpForceRedirectUrl='https://teko-bag.com'
-              // signUpFallbackRedirectUrl='https://teko-bag.com'
+              forceRedirectUrl='https://teko-bag.com'
+              fallbackRedirectUrl='https://teko-bag.com'
+              signUpForceRedirectUrl='https://teko-bag.com'
+              signUpFallbackRedirectUrl='https://teko-bag.com'
             >
               <button className='uppercase bg-green1/50 rounded px-3 py-2 items-center font-bold active:bg-green3 shadow-xl'>
                 Login
