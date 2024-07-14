@@ -66,7 +66,7 @@ export const TekoBagCompraEmailCliente = ({
             <Hr style={hr} />
             <Button
               style={button}
-              href='https://teko-bag.vercel.app/pages/dashboard'
+              href='https://teko-bag.vercel.app/pages/vitrine'
             >
               View site Teko Bag
             </Button>

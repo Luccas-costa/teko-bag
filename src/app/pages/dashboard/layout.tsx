@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
       <html lang='pt-br'>
         <link rel='icon' href='/favicon.ico' sizes='any' />
-        <body className={` ${inter.className} ${styles.todo}`}>
+        <body className={` ${inter.className} ${styles.todo} antialiased`}>
           {children}
           <SpeedInsights />
           <Analytics />

@@ -31,7 +31,7 @@ export default function RootLayout({
     >
       <html lang='pt-br'>
         <link rel='icon' href='/favicon.ico' sizes='any' />
-        <body className={inter.className}>
+        <body className={`${inter.className} antialiased`}>
           {children}
           <SpeedInsights />
           <Analytics />
