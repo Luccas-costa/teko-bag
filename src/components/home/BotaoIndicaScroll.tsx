@@ -23,7 +23,7 @@ export default function BotaoIndicaScroll() {
   }, []);
 
   return (
-    <div className='fixed top-[90vh] left-1/2 -translate-x-1/2 z-10'>
+    <div className='fixed top-[90vh] left-1/2 -translate-x-1/2' style={{zIndex: 1}}>
       {isVisible && (
         <motion.a
           href='#impacto'

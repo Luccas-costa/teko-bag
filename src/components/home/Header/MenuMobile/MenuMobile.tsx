@@ -45,7 +45,7 @@ export default function MenuMobile() {
 
   return (
     <>
-      <div className=''>
+      <div className='' style={{zIndex: -1}}>
         <SignedIn>
           <UserButton />
         </SignedIn>
@@ -57,9 +57,12 @@ export default function MenuMobile() {
           </SignInButton>
         </SignedOut>
       </div>
-      <div className='items-center justify-center flex'> 
+      
+      <div className='items-center justify-center flex z-70'> 
         <button>
-          <label className={styles.hamburger}>    
+          <label className={`${styles.hamburger}`}
+            style={{zIndex: 70}}
+          >      
               <input type="checkbox" onClick={handlemenu} />
               <svg viewBox="0 0 32 32"> 
                   <path className={` ${styles.line} ${styles.linetopbottom}`} d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
@@ -68,6 +71,79 @@ export default function MenuMobile() {
           </label>
         </button>
       </div>
+
+      {Itmenuopen && (
+        <motion.div
+          className="absolute rounded-full top-0 left-0 w-[300%] h-[1590px] bg-green2"
+          style={{ translateX: "-19%", translateY: "-48%", zIndex: -1 }}
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+        >
+          <div className="flex items-center justify-center h-full">
+            {/* oque eu quiser por dentro */}
+          </div>
+        </motion.div>
+      )}
+      
+      {Itmenuopen && (
+        <motion.div
+          className="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-green2"
+          style={{ zIndex: -1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+        >
+          <div className="flex flex-col items-center justify-center h-full mt-[70%]">
+            <button
+              className="p-4 focus:outline-none text-white"
+              onClick={() => setItmenuopen(!Itmenuopen)}
+            >
+              <a href="#inicio">home</a>
+            </button>
+            <hr className="w-full h-3 bg-white border-white rounded" />
+            <button
+              className="p-4 focus:outline-none text-white"
+              onClick={() => setItmenuopen(!Itmenuopen)}
+              >
+              <a href="#sobre">sobre</a>
+            </button>
+            <hr className="w-full h-3 bg-white border-white rounded" />
+            <button
+              className="p-4 focus:outline-none text-white"
+              onClick={() => setItmenuopen(!Itmenuopen)}
+            >
+              <a href="#footer">contato</a>
+            </button>
+            {userEmail && AdmUsers.includes(userEmail) && (
+              <>
+              <hr className="w-full h-3 bg-white border-white rounded" />
+                <Link href='/pages/dashboard' onClick={handleDashboardClick}>
+                    <button
+                        className="p-4 focus:outline-none text-white"
+                        >
+                        dashboard
+                    </button>
+                </Link>
+              </>
+            )}
+            {userEmail && AdmUsersDados.includes(userEmail) && (
+              <>
+               <hr className="w-full h-3 bg-white border-white rounded" />
+                <Link href='/pages/configpage' onClick={handleDashboardClick}>
+                    <button
+                        className="p-4 focus:outline-none text-white"
+                        >
+                        Configurações
+                    </button>
+                </Link>
+              </>
+            )}
+          </div>
+        </motion.div>
+      )}
+
+      {/* 
       {Itmenuopen && (
         <motion.div
           className='absolute right-0 top-0 mt-[65px] mr-[7px] sm:mt-[65px] sm:mr-[16px] rounded'
@@ -156,6 +232,7 @@ export default function MenuMobile() {
           </div>
         </motion.div>
       )}
+      */}
     </>
   );
 }

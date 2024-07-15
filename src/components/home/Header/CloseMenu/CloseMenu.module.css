@@ -35,5 +35,5 @@
   .hamburger input:checked + svg .linetopbottom {
     stroke-dasharray: 20 300;
     stroke-dashoffset: -32.42;
-  }
+  } 
   
