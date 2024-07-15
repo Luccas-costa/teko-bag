@@ -6,8 +6,8 @@ import { useUserEmail } from "@/hooks/useUserEmail";
 
 import { motion } from "framer-motion";
 import { AlignJustify } from "lucide-react";
-import { X } from "@phosphor-icons/react/dist/ssr";
 import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
+import styles from "../CloseMenu/CloseMenu.module.css";
 
 export default function MenuMobile() {
   const [Itmenuopen, setItmenuopen] = useState(false);
@@ -57,19 +57,15 @@ export default function MenuMobile() {
           </SignInButton>
         </SignedOut>
       </div>
-      <div className='items-center justify-center'>
-        <button
-          onClick={handlemenu}
-          className='p-1 rounded-lg'
-          style={{
-            backgroundColor: Itmenuopen ? "#3F493D" : "transparent",
-          }}
-        >
-          {Itmenuopen ? (
-            <X size={30} weight='bold' />
-          ) : (
-            <AlignJustify size={30} />
-          )}
+      <div className='items-center justify-center flex'> 
+        <button>
+          <label className={styles.hamburger}>    
+              <input type="checkbox" onClick={handlemenu} />
+              <svg viewBox="0 0 32 32"> 
+                  <path className={` ${styles.line} ${styles.linetopbottom}`} d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                  <path className={styles.line} d="M7 16 27 16"></path>
+              </svg>
+          </label>
         </button>
       </div>
       {Itmenuopen && (
