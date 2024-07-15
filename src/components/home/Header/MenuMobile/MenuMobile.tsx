@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-
 import { AdmUsers, AdmUsersDados } from "@/lib/admEmail";
 import { useUserEmail } from "@/hooks/useUserEmail";
-
 import { motion } from "framer-motion";
-import { AlignJustify } from "lucide-react";
 import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
 import styles from "../CloseMenu/CloseMenu.module.css";
 
 export default function MenuMobile() {
   const [Itmenuopen, setItmenuopen] = useState(false);
-  const [divY, setDivY] = useState(-0); // Estado para controlar a posição vertical da div
+  const [divY, setDivY] = useState(0); // Estado para controlar a posição vertical da div
   const [borda, setBorda] = useState(false);
+  const checkboxRef = useRef<HTMLInputElement>(null);
 
   const userEmail = useUserEmail();
 
@@ -20,32 +18,50 @@ export default function MenuMobile() {
     setItmenuopen(!Itmenuopen);
   };
 
+  const closeMenu = () => {
+    setItmenuopen(false);
+    if (checkboxRef.current) {
+      checkboxRef.current.checked = false;
+    }
+  };
+
   // Função para atualizar a posição vertical da div quando o link "#sobre" for clicado
   const handleSobreClick = () => {
     setDivY(48);
     setBorda(false);
+    closeMenu();
   };
 
   // Função para atualizar a posição vertical da div quando o link "#footer" for clicado
   const handleFooterClick = () => {
     setDivY(96);
     setBorda(false);
+    closeMenu();
   };
 
   const handleDashboardClick = () => {
     setDivY(144);
     setBorda(false);
+    closeMenu();
   };
 
-  // Função para voltar a div para sua posição inicial quando o link "home" for clicado
   const handleHomeClick = () => {
-    setDivY(-0);
+    setDivY(0);
     setBorda(true);
+    closeMenu();
   };
+
+  useEffect(() => {
+    if (!Itmenuopen) {
+      if (checkboxRef.current) {
+        checkboxRef.current.checked = false;
+      }
+    }
+  }, [Itmenuopen]);
 
   return (
     <>
-      <div className='' style={{zIndex: -1}}>
+      <div className='' style={{ zIndex: -1 }}>
         <SignedIn>
           <UserButton />
         </SignedIn>
@@ -57,17 +73,15 @@ export default function MenuMobile() {
           </SignInButton>
         </SignedOut>
       </div>
-      
-      <div className='items-center justify-center flex z-70'> 
+
+      <div className='items-center justify-center flex z-70'>
         <button>
-          <label className={`${styles.hamburger}`}
-            style={{zIndex: 70}}
-          >      
-              <input type="checkbox" onClick={handlemenu} />
-              <svg viewBox="0 0 32 32"> 
-                  <path className={` ${styles.line} ${styles.linetopbottom}`} d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
-                  <path className={styles.line} d="M7 16 27 16"></path>
-              </svg>
+          <label className={`${styles.hamburger}`} style={{ zIndex: 70 }}>
+            <input type="checkbox" onClick={handlemenu} ref={checkboxRef} />
+            <svg viewBox="0 0 32 32">
+              <path className={` ${styles.line} ${styles.linetopbottom}`} d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+              <path className={styles.line} d="M7 16 27 16"></path>
+            </svg>
           </label>
         </button>
       </div>
@@ -85,7 +99,7 @@ export default function MenuMobile() {
           </div>
         </motion.div>
       )}
-      
+
       {Itmenuopen && (
         <motion.div
           className="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-green2"
@@ -97,142 +111,51 @@ export default function MenuMobile() {
           <div className="flex flex-col items-center justify-center h-full mt-[70%]">
             <button
               className="p-4 focus:outline-none text-white"
-              onClick={() => setItmenuopen(!Itmenuopen)}
+              onClick={handleHomeClick}
             >
               <a href="#inicio">home</a>
             </button>
             <hr className="w-full h-3 bg-white border-white rounded" />
             <button
               className="p-4 focus:outline-none text-white"
-              onClick={() => setItmenuopen(!Itmenuopen)}
-              >
+              onClick={handleSobreClick}
+            >
               <a href="#sobre">sobre</a>
             </button>
             <hr className="w-full h-3 bg-white border-white rounded" />
             <button
               className="p-4 focus:outline-none text-white"
-              onClick={() => setItmenuopen(!Itmenuopen)}
+              onClick={handleFooterClick}
             >
               <a href="#footer">contato</a>
             </button>
             {userEmail && AdmUsers.includes(userEmail) && (
               <>
-              <hr className="w-full h-3 bg-white border-white rounded" />
+                <hr className="w-full h-3 bg-white border-white rounded" />
                 <Link href='/pages/dashboard' onClick={handleDashboardClick}>
-                    <button
-                        className="p-4 focus:outline-none text-white"
-                        >
-                        dashboard
-                    </button>
+                  <button
+                    className="p-4 focus:outline-none text-white"
+                  >
+                    dashboard
+                  </button>
                 </Link>
               </>
             )}
             {userEmail && AdmUsersDados.includes(userEmail) && (
               <>
-               <hr className="w-full h-3 bg-white border-white rounded" />
+                <hr className="w-full h-3 bg-white border-white rounded" />
                 <Link href='/pages/configpage' onClick={handleDashboardClick}>
-                    <button
-                        className="p-4 focus:outline-none text-white"
-                        >
-                        Configurações
-                    </button>
+                  <button
+                    className="p-4 focus:outline-none text-white"
+                  >
+                    Configurações
+                  </button>
                 </Link>
               </>
             )}
           </div>
         </motion.div>
       )}
-
-      {/* 
-      {Itmenuopen && (
-        <motion.div
-          className='absolute right-0 top-0 mt-[65px] mr-[7px] sm:mt-[65px] sm:mr-[16px] rounded'
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className='relative'>
-            <motion.div
-              className={`z-20 w-4 h-4 bg-black absolute right-[14px] top-[-7px] ${
-                borda ? "" : "border-t border-l border-white"
-              }`}
-              style={{ y: divY, rotate: Itmenuopen ? 45 : 0 }}
-              whileHover={{ rotate: 45 }}
-              animate={{
-                y: divY,
-                transition: { duration: 0.3 }, // Aumentando a duração da animação de transição
-              }}
-            ></motion.div>
-            <div className='flex flex-col'>
-              <a href='#inicio' onClick={handleHomeClick}>
-                <motion.div
-                  className='z-10 w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center rounded-t-lg border-b border-l border-white'
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  home
-                </motion.div>
-              </a>
-              <a href='#sobre' onClick={handleSobreClick}>
-                <motion.div
-                  className='z-5 w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center border-b border-l border-white'
-                  initial={{ opacity: 1, y: -48 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 1, y: -48 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  Sobre
-                </motion.div>
-              </a>
-              <a href='#footer' onClick={handleFooterClick}>
-                <motion.div
-                  className='w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center border-b border-l border-white'
-                  initial={{ opacity: 1, y: -96 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 1, y: -96 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  Contato
-                </motion.div>
-              </a>
-              {userEmail && AdmUsers.includes(userEmail) && (
-                <Link href='/pages/dashboard' onClick={handleDashboardClick}>
-                  <motion.div
-                    className={`w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center ${
-                      userEmail && AdmUsers.includes(userEmail)
-                        ? "rounded-none"
-                        : "rounded-b-lg"
-                    } border-b border-l border-white`}
-                    initial={{ opacity: 1, y: -96 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 1, y: -96 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    Dashboard
-                  </motion.div>
-                </Link>
-              )}
-              {userEmail && AdmUsersDados.includes(userEmail) && (
-                <Link href='/pages/configpage' onClick={handleDashboardClick}>
-                  <motion.div
-                    className='w-[180px] h-[48px] bg-darkgreen font-semibold text-lg text-white flex items-center justify-center rounded-b-lg border-b border-l border-white'
-                    initial={{ opacity: 1, y: -96 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 1, y: -96 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    Configurações
-                  </motion.div>
-                </Link>
-              )}
-            </div>
-          </div>
-        </motion.div>
-      )}
-      */}
     </>
   );
 }
