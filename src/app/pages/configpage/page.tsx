@@ -4,6 +4,7 @@ import { DeletClientBD } from "@/utils/deletClientBD"; // Certifique-se de ajust
 
 export default function ConfigPage() {
   const [clientId, setClientId] = useState<string>("");
+  const [open, setopen] = useState(false)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setClientId(event.target.value);
@@ -28,8 +29,18 @@ export default function ConfigPage() {
     }
   };
 
+
   return (
     <div className='w-screen h-screen flex flex-col items-center justify-center bg-zinc-800'>
+      <header className={`w-full h-24 px-4 py-2 ${open ? "bg-green-500" : "bg-pink-400"} transition-all fixed top-0 flex justify-between`}>
+        <div className="size-16 p-4 space-y-2 relative border border-black flex justify-center items-center flex-col">
+          <div className={`w-[15px] h-1 bg-white rounded self-start transition-all ${open && "rotate-[55deg]"}`}></div>
+          <div className={`w-8 h-1 bg-white rounded transition-all ${open && "-rotate-[55deg]"}`}></div>
+          <div className={`w-[16px] h-1 bg-white rounded self-end transition-all ${open && "rotate-[55deg]"}`}></div>
+
+        </div>
+        <button className="size-16 bg-purple-700 ronded" onClick={() => setopen(!open)}>testar</button>
+      </header>
       <div className='border border-white-200 rounded p-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[80%]'>
         <h1 className='text-center text-3xl font-semibold text-zinc-200 mb-4'>
           Excluir Cliente
