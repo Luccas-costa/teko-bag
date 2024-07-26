@@ -25,6 +25,8 @@ interface DashboardClientesProps {
   complemento: string;
   numero: string;
   telefone: string;
+  atendido: boolean;
+  handleratendimento: (id: string, atendido: boolean) => Promise<void>;
 }
 
 export default function DashboardClientes({
@@ -44,6 +46,8 @@ export default function DashboardClientes({
   complemento,
   numero,
   telefone,
+  handleratendimento,
+  atendido,
 }: DashboardClientesProps) {
   const [openItens, setOpenItens] = useState(false);
   const [openEndereco, setOpenEndereco] = useState(false);
@@ -55,6 +59,7 @@ export default function DashboardClientes({
   const [isOpenTell, setIsOpenTell] = useState(false);
   const [iconWeight, setIconWeight] = useState<"regular" | "fill">("regular");
   const [totalQuantidades, setTotalQuantidades] = useState<number>(0);
+  const [localAtendido, setLocalAtendido] = useState(atendido);
 
   const format = "DD/MM/YYYY HH:mm:ss"; // Formato esperado para exibição
   const entradaDate = dayjs(dataEntrada, format);
@@ -71,6 +76,10 @@ export default function DashboardClientes({
       setTotalQuantidades(total * 45);
     }
   }, [isOpenItens, isOpen, quantidades]);
+
+  useEffect(() => {
+    setLocalAtendido(atendido);
+  }, [atendido]);
 
   const handlerOpenItens = () => {
     setOpenItens(!openItens);
@@ -176,12 +185,19 @@ export default function DashboardClientes({
   const itensArray = itens.split(",");
   const quantidadesArray = quantidades.split(",");
 
+  const subhandleratendimento = async () => {
+    const atendido2 = !localAtendido;
+    await handleratendimento(id, atendido2);
+    setLocalAtendido(atendido2);
+  };
+
   return (
     <>
       <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
         <input
           type='checkbox'
-          disabled
+          checked={localAtendido}
+          onChange={subhandleratendimento}
           className='w-4 h-4 appearance-none bg-transparent border border-zinc-700 rounded shadow-lg checked:bg-[#849994] dash7:mr-8 dash8:mr-4 dash8_5:mr-3 dash9:mr-2 dash10:mr-1  dash10_5:mr-1'
         ></input>
         <div className='dash3:w-[10rem] dash4:w-[7rem] dash5:w-[6rem] dash6:w-[5rem] dash6:text-base dash7:w-[5rem] dash8:w-[5rem] dash8_5:w-[3.8rem] dash7:text-sm dash9:text-xs dash10:text-[11px] dash10_5:text-[11px] dash9:w-[4rem] dash10:w-[3rem] dash10_5:w-[3rem]  text-zinc-400'>

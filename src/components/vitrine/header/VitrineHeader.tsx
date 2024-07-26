@@ -110,6 +110,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
       itens: itens,
       quantidade: quantidade,
       datacompra: datacompra,
+      atendido: false,
     });
 
     // Chamar a função de envio de email

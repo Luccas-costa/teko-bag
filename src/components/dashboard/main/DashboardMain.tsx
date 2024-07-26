@@ -5,6 +5,7 @@ import { SearchBD } from "@/utils/searchBD";
 import DashboardCFuncoes from "./DashboardCFuncoes";
 import DashboardFuncoes from "./DashboardFuncoes";
 import DashboardClientes from "./DashboardClientes";
+import { alterarStatusAtendido } from "@/utils/updateAtendimentoBD";
 
 interface DashboardMainProps {
   searchTerm: string;
@@ -14,6 +15,7 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
   const [clients, setClients] = useState<Client[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [openClientId, setOpenClientId] = useState<string | null>(null);
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false); // Estado para a checkbox
   const clientsPerPage = 8;
 
   useEffect(() => {
@@ -29,7 +31,6 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
 
     fetchClients();
   }, []);
-
   // Formate as datas ao buscar os clientes
   const formattedClients = clients.map((client) => ({
     ...client,
@@ -38,7 +39,6 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
       : null,
   }));
   console.log("Clientes formatados:", formattedClients);
-
   // Filtra os clientes com base no termo de busca
   const filteredClients = formattedClients.filter(
     (client) =>
@@ -47,8 +47,12 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
   );
   console.log("Clientes filtrados:", filteredClients);
 
+  // Filtra os clientes com base no estado da checkbox
+  const finalFilteredClients = isCheckboxChecked
+    ? filteredClients.filter((client) => client.atendido)
+    : filteredClients;
   // Ordena os clientes do mais recente ao mais antigo
-  const sortedClients = filteredClients.sort((a, b) => {
+  const sortedClients = finalFilteredClients.sort((a, b) => {
     if (!a.dataCompra) return 1;
     if (!b.dataCompra) return -1;
     const diff = dayjs(b.dataCompra).diff(dayjs(a.dataCompra));
@@ -58,17 +62,14 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
     return diff;
   });
   console.log("Clientes ordenados:", sortedClients);
-
   // Calcula o número total de páginas
   const totalPages = Math.ceil(sortedClients.length / clientsPerPage);
-
   // Obtém os clientes a serem exibidos na página atual
   const displayedClients = sortedClients.slice(
     (currentPage - 1) * clientsPerPage,
     currentPage * clientsPerPage
   );
   console.log("Clientes exibidos na página atual:", displayedClients);
-
   // Manipula a mudança de página
   const handlePageChange = (newPage: number) => {
     if (newPage > 0 && newPage <= totalPages) {
@@ -76,9 +77,25 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
     }
   };
 
+  const handleratendimento = async (id: string, atendido: boolean) => {
+    try {
+      await alterarStatusAtendido({ id, atendido });
+      console.log("Handler de atendimento executado com sucesso!");
+    } catch (error) {
+      console.log("Erro no handler de atendimento:", error);
+    }
+  };
+
+  const handleCheckboxChange = () => {
+    setIsCheckboxChecked(!isCheckboxChecked);
+  };
+
   return (
     <div className='h-[720px] w-[98.4%] border border-zinc-600 rounded-lg mt-4 ml-3 shadow-lg shadow-zinc-900 flex flex-col'>
-      <DashboardCFuncoes />
+      <DashboardCFuncoes
+        isChecked={isCheckboxChecked}
+        onCheckboxChange={handleCheckboxChange}
+      />
       <div className='flex-1 flex flex-col overflow-auto'>
         {displayedClients.map((client) => (
           <DashboardClientes
@@ -96,6 +113,8 @@ export default function DashboardMain({ searchTerm }: DashboardMainProps) {
             complemento={client.complemento}
             numero={client.nurmo} // Certifique-se de passar o número aqui
             telefone={client.telefone}
+            atendido={client.atendido}
+            handleratendimento={handleratendimento}
           />
         ))}
       </div>

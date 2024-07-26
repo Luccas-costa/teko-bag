@@ -13,4 +13,5 @@ export interface Client {
   quantidades: string;
   nome: string;
   dataCompra: string;
+  atendido: boolean;
 }

@@ -22,6 +22,7 @@ export async function SearchBD(): Promise<Client[]> {
       quantidades: row.quantidade,
       nome: row.instagram, // Usando o instagram como nome
       dataCompra: row.datacompra, // Valor aleatório para dataCompra
+      atendido: row.atendido,
     }));
     return clientes;
   } catch (error) {
