@@ -10,6 +10,7 @@ import DashboardHeader from "@/components/dashboard/header/DashboardHeader";
 import DashboardMain from "@/components/dashboard/main/DashboardMain";
 import DashboardPesquisar from "@/components/dashboard/pesquisar/DashboardPesquisar";
 import DashboardExit from "@/components/dashboard/DashboardExit";
+import DashboardEnterInsert from "@/components/dashboard/DashboardEnterInsert";
 
 export default function Page() {
   const userEmail = useUserEmail();
@@ -26,6 +27,7 @@ export default function Page() {
           <DashboardHeader />
           <DashboardPesquisar onSearch={handleSearch} />
           <DashboardMain searchTerm={searchTerm} />
+          <DashboardEnterInsert />
           <DashboardExit />
         </div>
       ) : (
