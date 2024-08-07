@@ -66,7 +66,7 @@ export default function DashboardCampos() {
   };
 
   return (
-    <div className='w-screen h-full flex flex-col'>
+    <div className='w-screen h-screen flex flex-col'>
       <div className='mt-4 ml-4 cursor-pointer'>
         <Link href='/pages/dashboard' className='flex space-x-2 items-center'>
           <ArrowLeft size={40} color='white' weight='bold' />
