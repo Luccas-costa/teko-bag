@@ -66,7 +66,7 @@ export default function DashboardCampos() {
   };
 
   return (
-    <div className='w-screen h-screen flex flex-col'>
+    <div className='w-screen h-full flex flex-col'>
       <div className='mt-4 ml-4 cursor-pointer'>
         <Link href='/pages/dashboard' className='flex space-x-2 items-center'>
           <ArrowLeft size={40} color='white' weight='bold' />
@@ -76,13 +76,13 @@ export default function DashboardCampos() {
         </Link>
       </div>
 
-      <div className='mx-auto text-lg text-yellow-500 p-2 border border-yellow-500 w-[30%] text-center rounded'>
+      <div className='mx-auto text-lg mt-6 text-yellow-500 p-2 border border-yellow-500 w-[85%] dash10:w-[70%] menuxm:w-[50%] dash2:w-[30%] text-center rounded'>
         * Se não souber quaisquer das informações dos campos abaixo, favor
         deixar em branco sem alterações, que ele será preenchido automaticamente
       </div>
 
-      <div className='mx-auto flex flex-col w-2/3 mt-12'>
-        <div className='flex space-x-3'>
+      <div className='mx-auto flex flex-col w-[98%] menuxm:w-[90%] dash7:w-[80%] dash2:w-2/3 mt-12'>
+        <div className='flex space-x-1 dash9_5:space-x-2 dash7:space-x-3'>
           <input
             ref={emailRef}
             type='text'
@@ -104,7 +104,7 @@ export default function DashboardCampos() {
           />
         </div>
 
-        <div className='flex space-x-3'>
+        <div className='flex space-x-1 dash9_5:space-x-2 dash7:space-x-3'>
           <input
             ref={bairroRef}
             type='text'
@@ -131,7 +131,7 @@ export default function DashboardCampos() {
           </select>
         </div>
 
-        <div className='flex space-x-3'>
+        <div className='flex space-x-1 dash9_5:space-x-2 dash7:space-x-3'>
           <input
             ref={complementoRef}
             type='text'
@@ -154,7 +154,7 @@ export default function DashboardCampos() {
         </div>
       </div>
 
-      <div className='mx-auto mt-6 text-lg text-yellow-500 p-2 border border-yellow-500 w-[30%] text-center rounded'>
+      <div className='mx-auto mt-6 text-lg text-yellow-500 p-2 border border-yellow-500 w-[85%] dash10:w-[70%] menuxm:w-[50%] dash2:w-[30%] text-center rounded'>
         * Escreva todos os itens e as Quantidades compradas os separando apenas
         por uma virgula, como o exemplo abaixo: <br />{" "}
         <span className='text-zinc-300'>
@@ -164,7 +164,7 @@ export default function DashboardCampos() {
       </div>
 
       <div className='flex flex-col justify-center w-screen mt-12'>
-        <div className='mx-auto flex space-x-3 w-2/3'>
+        <div className='mx-auto flex space-x-1 dash9_5:space-x-2 dash7:space-x-3 w-[98%] menuxm:w-[90%] dash7:w-[80%] dash2:w-2/3'>
           <input
             ref={itensRef}
             type='text'
@@ -190,7 +190,7 @@ export default function DashboardCampos() {
       </div>
 
       <button
-        className={`bg-green1/50 rounded px-3 py-3 items-center font-bold mt-28 w-[40vw] mx-auto text-center ${
+        className={`bg-green1/50 rounded px-3 py-3 items-center font-bold mt-14 dash4:mt-28 w-[60%] dash2:w-[40%] mx-auto text-center ${
           isSending ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
         }`}
         onClick={handleFinal}
