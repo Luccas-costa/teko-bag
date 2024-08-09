@@ -190,7 +190,7 @@ export default function DashboardCampos() {
       </div>
 
       <button
-        className={`bg-green1/50 rounded px-3 py-3 items-center font-bold mt-14 dash4:mt-28 w-[60%] dash2:w-[40%] mx-auto text-center ${
+        className={`bg-green1/50 mb-4 rounded px-3 py-3 items-center font-bold mt-14 dash4:mt-28 w-[60%] dash2:w-[40%] mx-auto text-center ${
           isSending ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
         }`}
         onClick={handleFinal}
