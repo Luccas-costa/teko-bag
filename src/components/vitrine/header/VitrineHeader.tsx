@@ -34,6 +34,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const firstName = useFirstName();
+  const emailverificacao = useUserEmail() || "Nao Informado";
 
   const handleClick = () => {
     if (Agradecimento) {
@@ -94,6 +95,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
       itens: itens,
       quantidade: quantidade,
       datacompra: datacompra,
+      emailverificacao: emailverificacao,
     });
 
     await insertBD({
@@ -111,6 +113,7 @@ const VitrineHeader: React.FC<VitrineHeaderProps> = ({
       quantidade: quantidade,
       datacompra: datacompra,
       atendido: false,
+      emailverificacao: emailverificacao,
     });
 
     // Chamar a função de envio de email

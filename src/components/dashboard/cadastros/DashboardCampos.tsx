@@ -1,8 +1,12 @@
 "use client";
-import React, { useRef, useState } from "react";
+
 import Link from "next/link";
+import React, { useRef, useState } from "react";
+
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
+
 import { insertBD } from "@/utils/insertBD";
+import { useUserEmail } from "@/hooks/useUserEmail";
 import { getFormattedDate } from "@/utils/diaAtual";
 
 export default function DashboardCampos() {
@@ -19,6 +23,8 @@ export default function DashboardCampos() {
   const quantidadeRef = useRef<HTMLInputElement>(null);
   const [atendido, setAtendido] = useState(false);
   const [isSending, setIsSending] = useState(false);
+
+  const emailverificacao = useUserEmail() || "Nao Informado";
 
   const idAleatorio = () => {
     const id = Math.floor(10000 + Math.random() * 90000);
@@ -44,11 +50,15 @@ export default function DashboardCampos() {
       quantidade: quantidadeRef.current?.value || "Não Informado",
       datacompra: datacompra,
       atendido: atendido,
+      emailverificacao: emailverificacao,
     };
 
     console.log(dados);
 
+    // ele chama o insertbd passando todos os dados do cont dados
     await insertBD(dados);
+    console.log("acho que funcionou BD");
+
     // Limpar todos os inputs
     if (emailRef.current) emailRef.current.value = "";
     if (telefoneRef.current) telefoneRef.current.value = "";

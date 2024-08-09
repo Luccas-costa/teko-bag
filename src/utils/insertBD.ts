@@ -17,6 +17,7 @@ export async function insertBD({
   quantidade,
   datacompra,
   atendido,
+  emailverificacao,
 }: {
   id: string;
   email: string;
@@ -32,10 +33,11 @@ export async function insertBD({
   quantidade: string;
   datacompra: string;
   atendido: boolean;
+  emailverificacao: string;
 }) {
   try {
     console.log("Enviando dados para o banco de dados...");
-    await sql`INSERT INTO ClientesC (id, email, instagram, bairro, rua, complemento, nurmo, cidade, cep, itens, quantidade, datacompra, telefone, atendido) VALUES (${id}, ${email}, ${instagram}, ${bairro}, ${rua}, ${complemento}, ${nurmo}, ${cidade}, ${cep}, ${itens}, ${quantidade} , ${datacompra}, ${telefone}, ${atendido})`;
+    await sql`INSERT INTO ClientesC (id, email, instagram, bairro, rua, complemento, nurmo, cidade, cep, itens, quantidade, datacompra, telefone, atendido, emailverificacao) VALUES (${id}, ${email}, ${instagram}, ${bairro}, ${rua}, ${complemento}, ${nurmo}, ${cidade}, ${cep}, ${itens}, ${quantidade} , ${datacompra}, ${telefone}, ${atendido} ${emailverificacao})`;
     console.log("Enviado com sucesso!");
   } catch (error) {
     console.log(error);

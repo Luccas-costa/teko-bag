@@ -8,6 +8,10 @@
 
 15. terminar de dar uns ajustes no input do telefone, mas especifico na mascara
 
+16. --PRIORIDADE add sistema que envia para o bd o email da pessoas via o clerk para so mim ter aceso
+
+17. --PRIORIDADE deixar todos os inputs do campo dos confirmar dados como opicionais e se nao informar deixar como nao informado
+
 ## Coisas já feitas
 
 1. adicionar campo de data no banco de dados para aparecer no dashboard // feito
