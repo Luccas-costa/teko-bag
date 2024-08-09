@@ -135,7 +135,7 @@ const VitrineCardModal: React.FC<VitrineCardModalProps> = ({
           R$: {preco}
         </div>
         <button
-          className='w-full py-2 rounded border border-black shadow-lg font-semibold active:border-transparent mt-4 absolute bottom-0 mb-1'
+          className='w-full py-2 rounded border border-black shadow-lg font-semibold active:border-transparent mt-12 absolute bottom-0 mb-1'
           onClick={handleAddToCart}
         >
           {buttonText}
