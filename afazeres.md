@@ -12,6 +12,8 @@
 
 17. --PRIORIDADE deixar todos os inputs do campo dos confirmar dados como opicionais e se nao informar deixar como nao informado
 
+18. --PRIORIDADE descobrir como deixar os inputs obrigatorios
+
 ## Coisas já feitas
 
 1. adicionar campo de data no banco de dados para aparecer no dashboard // feito

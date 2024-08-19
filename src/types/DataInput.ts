@@ -1,5 +1,7 @@
 export type DataInputs = {
-  name: string;
-  email: string;
+  Instagram: string;
+  Email: string;
+  Tell: string;
+  Cep: string;
   teste: string;
 };

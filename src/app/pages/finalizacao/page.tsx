@@ -15,15 +15,20 @@ import {
   CurrencyCircleDollar,
   CaretLeft,
   CaretRight,
+  Steps,
 } from "@phosphor-icons/react/dist/ssr";
 
 export default function Finalizacao() {
   const dataInputs = {
-    name: "",
-    email: "",
+    Instagram: "",
+    Email: "",
+    Tell: "",
+    Cep: "",
+
     teste: "",
   };
 
+  const [Error, setError] = useState<string>("");
   const [Steps, setSteps] = useState<number>(0);
   const [data, setData] = useState<DataInputs>(dataInputs);
 
@@ -33,11 +38,45 @@ export default function Finalizacao() {
     });
   };
 
-  const handlerNextStep = () => {
-    if (Steps >= 0 && Steps < 3) {
-      setSteps(Steps + 1);
+  const handlerNextStep = (Steps: number) => {
+    if (Steps === 0) {
+      if (data.Email !== "" && data.Cep !== "" && data.Tell !== "") {
+        if (Steps >= 0 && Steps < 3) {
+          setSteps(Steps + 1);
+        } else {
+          console.log("// max //");
+        }
+      } else {
+        switch (true) {
+          case data.Email === "" && data.Cep === "" && data.Tell === "":
+            setError("Identificação | All");
+            break;
+          case data.Email === "" && data.Cep === "":
+            setError("Identificação | Email Cep");
+            break;
+          case data.Email === "" && data.Tell === "":
+            setError("Identificação | Email Tell");
+            break;
+          case data.Cep === "" && data.Tell === "":
+            setError("Identificação | Cep Tell");
+            break;
+          case data.Email === "":
+            setError("Identificação | Email");
+            break;
+          case data.Cep === "":
+            setError("Identificação | Cep");
+            break;
+          case data.Tell === "":
+            setError("Identificação | Tell");
+            break;
+        }
+      }
     } else {
-      console.log("ruim");
+      if (Steps >= 0 && Steps < 3) {
+        setSteps(Steps + 1);
+      } else {
+        console.log("ruim");
+      }
     }
   };
   const handlerBackStep = () => {
@@ -53,6 +92,7 @@ export default function Finalizacao() {
       key='Identificacao'
       data={data}
       handlerUpdateData={handlerUpdateData}
+      Error={Error}
     />,
     <Endereco
       key='endereco'
@@ -151,7 +191,7 @@ export default function Finalizacao() {
               </button>
               <button
                 type='submit'
-                onClick={handlerNextStep}
+                onClick={() => handlerNextStep(Steps)}
                 className='flex items-center space-x-2 text-lg bg-zinc-300/70 hover:bg-zinc-300 transition-all shadow rounded p-2 '
               >
                 Avançar <CaretRight size={20} weight='regular' />
