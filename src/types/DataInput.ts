@@ -1,7 +1,14 @@
 export type DataInputs = {
+  // Identificação
   Instagram: string;
   Email: string;
   Tell: string;
   Cep: string;
-  teste: string;
+
+  // Endereço
+  Cidade: string;
+  Bairro: string;
+  RuaAv: string;
+  Numero: string;
+  Complemento: string;
 };

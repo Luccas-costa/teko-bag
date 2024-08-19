@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+
 import { motion } from "framer-motion";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import VitrinePagamento from "./VitrinePagamento";
 import VitrineFinalizar from "./VitrineFinalizar";
@@ -47,6 +49,8 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
 }) => {
   const [desconto, setDesconto] = useState(false);
   const [valor, setValor] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handlerFinalizar = () => {
     setFinalizar(!Finalizar);
@@ -73,6 +77,25 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
     handlerCloseFinal();
   };
 
+  // Memoriza a função para que não seja recriada em cada renderização
+  const updateUrlWithValor = useCallback(
+    (valor: string) => {
+      const queryParams = new URLSearchParams(location.search);
+      queryParams.set("valor", valor);
+      navigate(`${location.pathname}?${queryParams.toString()}`, {
+        replace: true,
+      });
+    },
+    [location, navigate]
+  );
+
+  // Atualiza a URL quando o valor mudar
+  useEffect(() => {
+    if (valor) {
+      updateUrlWithValor(valor);
+    }
+  }, [valor, updateUrlWithValor]);
+
   return (
     <motion.div
       initial={{ right: "0%" }}
@@ -93,6 +116,12 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
       ></div>
       <div className='bg-vitrinegreen w-[70vw] 2xl:w-[25vw] xl:w-[30vw] lg:w-[35vw] md:w-[40vw] sm:w-[45vw] menuxm:w-[60vw] h-full'>
         <div className='p-1 h-full relative right-[2vw]'>
+          {Finalizar && (
+            <VitrineConteudoCarrinho
+              onclick={handleClose}
+              handlerFinalizar={handlerFinalizar}
+            />
+          )}
           {Finalizar ? (
             Confirmacao ? (
               Pagamento ? (
