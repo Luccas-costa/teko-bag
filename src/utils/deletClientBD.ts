@@ -1,5 +1,5 @@
 import { createClient } from "@vercel/postgres";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
 dotenv.config(); // Certifique-se de carregar as variáveis de ambiente
 
@@ -23,7 +23,7 @@ export async function DeletClientBD(clientId: string): Promise<void> {
 
     // Query para deletar o cliente pelo ID
     const query = {
-      text: "DELETE FROM ClientesC WHERE id = $1",
+      text: "DELETE FROM ClientesC WHERE id = '85852'",
       values: [clientId],
     };
 

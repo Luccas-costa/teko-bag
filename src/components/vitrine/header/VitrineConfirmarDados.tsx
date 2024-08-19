@@ -29,9 +29,8 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
   const [isFormFilled, setIsFormFilled] = useState(false);
 
   useEffect(() => {
-    // Verifica se todos os campos estão preenchidos
+    // Verifica se todos os campos obrigatórios estão preenchidos
     const filled =
-      instagram !== "" &&
       email !== "" &&
       telefone !== "" &&
       bairro !== "" &&
@@ -59,7 +58,6 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
   const formatarTelefone = (inputTelefone: string) => {
     // Remove todos os caracteres não numéricos
     let telefoneFormatado = inputTelefone.replace(/\D/g, "");
-
     // Verifica se o telefone está vazio
     if (telefoneFormatado.length === 0) {
       return "";
@@ -86,6 +84,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
     return telefoneFormatado;
   };
   // Handler para o evento onChange do input de telefone
+
   const handleTelefoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const valorDigitado = e.target.value;
     const telefoneFormatado = formatarTelefone(valorDigitado);
@@ -109,6 +108,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
       setInstagram("");
     }
   };
+
   const handleBlurTell = () => {
     if (telefone === "(55) ") {
       setTelefone("");
@@ -117,18 +117,17 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
 
   const handleCupomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newCupom = e.target.value.replace(/\s+/g, "").toUpperCase();
-    console.log(newCupom);
     setCupomInput(newCupom);
-    if (newCupom === "TEKOTEKO") {
-      setDesconto(true);
-    } else {
-      setDesconto(false);
-    }
+    setDesconto(newCupom === "TEKOTEKO");
   };
 
   const handleAvancarClick = () => {
+    // Se o Instagram estiver vazio, defina como "Não Informado"
+    const instagramValue =
+      instagram.trim() === "" ? "Não Informado" : instagram;
+
     const data = {
-      instagram,
+      instagram: instagramValue,
       email,
       telefone,
       bairro,
@@ -140,10 +139,6 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
     };
 
     Dados.push(data);
-    console.log(cupomInput);
-    console.log("///////////////");
-    console.log(Dados);
-
     onclick2();
   };
 
@@ -178,7 +173,7 @@ const VitrineConfirmarDados: React.FC<VitrineConfirmarDadosProps> = ({
         <input
           type='text'
           value={telefone}
-          onChange={handleTelefoneChange} // Ajuste aqui para chamar handleTelefoneChange
+          onChange={handleTelefoneChange}
           onBlur={handleBlurTell}
           onFocus={handleFocusTell}
           placeholder='Telefone para contato (55) XX XXXXX XXXX'
