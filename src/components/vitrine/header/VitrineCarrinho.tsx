@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 
 import VitrinePagamento from "./VitrinePagamento";
 import VitrineFinalizar from "./VitrineFinalizar";
@@ -49,12 +50,7 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
 }) => {
   const [desconto, setDesconto] = useState(false);
   const [valor, setValor] = useState("");
-  const navigate = useNavigate();
-  const location = useLocation();
 
-  const handlerFinalizar = () => {
-    setFinalizar(!Finalizar);
-  };
   const handlerConfirmacao = () => {
     setConfirmacao(!Confirmacao);
     setConfirmacao2(true);
@@ -76,25 +72,6 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
     setAgradecimento(true);
     handlerCloseFinal();
   };
-
-  // Memoriza a função para que não seja recriada em cada renderização
-  const updateUrlWithValor = useCallback(
-    (valor: string) => {
-      const queryParams = new URLSearchParams(location.search);
-      queryParams.set("valor", valor);
-      navigate(`${location.pathname}?${queryParams.toString()}`, {
-        replace: true,
-      });
-    },
-    [location, navigate]
-  );
-
-  // Atualiza a URL quando o valor mudar
-  useEffect(() => {
-    if (valor) {
-      updateUrlWithValor(valor);
-    }
-  }, [valor, updateUrlWithValor]);
 
   return (
     <motion.div
@@ -119,7 +96,6 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
           {Finalizar && (
             <VitrineConteudoCarrinho
               onclick={handleClose}
-              handlerFinalizar={handlerFinalizar}
             />
           )}
           {Finalizar ? (
@@ -157,7 +133,6 @@ const VitrineCarrinho: React.FC<VitrineCarrinhoProps> = ({
           ) : (
             <VitrineConteudoCarrinho
               onclick={handleClose}
-              handlerFinalizar={handlerFinalizar}
             />
           )}
         </div>

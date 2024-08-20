@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import "../../globals.css";
 import { insertBD } from "@/utils/insertBD";
@@ -24,24 +25,27 @@ import {
   CaretLeft,
   CaretRight,
 } from "@phosphor-icons/react/dist/ssr";
-import { useParams } from "react-router-dom";
 
 export default function Finalizacao() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const valor = searchParams.get("valor") || ""; // Obtém o valor da URL
+
   const dataInputs = {
     Instagram: "",
     Email: "",
     Tell: "",
     Cep: "",
-
+    
     Cidade: "",
     Bairro: "",
     RuaAv: "",
     Numero: "",
     Complemento: "",
   };
+
   const [Steps, setSteps] = useState<number>(0);
   const [Error, setError] = useState<string>("");
-  const { valor } = useParams<{ valor: string }>(); // Captura o valor da URL
   const [data, setData] = useState<DataInputs>(dataInputs);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [TextButton, setTextButton] = useState<boolean>(false);
@@ -63,9 +67,7 @@ export default function Finalizacao() {
   };
 
   const handlerUpdateData = (key: string, value: string) => {
-    setData((prev) => {
-      return { ...prev, [key]: value };
-    });
+    setData((prev) => ({ ...prev, [key]: value }));
   };
 
   const handlerNextStep = async (Steps: number) => {
@@ -73,7 +75,6 @@ export default function Finalizacao() {
     if (Steps === 0) {
       if (data.Email !== "" && data.Cep !== "" && data.Tell !== "") {
         if (Steps >= 0 && Steps < 3) {
-          // Parte dados dos Ceps
           if (data.Cep) {
             await fetchCepData(data.Cep);
           }
@@ -82,29 +83,7 @@ export default function Finalizacao() {
           console.log("// max //");
         }
       } else {
-        switch (true) {
-          case data.Email === "" && data.Cep === "" && data.Tell === "":
-            setError("Identificação | All");
-            break;
-          case data.Email === "" && data.Cep === "":
-            setError("Identificação | Email Cep");
-            break;
-          case data.Email === "" && data.Tell === "":
-            setError("Identificação | Email Tell");
-            break;
-          case data.Cep === "" && data.Tell === "":
-            setError("Identificação | Cep Tell");
-            break;
-          case data.Email === "":
-            setError("Identificação | Email");
-            break;
-          case data.Cep === "":
-            setError("Identificação | Cep");
-            break;
-          case data.Tell === "":
-            setError("Identificação | Tell");
-            break;
-        }
+        setError(getIdentificationError());
       }
     } else if (Steps === 1) {
       if (
@@ -119,44 +98,7 @@ export default function Finalizacao() {
           console.log("// max //");
         }
       } else {
-        switch (true) {
-          case data.Bairro !== "" &&
-            data.RuaAv !== "" &&
-            data.Numero !== "" &&
-            data.Cidade !== "":
-            setError("Endereco | All");
-            break;
-          case data.Bairro === "" && data.RuaAv === "":
-            setError("Endereco | Bairro RuaAv");
-            break;
-          case data.Bairro === "" && data.Numero === "":
-            setError("Endereco | Bairro Numero");
-            break;
-          case data.Bairro === "" && data.Cidade === "":
-            setError("Endereco | Bairro Cidade");
-            break;
-          case data.RuaAv === "" && data.Cidade === "":
-            setError("Endereco | RuaAv Cidade");
-            break;
-          case data.RuaAv === "" && data.Numero === "":
-            setError("Endereco | RuaAv Numero");
-            break;
-          case data.Cidade === "" && data.Numero === "":
-            setError("Endereco | Cidade Numero");
-            break;
-          case data.Cidade === "":
-            setError("Endereco | Cidade");
-            break;
-          case data.RuaAv === "":
-            setError("Endereco | RuaAv");
-            break;
-          case data.Bairro === "":
-            setError("Endereco | Bairro");
-            break;
-          case data.Numero === "":
-            setError("Endereco | Numero");
-            break;
-        }
+        setError(getEnderecoError());
       }
     } else if (Steps === 2) {
       if (Steps >= 0 && Steps < 3) {
@@ -166,7 +108,8 @@ export default function Finalizacao() {
         console.log("// max //");
       }
     } else if (Steps === 3) {
-      handlerArrumaTudo();
+      await handlerArrumaTudo();
+      router.push(`/pages/finalizacao?valor=${valor}`); // Atualiza a URL ao finalizar
     }
   };
 
@@ -177,6 +120,47 @@ export default function Finalizacao() {
     } else {
       console.log("ruim");
     }
+  };
+
+  const getIdentificationError = () => {
+    if (data.Email === "" && data.Cep === "" && data.Tell === "")
+      return "Identificação | All";
+    if (data.Email === "" && data.Cep === "")
+      return "Identificação | Email Cep";
+    if (data.Email === "" && data.Tell === "")
+      return "Identificação | Email Tell";
+    if (data.Cep === "" && data.Tell === "") return "Identificação | Cep Tell";
+    if (data.Email === "") return "Identificação | Email";
+    if (data.Cep === "") return "Identificação | Cep";
+    if (data.Tell === "") return "Identificação | Tell";
+    return "";
+  };
+
+  const getEnderecoError = () => {
+    if (
+      data.Bairro !== "" &&
+      data.RuaAv !== "" &&
+      data.Numero !== "" &&
+      data.Cidade !== ""
+    )
+      return "Endereco | All";
+    if (data.Bairro === "" && data.RuaAv === "")
+      return "Endereco | Bairro RuaAv";
+    if (data.Bairro === "" && data.Numero === "")
+      return "Endereco | Bairro Numero";
+    if (data.Bairro === "" && data.Cidade === "")
+      return "Endereco | Bairro Cidade";
+    if (data.RuaAv === "" && data.Cidade === "")
+      return "Endereco | RuaAv Cidade";
+    if (data.RuaAv === "" && data.Numero === "")
+      return "Endereco | RuaAv Numero";
+    if (data.Cidade === "" && data.Numero === "")
+      return "Endereco | Cidade Numero";
+    if (data.Cidade === "") return "Endereco | Cidade";
+    if (data.RuaAv === "") return "Endereco | RuaAv";
+    if (data.Bairro === "") return "Endereco | Bairro";
+    if (data.Numero === "") return "Endereco | Numero";
+    return "";
   };
 
   const fromComponents = [
@@ -223,7 +207,7 @@ export default function Finalizacao() {
       bairro: data.Bairro,
       rua: data.RuaAv,
       complemento: data.Complemento,
-      nurmo: data.Numero,
+      numero: data.Numero,
       cep: data.Cep,
       cidade: data.Cidade,
       itens: itens,
@@ -265,13 +249,12 @@ export default function Finalizacao() {
     });
 
     setIsLoading(false);
-    // Limpar carrinho após salvar os dados
     clearCart();
   };
 
   return (
     <div
-      className={`w-screen h-screen flex flex-col items-center justyfy-center pt-8 bg-zinc-200 transition-all`}
+      className={`w-screen h-screen flex flex-col items-center justify-center pt-8 bg-zinc-200 transition-all`}
     >
       <div className='barlow'>
         <div className='flex flex-col justify-center space-y-10'>
@@ -355,7 +338,7 @@ export default function Finalizacao() {
               <button
                 type='submit'
                 onClick={() => handlerNextStep(Steps)}
-                className='flex items-center space-x-2 text-lg bg-zinc-300/70 hover:bg-zinc-300 transition-all shadow rounded p-2 '
+                className='flex items-center space-x-2 text-lg bg-zinc-300/70 hover:bg-zinc-300 transition-all shadow rounded p-2 text-center'
               >
                 {isLoading
                   ? "Fazendo..."

@@ -3,6 +3,7 @@ import BotaoVoltarAoTopo from "@/components/home/BotaoVoltarAoTopo";
 import Footer from "@/components/home/Footer/Footer";
 import Header from "@/components/home/Header/Header";
 import Main from "@/components/home/Main/Main";
+import { Router } from "next/router";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

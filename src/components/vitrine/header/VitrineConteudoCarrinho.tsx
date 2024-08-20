@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Trash } from "@phosphor-icons/react/dist/ssr";
 import {
@@ -9,10 +9,10 @@ import {
   clearCart,
 } from "../../../lib/bags";
 import VitrineItensCarrinhos from "./VitrineItensCarrinhos";
+import Link from "next/link";
 
 interface VitrineConteudoCarrinhoProps {
   onclick: () => void;
-  handlerFinalizar: () => void;
 }
 
 type Bag = {
@@ -26,8 +26,44 @@ type Bag = {
 
 export default function VitrineConteudoCarrinho({
   onclick,
-  handlerFinalizar,
 }: VitrineConteudoCarrinhoProps) {
+  const [valor, setValor] = useState("");
+
+  // Atualiza a URL com o valor
+  const updateUrlWithValor = useCallback((valor: string) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("valor", valor);
+    window.history.pushState({}, "", url.toString());
+  }, []);
+
+  // Atualiza a URL quando o valor mudar
+  useEffect(() => {
+    if (valor) {
+      updateUrlWithValor(valor);
+    }
+  }, [valor, updateUrlWithValor]);
+
+  // Estado para ver valor
+  const [cartbags, setCartbags] = useState([...newCartbags]);
+
+  useEffect(() => {
+    setCartbags([...newCartbags]);
+  }, []);
+
+  // Calcular o total dos preços
+  const total = cartbags.reduce((total, bag) => {
+    const preco = parseFloat(bag.preco.replace(",", "."));
+    return total + preco * bag.quantidade;
+  }, 0);
+
+  const valorFrete = 5.99;
+  const totalFinal = total + valorFrete;
+
+  // Atualiza o valor no estado
+  useEffect(() => {
+    setValor(totalFinal.toFixed(2).replace(".", ","));
+  }, [totalFinal]);
+
   const [itens, setItens] = useState([...newCartbags]);
 
   useEffect(() => {
@@ -101,12 +137,12 @@ export default function VitrineConteudoCarrinho({
         )}
       </div>
       {itens.length > 0 && (
-        <button
-          onClick={handlerFinalizar}
+        <Link
+          href={`/pages/finalizacao?valor=${encodeURIComponent(valor)}`}
           className='shadow-lg py-2 my-2 w-[90%] border border-black hover:bg-dourado active:bg-dourado font-semibold rounded mt-4 mx-auto text-txtcart'
         >
           Finalizar compra
-        </button>
+        </Link>
       )}
     </div>
   );

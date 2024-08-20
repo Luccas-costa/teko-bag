@@ -16,6 +16,7 @@ import { sendEmailCompra } from "@/utils/sendEmailCompra";
 import { clearCart, newCartbags } from "../../../lib/bags";
 import { getFormattedDate } from "@/utils/diaAtual";
 import { sendEmailCompraCliente } from "@/utils/sendEmailCompraCliente";
+import { Router } from "lucide-react";
 
 interface VitrineHeaderProps {
   notificationCart: number;

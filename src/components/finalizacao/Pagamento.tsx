@@ -40,7 +40,7 @@ export default function Pagamento({ valor }: PagamentoProps) {
         onLoad={() => setIsLoading(false)}
       />
       <button
-        className={`py-2 font-semibold text-center bg-white shadow-2xl w-[30%] rounded`}
+        className={`py-2 font-semibold text-center bg-white shadow-2xl w-[30%] rounded active:bg-green-100`}
         style={{ marginBottom: "1rem" }}
         onClick={copyToClipboard}
       >
