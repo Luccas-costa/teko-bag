@@ -60,7 +60,7 @@ export default function Identificacao({
           <div>Telefone:</div>
           <input
             className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-              TellError && "bg-red-500/10"
+              TellError && "bg-red-500/50"
             }`}
             type='text'
             placeholder='(XX) XXXXX-XXXX'
@@ -74,7 +74,7 @@ export default function Identificacao({
           <div>Email:</div>
           <input
             className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-              EmailError && "bg-red-500/10"
+              EmailError && "bg-red-500/50"
             }`}
             type='text'
             placeholder='example@email.com'
@@ -87,7 +87,7 @@ export default function Identificacao({
           <div>Cep:</div>
           <input
             className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-              CepError && "bg-red-500/10"
+              CepError && "bg-red-500/50"
             }`}
             type='text'
             placeholder='XXXXX-XXX'

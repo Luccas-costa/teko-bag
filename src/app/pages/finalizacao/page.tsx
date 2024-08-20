@@ -86,7 +86,7 @@ export default function Finalizacao() {
           console.log("// max //");
         }
       } else {
-        setError(getIdentificationError());
+        getIdentificationError();
       }
     } else if (Steps === 1) {
       if (
@@ -101,7 +101,7 @@ export default function Finalizacao() {
           console.log("// max //");
         }
       } else {
-        setError(getEnderecoError());
+        getEnderecoError();
       }
     } else if (Steps === 2) {
       if (Steps >= 0 && Steps < 3) {
@@ -127,16 +127,15 @@ export default function Finalizacao() {
 
   const getIdentificationError = () => {
     if (data.Email === "" && data.Cep === "" && data.Tell === "")
-      return "Identificação | All";
+      setError("Identificação | All");
     if (data.Email === "" && data.Cep === "")
-      return "Identificação | Email Cep";
+      setError("Identificação | Email Cep");
     if (data.Email === "" && data.Tell === "")
-      return "Identificação | Email Tell";
-    if (data.Cep === "" && data.Tell === "") return "Identificação | Cep Tell";
-    if (data.Email === "") return "Identificação | Email";
-    if (data.Cep === "") return "Identificação | Cep";
-    if (data.Tell === "") return "Identificação | Tell";
-    return "";
+      setError("Identificação | Email Tell");
+    if (data.Cep === "" && data.Tell === "") setError("Identificação | Cep Tell");
+    if (data.Email === "") setError("Identificação | Email");
+    if (data.Cep === "") setError("Identificação | Cep");
+    if (data.Tell === "") setError("Identificação | Tell");
   };
 
   const getEnderecoError = () => {
@@ -146,24 +145,23 @@ export default function Finalizacao() {
       data.Numero !== "" &&
       data.Cidade !== ""
     )
-      return "Endereco | All";
+      setError("Endereco | All");
     if (data.Bairro === "" && data.RuaAv === "")
-      return "Endereco | Bairro RuaAv";
+      setError("Endereco | Bairro RuaAv");
     if (data.Bairro === "" && data.Numero === "")
-      return "Endereco | Bairro Numero";
+      setError("Endereco | Bairro Numero");
     if (data.Bairro === "" && data.Cidade === "")
-      return "Endereco | Bairro Cidade";
+      setError("Endereco | Bairro Cidade");
     if (data.RuaAv === "" && data.Cidade === "")
-      return "Endereco | RuaAv Cidade";
+      setError("Endereco | RuaAv Cidade");
     if (data.RuaAv === "" && data.Numero === "")
-      return "Endereco | RuaAv Numero";
+      setError("Endereco | RuaAv Numero");
     if (data.Cidade === "" && data.Numero === "")
-      return "Endereco | Cidade Numero";
-    if (data.Cidade === "") return "Endereco | Cidade";
-    if (data.RuaAv === "") return "Endereco | RuaAv";
-    if (data.Bairro === "") return "Endereco | Bairro";
-    if (data.Numero === "") return "Endereco | Numero";
-    return "";
+      setError("Endereco | Cidade Numero");
+    if (data.Cidade === "") setError("Endereco | Cidade");
+    if (data.RuaAv === "") setError("Endereco | RuaAv");
+    if (data.Bairro === "") setError("Endereco | Bairro");
+    if (data.Numero === "") setError("Endereco | Numero");
   };
 
   const fromComponents = [

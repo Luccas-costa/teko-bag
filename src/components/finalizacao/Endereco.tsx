@@ -55,7 +55,7 @@ export default function Endereco({
           <div>Bairro:</div>
           <input
             className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-              BairroError && "bg-red-500/10"
+              BairroError && "bg-red-500/50"
             }`}
             type='text'
             placeholder='Informe seu Bairro'
@@ -68,7 +68,7 @@ export default function Endereco({
           <div>Rua/Av:</div>
           <input
             className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-              RuaAvError && "bg-red-500/10"
+              RuaAvError && "bg-red-500/50"
             }`}
             type='text'
             placeholder='Informe sua Rua/Av'
@@ -95,7 +95,7 @@ export default function Endereco({
             <div>Cidade:</div>
             <input
               className={`w-[294px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-                CidadeError && "bg-red-500/10"
+                CidadeError && "bg-red-500/50"
               }`}
               type='text'
               placeholder='Informe sua Cidade'
@@ -108,7 +108,7 @@ export default function Endereco({
             <div>Número:</div>
             <input
               className={`w-[294px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-                NumeroError && "bg-red-500/10"
+                NumeroError && "bg-red-500/50"
               }`}
               type='text'
               placeholder='Informe seu Número'
