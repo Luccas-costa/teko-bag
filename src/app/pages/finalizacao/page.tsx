@@ -305,7 +305,7 @@ export default function Finalizacao() {
 
   return (
     <div
-      className={`w-screen h-screen flex flex-col items-center justify-center pt-8 bg-zinc-200 transition-all`}
+      className={`w-screen flex flex-col items-center justify-center pt-8 pb-10 bg-zinc-200 transition-all`}
     >
       <div className='barlow'>
         <div className='flex flex-col justify-center space-y-10'>
