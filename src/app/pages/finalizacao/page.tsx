@@ -36,7 +36,7 @@ export default function Finalizacao() {
     Email: "",
     Tell: "",
     Cep: "",
-    
+
     Cidade: "",
     Bairro: "",
     RuaAv: "",
