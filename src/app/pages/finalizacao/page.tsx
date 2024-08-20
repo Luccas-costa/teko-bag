@@ -25,6 +25,8 @@ import {
   CaretLeft,
   CaretRight,
 } from "@phosphor-icons/react/dist/ssr";
+import Agradecimento from "@/components/finalizacao/Agradecimento";
+import Link from "next/link";
 
 export default function Finalizacao() {
   const router = useRouter();
@@ -49,6 +51,7 @@ export default function Finalizacao() {
   const [data, setData] = useState<DataInputs>(dataInputs);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [TextButton, setTextButton] = useState<boolean>(false);
+  const [IsAgradecimento, setIsAgradecimento] = useState<boolean>(false);
 
   const fetchCepData = async (cep: string) => {
     try {
@@ -250,6 +253,7 @@ export default function Finalizacao() {
 
     setIsLoading(false);
     clearCart();
+    setIsAgradecimento(true);
   };
 
   return (
@@ -325,32 +329,52 @@ export default function Finalizacao() {
               </div>
             </div>
 
-            <div className='flex-1'>{fromComponents[Steps]}</div>
+            <div className='flex-1'>
+              {IsAgradecimento ? (
+                <Agradecimento />
+              ) : (
+                fromComponents[Steps]
+              )}
+            </div>
 
             <div className='w-full flex space-x-3 my-4 mr-8 justify-end'>
-              <button
-                type='button'
-                onClick={handlerBackStep}
-                className='flex items-center space-x-2 text-lg bg-zinc-300/70 hover:bg-zinc-300 transition-all shadow rounded p-2 '
-              >
-                <CaretLeft size={20} weight='regular' /> Voltar
-              </button>
-              <button
-                type='submit'
-                onClick={() => handlerNextStep(Steps)}
-                className='flex items-center space-x-2 text-lg bg-zinc-300/70 hover:bg-zinc-300 transition-all shadow rounded p-2 text-center'
-              >
-                {isLoading
-                  ? "Fazendo..."
-                  : TextButton
-                  ? "Finalizar"
-                  : "Avançar"}
-                <CaretRight size={20} weight='regular' />
-              </button>
+              {IsAgradecimento ? (
+                <Link href='/'>
+                  <button
+                    type='button'
+                    className='flex items-center space-x-2 text-lg bg-zinc-300/70 hover:bg-zinc-300 transition-all shadow rounded p-2 '
+                  >
+                    Voltar a home
+                    <CaretRight size={20} weight='regular' /> 
+                  </button>
+                </Link>
+              ) : (
+                <>
+                  <button
+                    type='button'
+                    onClick={handlerBackStep}
+                    className='flex items-center space-x-2 text-lg bg-zinc-300/70 hover:bg-zinc-300 transition-all shadow rounded p-2 '
+                  >
+                    <CaretLeft size={20} weight='regular' /> Voltar
+                  </button>
+                  <button
+                    type='submit'
+                    onClick={() => handlerNextStep(Steps)}
+                    className='flex items-center space-x-2 text-lg bg-zinc-300/70 hover:bg-zinc-300 transition-all shadow rounded p-2 text-center'
+                    >
+                      {isLoading
+                          ? "Fazendo..."
+                          : TextButton
+                          ? "Finalizar"
+                          : "Avançar"}
+                      <CaretRight size={20} weight='regular' />
+                  </button>
+                </>
+            )}
             </div>
-          </div>
-        </div>
-      </div>
+            </div>
+            </div>
+            </div>
     </div>
   );
 }
