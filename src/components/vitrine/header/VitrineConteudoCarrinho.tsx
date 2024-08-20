@@ -139,7 +139,7 @@ export default function VitrineConteudoCarrinho({
       {itens.length > 0 && (
         <Link
           href={`/pages/finalizacao?valor=${encodeURIComponent(valor)}`}
-          className='shadow-lg py-2 my-2 w-[90%] border border-black hover:bg-dourado active:bg-dourado font-semibold rounded mt-4 mx-auto text-txtcart'
+          className='shadow-lg py-2 my-2 w-[95%] border border-black hover:bg-dourado active:bg-dourado font-semibold rounded mt-4 mx-auto text-txtcart text-center'
         >
           Finalizar compra
         </Link>

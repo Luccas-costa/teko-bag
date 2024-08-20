@@ -40,7 +40,7 @@ export default function Pagamento({ valor }: PagamentoProps) {
         onLoad={() => setIsLoading(false)}
       />
       <button
-        className={`py-2 font-semibold text-center bg-white shadow-2xl w-[30%] rounded active:bg-green-100`}
+        className={`py-2 font-semibold text-center bg-white shadow-2xl dash10:w-[30%] w-[50%] rounded active:bg-green-100`}
         style={{ marginBottom: "1rem" }}
         onClick={copyToClipboard}
       >
@@ -48,7 +48,7 @@ export default function Pagamento({ valor }: PagamentoProps) {
       </button>
 
       {matchedItem ? (
-        <div className='w-[60%] text-zinc-900 text-center'>
+        <div className='dash7:w-[60%] dash9:w-[80%] dash9_5:w-[90%] dash10:w-[98%] w-[80%] dash10:text-base text-sm text-zinc-900 text-center'>
           Obrigado por nos escolher, por favor prossiga com o pagamento do PIX,
           nossos atendentes entraram em contato em no máximo 2 dias uteis,
           referente ao envio de sua teko bag qualquer dúvida ou problema entre
@@ -63,7 +63,7 @@ export default function Pagamento({ valor }: PagamentoProps) {
           ou email: trekobag@gmail.com
         </div>
       ) : (
-        <div className='w-[80%] text-zinc-900 text-center'>
+        <div className='dash8:w-[60%] w-[80%] text-zinc-900 text-center'>
           Error o valor de sua compra ultrapassou o limite imposto no site por
           favor entre em contato com nosco via Dm{" "}
           <span className='font-semibold text-blue-400'>

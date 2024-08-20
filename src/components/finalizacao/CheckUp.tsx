@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import { DataInputs } from "@/types/DataInput";
 
 import {
@@ -17,6 +18,7 @@ interface CheckUpProps {
 export default function CheckUp({ data, handlerUpdateData }: CheckUpProps) {
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+  const [iconSize, setIconSize] = useState<number>(80);
 
   const handleIconClick = (iconName: string) => {
     setSelectedIcon(iconName);
@@ -26,7 +28,7 @@ export default function CheckUp({ data, handlerUpdateData }: CheckUpProps) {
     if (selectedIcon === iconName) {
       switch (iconName) {
         case "Wink":
-          return "#005aff"; // Dourado
+          return "#005aff"; // Azul
         case "Happy":
           return "#4CAF50"; // Verde
         case "Meh":
@@ -42,81 +44,59 @@ export default function CheckUp({ data, handlerUpdateData }: CheckUpProps) {
     return hoveredIcon === iconName ? "#212121" : "#52525B"; // Cor padrão quando não selecionado
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 360) {
+        setIconSize(62);
+      } else if (window.innerWidth < 450) {
+        setIconSize(70);
+      } else {
+        setIconSize(80);
+      }
+    };
+
+    // Define o tamanho inicial
+    handleResize();
+
+    // Adiciona o listener de resize
+    window.addEventListener("resize", handleResize);
+
+    // Limpa o listener ao desmontar o componente
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className='flex flex-col items-center'>
-      <div className='mt-10 flex space-x-3'>
-        <div
-          className='w-[100px] flex justify-center'
-          onMouseEnter={() => setHoveredIcon("Angry")}
-          onMouseLeave={() => setHoveredIcon(null)}
-          onClick={() => handleIconClick("Angry")}
-        >
-          <SmileyAngry
-            size={80}
-            weight='fill'
-            className='transition-all duration-200 cursor-pointer'
-            color={getIconColor("Angry")}
-          />
-        </div>
-        <div
-          className='w-[100px] flex justify-center'
-          onMouseEnter={() => setHoveredIcon("Sad")}
-          onMouseLeave={() => setHoveredIcon(null)}
-          onClick={() => handleIconClick("Sad")}
-        >
-          <SmileySad
-            size={80}
-            weight='fill'
-            className='transition-all duration-200 cursor-pointer'
-            color={getIconColor("Sad")}
-          />
-        </div>
-        <div
-          className='w-[100px] flex justify-center'
-          onMouseEnter={() => setHoveredIcon("Meh")}
-          onMouseLeave={() => setHoveredIcon(null)}
-          onClick={() => handleIconClick("Meh")}
-        >
-          <SmileyMeh
-            size={80}
-            weight='fill'
-            className='transition-all duration-200 cursor-pointer'
-            color={getIconColor("Meh")}
-          />
-        </div>
-        <div
-          className='w-[100px] flex justify-center'
-          onMouseEnter={() => setHoveredIcon("Happy")}
-          onMouseLeave={() => setHoveredIcon(null)}
-          onClick={() => handleIconClick("Happy")}
-        >
-          <Smiley
-            size={80}
-            weight='fill'
-            className='transition-all duration-200 cursor-pointer'
-            color={getIconColor("Happy")}
-          />
-        </div>
-        <div
-          className='w-[100px] flex justify-center'
-          onMouseEnter={() => setHoveredIcon("Wink")}
-          onMouseLeave={() => setHoveredIcon(null)}
-          onClick={() => handleIconClick("Wink")}
-        >
-          <SmileyWink
-            size={80}
-            weight='fill'
-            className='transition-all duration-200 cursor-pointer'
-            color={getIconColor("Wink")}
-          />
-        </div>
+      <div className='mt-10 flex dash9:space-x-3 dash9_5:space-x-2'>
+        {[
+          { Icon: SmileyAngry, name: "Angry" },
+          { Icon: SmileySad, name: "Sad" },
+          { Icon: SmileyMeh, name: "Meh" },
+          { Icon: Smiley, name: "Happy" },
+          { Icon: SmileyWink, name: "Wink" },
+        ].map(({ Icon, name }) => (
+          <div
+            key={name}
+            className='dash8:w-[100px] flex justify-center'
+            onMouseEnter={() => setHoveredIcon(name)}
+            onMouseLeave={() => setHoveredIcon(null)}
+            onClick={() => handleIconClick(name)}
+          >
+            <Icon
+              size={iconSize}
+              weight='fill'
+              className='transition-all duration-200 cursor-pointer'
+              color={getIconColor(name)}
+            />
+          </div>
+        ))}
       </div>
       <div className='flex flex-col space-y-1 mt-10'>
         <div>Comentário:</div>
         <div>
           <textarea
             placeholder='Deixe um comentário sobre sua experiência [opcional]'
-            className='w-[600px] h-[300px] shadow-2xl rounded text-neutral-700 resize-none p-2'
+            className='dash7:w-[600px] dash8:w-[530px] dash9:w-[430px] dash9_5:w-[400px] dash10:w-[350px] w-[300px] h-[300px] shadow-2xl rounded text-neutral-700 resize-none p-2'
             style={{ overflow: "auto", paddingTop: "8px" }}
           />
         </div>

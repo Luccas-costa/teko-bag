@@ -54,8 +54,8 @@ export default function Endereco({
         <div className='flex flex-col space-y-1'>
           <div>Bairro:</div>
           <input
-            className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-              BairroError && "bg-red-500/50"
+            className={`dash7:w-[600px] dash8:w-[530px] dash9:w-[430px] dash9_5:w-[400px] dash10:w-[350px] w-[300px] p-3 rounded-lg shadow-2xl text-neutral-700 ${
+              BairroError ? "bg-red-500/10" : "bg-white"
             }`}
             type='text'
             placeholder='Informe seu Bairro'
@@ -67,8 +67,8 @@ export default function Endereco({
         <div className='flex flex-col space-y-1'>
           <div>Rua/Av:</div>
           <input
-            className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-              RuaAvError && "bg-red-500/50"
+            className={`dash7:w-[600px] dash8:w-[530px] dash9:w-[430px] dash9_5:w-[400px] dash10:w-[350px] w-[300px] p-3 rounded-lg shadow-2xl text-neutral-700 ${
+              RuaAvError ? "bg-red-500/10" : "bg-white"
             }`}
             type='text'
             placeholder='Informe sua Rua/Av'
@@ -81,10 +81,9 @@ export default function Endereco({
         <div className='flex flex-col space-y-1'>
           <div>Complemento:</div>
           <input
-            className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700`}
+            className={`dash7:w-[600px] dash8:w-[530px] dash9:w-[430px] dash9_5:w-[400px] dash10:w-[350px] w-[300px] p-3 rounded-lg shadow-2xl text-neutral-700 bg-white`}
             type='text'
             placeholder='Informe seu Complemento [opcional]'
-            required
             value={data.Complemento || ""}
             onChange={(e) => handlerUpdateData("Complemento", e.target.value)}
           />
@@ -94,8 +93,8 @@ export default function Endereco({
           <div className='flex flex-col space-y-1'>
             <div>Cidade:</div>
             <input
-              className={`w-[294px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-                CidadeError && "bg-red-500/50"
+              className={`dash7:w-[294px] dash8:w-[259px] dash9_5:w-[194px] dash10:w-[170px] w-[144px] p-3 rounded-lg shadow-2xl text-neutral-700 ${
+                CidadeError ? "bg-red-500/10" : "bg-white"
               }`}
               type='text'
               placeholder='Informe sua Cidade'
@@ -107,8 +106,8 @@ export default function Endereco({
           <div className='flex flex-col space-y-1'>
             <div>Número:</div>
             <input
-              className={`w-[294px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-                NumeroError && "bg-red-500/50"
+              className={`dash7:w-[294px] dash8:w-[259px] dash9_5:w-[194px] dash10:w-[170px] w-[144px] p-3 rounded-lg shadow-2xl text-neutral-700 ${
+                NumeroError ? "bg-red-500/10" : "bg-white"
               }`}
               type='text'
               placeholder='Informe seu Número'

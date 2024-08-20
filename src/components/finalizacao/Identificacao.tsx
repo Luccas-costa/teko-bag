@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import { DataInputs } from "@/types/DataInput";
 
@@ -17,30 +16,42 @@ export default function Identificacao({
   const [EmailError, setEmailError] = useState<boolean>(false);
   const [CepError, setCepError] = useState<boolean>(false);
 
-  useEffect(() => {
-    setTellError(false);
-    setEmailError(false);
-    setCepError(false);
+  const handlerErrorTell = () => {
+    setTellError(true);
+  };
 
+  useEffect(() => {
+    console.log("TellError updated:", TellError);
+  }, [TellError]);
+
+  const handlerErrorEmail = (value: boolean) => {
+    setEmailError(value);
+  };
+
+  const handlerErrorCep = (value: boolean) => {
+    setCepError(value);
+  };
+
+  useEffect(() => {
     if (Error !== "") {
       if (Error.includes("Identificação")) {
         if (Error.includes("Tell")) {
-          setTellError(true);
+          handlerErrorTell();
         }
         if (Error.includes("Email")) {
-          setEmailError(true);
+          handlerErrorEmail(true);
         }
         if (Error.includes("Cep")) {
-          setCepError(true);
+          handlerErrorCep(true);
         }
         if (Error.includes("All")) {
-          setTellError(true);
-          setEmailError(true);
-          setCepError(true);
+          handlerErrorTell();
+          handlerErrorEmail(true);
+          handlerErrorCep(true);
         }
       }
     }
-  }, [Error]); // Adicionando `Error` como dependência
+  }, [Error]);
 
   return (
     <div>
@@ -48,7 +59,7 @@ export default function Identificacao({
         <div className='flex flex-col space-y-1'>
           <div>Instagram:</div>
           <input
-            className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 `}
+            className={`dash7:w-[600px] dash8:w-[530px] dash9:w-[430px] dash9_5:w-[400px] dash10:w-[350px] w-[300px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700`}
             type='text'
             placeholder='@ do Instagram [opcional]'
             value={data.Instagram || ""}
@@ -59,8 +70,8 @@ export default function Identificacao({
         <div className='flex flex-col space-y-1'>
           <div>Telefone:</div>
           <input
-            className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-              TellError && "bg-red-500/50"
+            className={`dash7:w-[600px] dash8:w-[530px] dash9:w-[430px] dash9_5:w-[400px] dash10:w-[350px] w-[300px] p-3 rounded-lg shadow-2xl text-neutral-700 ${
+              TellError ? "bg-red-500/10" : "bg-white"
             }`}
             type='text'
             placeholder='(XX) XXXXX-XXXX'
@@ -73,8 +84,8 @@ export default function Identificacao({
         <div className='flex flex-col space-y-1'>
           <div>Email:</div>
           <input
-            className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-              EmailError && "bg-red-500/50"
+            className={`dash7:w-[600px] dash8:w-[530px] dash9:w-[430px] dash9_5:w-[400px] dash10:w-[350px] w-[300px] p-3 rounded-lg shadow-2xl text-neutral-700 ${
+              EmailError ? "bg-red-500/10" : "bg-white"
             }`}
             type='text'
             placeholder='example@email.com'
@@ -86,8 +97,8 @@ export default function Identificacao({
         <div className='flex flex-col space-y-1'>
           <div>Cep:</div>
           <input
-            className={`w-[600px] p-3 rounded-lg bg-white shadow-2xl text-neutral-700 ${
-              CepError && "bg-red-500/50"
+            className={`dash7:w-[600px] dash8:w-[530px] dash9:w-[430px] dash9_5:w-[400px] dash10:w-[350px] w-[300px] p-3 rounded-lg shadow-2xl text-neutral-700 ${
+              CepError ? "bg-red-500/10" : "bg-white"
             }`}
             type='text'
             placeholder='XXXXX-XXX'

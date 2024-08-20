@@ -48,10 +48,21 @@ export default function Finalizacao() {
 
   const [Steps, setSteps] = useState<number>(0);
   const [Error, setError] = useState<string>("");
+  const [iconSize, setIconSize] = useState<number>(40);
   const [data, setData] = useState<DataInputs>(dataInputs);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [TextButton, setTextButton] = useState<boolean>(false);
   const [IsAgradecimento, setIsAgradecimento] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIconSize(window.innerWidth < 450 ? 35 : 40);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const fetchCepData = async (cep: string) => {
     try {
@@ -86,7 +97,36 @@ export default function Finalizacao() {
           console.log("// max //");
         }
       } else {
-        getIdentificationError();
+        switch (true) {
+          case data.Email === "" && data.Cep === "" && data.Tell === "":
+            console.log("entrou");
+            setError("Identificação | All");
+            break;
+          case data.Email === "" && data.Cep === "":
+            console.log("entrou");
+            setError("Identificação | Email Cep");
+            break;
+          case data.Email === "" && data.Tell === "":
+            console.log("entrou");
+            setError("Identificação | Email Tell");
+            break;
+          case data.Cep === "" && data.Tell === "":
+            console.log("entrou");
+            setError("Identificação | Cep Tell");
+            break;
+          case data.Email === "":
+            console.log("entrou");
+            setError("Identificação | Email");
+            break;
+          case data.Cep === "":
+            console.log("entrou");
+            setError("Identificação | Cep");
+            break;
+          case data.Tell === "":
+            console.log("entrou");
+            setError("Identificação | Tell");
+            break;
+        }
       }
     } else if (Steps === 1) {
       if (
@@ -101,7 +141,55 @@ export default function Finalizacao() {
           console.log("// max //");
         }
       } else {
-        getEnderecoError();
+        switch (true) {
+          case data.Bairro !== "" &&
+            data.RuaAv !== "" &&
+            data.Numero !== "" &&
+            data.Cidade !== "":
+            console.log("entrou");
+            setError("Endereco | All");
+            break;
+          case data.Bairro === "" && data.RuaAv === "":
+            console.log("entrou");
+            setError("Endereco | Bairro RuaAv");
+            break;
+          case data.Bairro === "" && data.Numero === "":
+            console.log("entrou");
+            setError("Endereco | Bairro Numero");
+            break;
+          case data.Bairro === "" && data.Cidade === "":
+            console.log("entrou");
+            setError("Endereco | Bairro Cidade");
+            break;
+          case data.RuaAv === "" && data.Cidade === "":
+            console.log("entrou");
+            setError("Endereco | RuaAv Cidade");
+            break;
+          case data.RuaAv === "" && data.Numero === "":
+            console.log("entrou");
+            setError("Endereco | RuaAv Numero");
+            break;
+          case data.Cidade === "" && data.Numero === "":
+            console.log("entrou");
+            setError("Endereco | Cidade Numero");
+            break;
+          case data.Cidade === "":
+            console.log("entrou");
+            setError("Endereco | Cidade");
+            break;
+          case data.RuaAv === "":
+            console.log("entrou");
+            setError("Endereco | RuaAv");
+            break;
+          case data.Bairro === "":
+            console.log("entrou");
+            setError("Endereco | Bairro");
+            break;
+          case data.Numero === "":
+            console.log("entrou");
+            setError("Endereco | Numero");
+            break;
+        }
       }
     } else if (Steps === 2) {
       if (Steps >= 0 && Steps < 3) {
@@ -123,45 +211,6 @@ export default function Finalizacao() {
     } else {
       console.log("ruim");
     }
-  };
-
-  const getIdentificationError = () => {
-    if (data.Email === "" && data.Cep === "" && data.Tell === "")
-      setError("Identificação | All");
-    if (data.Email === "" && data.Cep === "")
-      setError("Identificação | Email Cep");
-    if (data.Email === "" && data.Tell === "")
-      setError("Identificação | Email Tell");
-    if (data.Cep === "" && data.Tell === "") setError("Identificação | Cep Tell");
-    if (data.Email === "") setError("Identificação | Email");
-    if (data.Cep === "") setError("Identificação | Cep");
-    if (data.Tell === "") setError("Identificação | Tell");
-  };
-
-  const getEnderecoError = () => {
-    if (
-      data.Bairro !== "" &&
-      data.RuaAv !== "" &&
-      data.Numero !== "" &&
-      data.Cidade !== ""
-    )
-      setError("Endereco | All");
-    if (data.Bairro === "" && data.RuaAv === "")
-      setError("Endereco | Bairro RuaAv");
-    if (data.Bairro === "" && data.Numero === "")
-      setError("Endereco | Bairro Numero");
-    if (data.Bairro === "" && data.Cidade === "")
-      setError("Endereco | Bairro Cidade");
-    if (data.RuaAv === "" && data.Cidade === "")
-      setError("Endereco | RuaAv Cidade");
-    if (data.RuaAv === "" && data.Numero === "")
-      setError("Endereco | RuaAv Numero");
-    if (data.Cidade === "" && data.Numero === "")
-      setError("Endereco | Cidade Numero");
-    if (data.Cidade === "") setError("Endereco | Cidade");
-    if (data.RuaAv === "") setError("Endereco | RuaAv");
-    if (data.Bairro === "") setError("Endereco | Bairro");
-    if (data.Numero === "") setError("Endereco | Numero");
   };
 
   const fromComponents = [
@@ -217,37 +266,37 @@ export default function Finalizacao() {
       emailverificacao: emailverificacao,
     });
 
-    await insertBD({
-      id: id,
-      email: data.Email,
-      telefone: data.Tell,
-      instagram: data.Instagram,
-      bairro: data.Bairro,
-      rua: data.RuaAv,
-      complemento: data.Complemento,
-      nurmo: data.Numero,
-      cep: data.Cep,
-      cidade: data.Cidade,
-      itens: itens,
-      quantidade: quantidade,
-      datacompra: datacompra,
-      atendido: false,
-      emailverificacao: emailverificacao,
-    });
+    // await insertBD({
+    //   id: id,
+    //   email: data.Email,
+    //   telefone: data.Tell,
+    //   instagram: data.Instagram,
+    //   bairro: data.Bairro,
+    //   rua: data.RuaAv,
+    //   complemento: data.Complemento,
+    //   nurmo: data.Numero,
+    //   cep: data.Cep,
+    //   cidade: data.Cidade,
+    //   itens: itens,
+    //   quantidade: quantidade,
+    //   datacompra: datacompra,
+    //   atendido: false,
+    //   emailverificacao: emailverificacao,
+    // });
 
-    await sendEmailCompra({
-      subtitulo: "Teko Bag",
-      email: data.Email,
-      instagram: data.Instagram,
-      nome: `${firstName}`, // nome vindo do clerk
-    });
+    // await sendEmailCompra({
+    //   subtitulo: "Teko Bag",
+    //   email: data.Email,
+    //   instagram: data.Instagram,
+    //   nome: `${firstName}`, // nome vindo do clerk
+    // });
 
-    await sendEmailCompraCliente({
-      subtitulo: "Teko Bag",
-      email: data.Email,
-      instagram: data.Instagram,
-      nome: `${firstName}`, // nome vindo do clerk
-    });
+    // await sendEmailCompraCliente({
+    //   subtitulo: "Teko Bag",
+    //   email: data.Email,
+    //   instagram: data.Instagram,
+    //   nome: `${firstName}`, // nome vindo do clerk
+    // });
 
     setIsLoading(false);
     clearCart();
@@ -261,25 +310,25 @@ export default function Finalizacao() {
       <div className='barlow'>
         <div className='flex flex-col justify-center space-y-10'>
           <div className='text-center'>
-            <div className='font-bold text-5xl text-zinc-700'>
+            <div className='font-bold dash9:text-5xl text-4xl text-zinc-700'>
               Finalize sua compra
             </div>
-            <div className='font-semibold text-lg text-zinc-500/80'>
+            <div className='font-semibold text-lg dash8:w-full dash9:w-[500px] dash9_5:w-[400px] w-[350px] mx-auto text-zinc-500/80'>
               Siga as etapas a seguir para terminar o pedido de sua nova teko
               bag.
             </div>
           </div>
 
-          <div className='w-[1000px] h-[740px] bg-zinc-100 shadow-2xl rounded flex flex-col items-center'>
-            <div className='flex mt-10 relative gap-16'>
-              <div className='absolute top-[40%] left-1/2 translate-x-[-50%] w-[520px] h-[1px] border border-zinc-600'></div>
+          <div className='mx-auto w-[330px] dash10:w-[380px] dash9_5:w-[435px] dash9:w-[480px] dash8:w-[575px] dash7:w-[680px] dash6:w-[780px] dash5:w-[890px] dash4:w-[1000px] h-[740px] bg-zinc-100 shadow-2xl rounded flex flex-col items-center'>
+            <div className='flex mt-10 relative gap-[35px] dash9_5:gap-10 dash9:gap-12 dash8:gap-14 dash7:gap-16'>
+              <div className='absolute top-[40%] left-1/2 translate-x-[-50%] w-[300px] dash10:w-[340px] dash9_5:w-[400px] dash8:w-[520px] h-[1px] border border-zinc-600'></div>
               <div
-                className='w-[110px] flex flex-col items-center bg-zinc-100'
+                className='dash9_5:text-base text-xs dash10:text-sm w-[50px] dash10:w-[60px] dash9_5:w-[70px] dash9:w-[80px] dash8:w-[90px] dash7:w-[110px] flex flex-col items-center bg-zinc-100'
                 style={{ zIndex: 2 }}
               >
                 <div>
                   <User
-                    size={40}
+                    size={iconSize}
                     weight='regular'
                     color={Steps >= 0 ? "#7D7CD4" : "black"}
                   />
@@ -287,12 +336,12 @@ export default function Finalizacao() {
                 <div>Identificação</div>
               </div>
               <div
-                className='w-[110px] flex flex-col items-center bg-zinc-100'
+                className='dash9_5:text-base text-xs dash10:text-sm w-[50px] dash10:w-[60px] dash9_5:w-[70px] dash9:w-[80px] dash8:w-[90px] dash7:w-[110px] flex flex-col items-center bg-zinc-100'
                 style={{ zIndex: 2 }}
               >
                 <div>
                   <MapPinLine
-                    size={40}
+                    size={iconSize}
                     weight='regular'
                     color={Steps >= 1 ? "#7D7CD4" : "black"}
                   />
@@ -300,12 +349,12 @@ export default function Finalizacao() {
                 <div>Endereço</div>
               </div>
               <div
-                className='w-[110px] flex flex-col items-center bg-zinc-100'
+                className='dash9_5:text-base text-xs dash10:text-sm w-[50px] dash10:w-[60px] dash9_5:w-[70px] dash9:w-[80px] dash8:w-[90px] dash7:w-[110px] flex flex-col items-center bg-zinc-100'
                 style={{ zIndex: 2 }}
               >
                 <div>
                   <CurrencyCircleDollar
-                    size={40}
+                    size={iconSize}
                     weight='regular'
                     color={Steps >= 2 ? "#7D7CD4" : "black"}
                   />
@@ -313,12 +362,12 @@ export default function Finalizacao() {
                 <div>Pagamento</div>
               </div>
               <div
-                className='w-[110px] flex flex-col items-center bg-zinc-100'
+                className='dash9_5:text-base text-xs dash10:text-sm w-[50px] dash10:w-[60px] dash9_5:w-[70px] dash9:w-[80px] dash8:w-[90px] dash7:w-[110px] flex flex-col items-center bg-zinc-100'
                 style={{ zIndex: 2 }}
               >
                 <div>
                   <Star
-                    size={40}
+                    size={iconSize}
                     weight='regular'
                     color={Steps >= 3 ? "#7D7CD4" : "black"}
                   />
@@ -328,11 +377,7 @@ export default function Finalizacao() {
             </div>
 
             <div className='flex-1'>
-              {IsAgradecimento ? (
-                <Agradecimento />
-              ) : (
-                fromComponents[Steps]
-              )}
+              {IsAgradecimento ? <Agradecimento /> : fromComponents[Steps]}
             </div>
 
             <div className='w-full flex space-x-3 my-4 mr-8 justify-end'>
@@ -343,7 +388,7 @@ export default function Finalizacao() {
                     className='flex items-center space-x-2 text-lg bg-zinc-300/70 hover:bg-zinc-300 transition-all shadow rounded p-2 '
                   >
                     Voltar a home
-                    <CaretRight size={20} weight='regular' /> 
+                    <CaretRight size={20} weight='regular' />
                   </button>
                 </Link>
               ) : (
@@ -359,20 +404,20 @@ export default function Finalizacao() {
                     type='submit'
                     onClick={() => handlerNextStep(Steps)}
                     className='flex items-center space-x-2 text-lg bg-zinc-300/70 hover:bg-zinc-300 transition-all shadow rounded p-2 text-center'
-                    >
-                      {isLoading
-                          ? "Fazendo..."
-                          : TextButton
-                          ? "Finalizar"
-                          : "Avançar"}
-                      <CaretRight size={20} weight='regular' />
+                  >
+                    {isLoading
+                      ? "Fazendo..."
+                      : TextButton
+                      ? "Finalizar"
+                      : "Avançar"}
+                    <CaretRight size={20} weight='regular' />
                   </button>
                 </>
-            )}
+              )}
             </div>
-            </div>
-            </div>
-            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
