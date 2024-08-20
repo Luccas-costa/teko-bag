@@ -266,37 +266,37 @@ export default function Finalizacao() {
       emailverificacao: emailverificacao,
     });
 
-    // await insertBD({
-    //   id: id,
-    //   email: data.Email,
-    //   telefone: data.Tell,
-    //   instagram: data.Instagram,
-    //   bairro: data.Bairro,
-    //   rua: data.RuaAv,
-    //   complemento: data.Complemento,
-    //   nurmo: data.Numero,
-    //   cep: data.Cep,
-    //   cidade: data.Cidade,
-    //   itens: itens,
-    //   quantidade: quantidade,
-    //   datacompra: datacompra,
-    //   atendido: false,
-    //   emailverificacao: emailverificacao,
-    // });
+    await insertBD({
+      id: id,
+      email: data.Email,
+      telefone: data.Tell,
+      instagram: data.Instagram,
+      bairro: data.Bairro,
+      rua: data.RuaAv,
+      complemento: data.Complemento,
+      nurmo: data.Numero,
+      cep: data.Cep,
+      cidade: data.Cidade,
+      itens: itens,
+      quantidade: quantidade,
+      datacompra: datacompra,
+      atendido: false,
+      emailverificacao: emailverificacao,
+    });
 
-    // await sendEmailCompra({
-    //   subtitulo: "Teko Bag",
-    //   email: data.Email,
-    //   instagram: data.Instagram,
-    //   nome: `${firstName}`, // nome vindo do clerk
-    // });
+    await sendEmailCompra({
+      subtitulo: "Teko Bag",
+      email: data.Email,
+      instagram: data.Instagram,
+      nome: `${firstName}`, // nome vindo do clerk
+    });
 
-    // await sendEmailCompraCliente({
-    //   subtitulo: "Teko Bag",
-    //   email: data.Email,
-    //   instagram: data.Instagram,
-    //   nome: `${firstName}`, // nome vindo do clerk
-    // });
+    await sendEmailCompraCliente({
+      subtitulo: "Teko Bag",
+      email: data.Email,
+      instagram: data.Instagram,
+      nome: `${firstName}`, // nome vindo do clerk
+    });
 
     setIsLoading(false);
     clearCart();
