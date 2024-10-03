@@ -193,7 +193,7 @@ export default function DashboardClientes({
 
   return (
     <>
-      <div className='h-[80px] w-full border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
+      <div className='h-[80px] w-full transition-all duration-200 border-y border-zinc-700 dash8:px-5 dash8_5:px-2 dash9:px-2 dash10:px-2 dash10_5:px-2 flex items-center text-zinc-300 font-semibold shadow-lg shadow-zinc-900 relative'>
         <input
           type='checkbox'
           checked={localAtendido}
