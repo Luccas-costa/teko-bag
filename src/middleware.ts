@@ -10,6 +10,7 @@ export default authMiddleware({
     "teko-bag.com/api/webhooks/user",
     "teko-bag.com/api/email-compra",
     "teko-bag.com/api/email-compra-cliente",
+    "teko-bag.com/pages/teste"
   ],
 });
 
