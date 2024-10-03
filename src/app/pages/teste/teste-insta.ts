@@ -1,8 +1,8 @@
 import { InstagramMedia } from "./instagram-media";
 
 export const fetchFeedInstagram = async (): Promise<InstagramMedia[]> => {
-  const token = process.env.INSTAGRAM_ACCESS_TOKEN;
-  
+  const token = process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN; // Acesse com o novo nome
+
   // Adicionando log para verificar o token
   console.log('Access Token:', token);
   
