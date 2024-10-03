@@ -36,6 +36,38 @@ export const Cartbags = [
     image: "/bags/bag-borboleta.jpg",
     quantidade: 1,
   },
+  {
+    id: 14,
+    produto: "Bag dos Beatles",
+    descricao: "Estampa dos Beatles",
+    preco: "45,00",
+    image: "/bags/bag-beatles.jpg",
+    quantidade: 1,
+  },
+  {
+    id: 15,
+    produto: "Bag Borboleta Dualidade",
+    descricao: "Estampa da Borboleta Dualidade",
+    preco: "45,00",
+    image: "/bags/bag-borboleta-pisicodelica.jpg",
+    quantidade: 1,
+  },
+  {
+    id: 16,
+    produto: "Bag a Foto 'Medina'",
+    descricao: "Estampa da Foto 'Medina'",
+    preco: "45,00",
+    image: "/bags/bag-medina.jpg",
+    quantidade: 1,
+  },
+  {
+    id: 17,
+    produto: "Bag libras pelo mundo'",
+    descricao: "Estampa da libras pelo mundo'",
+    preco: "45,00",
+    image: "/bags/bag-libras-mundo.jpg",
+    quantidade: 1,
+  },
 ];
 export const CartbagsEstampas = [
   {
